@@ -25,45 +25,132 @@
     <!-- 404 Page Specific CSS -->
     <link rel="stylesheet" href="assets/css/404.css" />
   </head>
-  <body>
+  <body class="error-body">
+    <!-- TOP NAVIGATION HEADER WITH TOP-LEFT LOGO -->
+    <header class="error-header">
+      <div class="container-fluid error-header-container">
+        <!-- Logo at the Top Left Corner -->
+        <a
+          href="index.html"
+          class="error-logo-link"
+          aria-label="Competitive Exam Coaching Academy Home"
+        >
+          <img
+            src="assets/images/logoStackly.webp"
+            alt="Competitive Exam Coaching Academy Logo"
+            class="error-brand-logo-img"
+          />
+          <!-- <div class="error-brand-meta d-none d-sm-flex">
+            <span class="error-brand-name">Rankers' Academy</span>
+            <span class="error-brand-tag"
+              >UPSC • Banking • SSC • State PSC</span
+            >
+          </div> -->
+        </a>
+
+        <!-- Top Right Navigation & Helpline -->
+        <!-- <nav class="error-header-nav" aria-label="Quick Navigation">
+          <ul class="error-nav-links d-none d-md-flex">
+            <li>
+              <a href="index.html" class="error-nav-item">
+                <i class="fa-solid fa-house"></i>
+                <span>Home</span>
+              </a>
+            </li>
+            <li>
+              <a href="pages/courses.html" class="error-nav-item">
+                <i class="fa-solid fa-graduation-cap"></i>
+                <span>Courses & Batches</span>
+              </a>
+            </li>
+            <li>
+              <a href="pages/about.html" class="error-nav-item">
+                <i class="fa-solid fa-award"></i>
+                <span>Rankers & Faculty</span>
+              </a>
+            </li>
+            <li>
+              <a href="pages/blog.html" class="error-nav-item">
+                <i class="fa-solid fa-book-open"></i>
+                <span>Study Material</span>
+              </a>
+            </li>
+          </ul>
+
+          <a href="pages/contact.html" class="error-header-btn">
+            <i class="fa-solid fa-headset"></i>
+            <span>Admission Helpline</span>
+          </a>
+        </nav> -->
+      </div>
+    </header>
+
     <!-- MAIN 404 CONTENT SECTION -->
     <main class="error-page-wrapper">
-      <!-- Ambient Glow Shapes -->
+      <!-- Background Animated Exam Graph Pattern & Ambient Glows -->
       <div class="error-ambient-shape error-shape-1"></div>
       <div class="error-ambient-shape error-shape-2"></div>
       <div class="error-ambient-shape error-shape-3"></div>
 
-      <div class="container">
-        <div class="row justify-content-center">
-          <div class="col-xl-9 col-lg-10 col-md-12">
-            <div class="error-main-card">
-              <!-- Error Badge -->
-              <span class="error-badge">
-                <i class="fa-solid fa-compass-drafting text-warning"></i>
-                Error 404 • Out of Exam Syllabus
-              </span>
+      <!-- Floating Exam Background Elements (Icons) -->
+      <div class="floating-exam-particle particle-1" aria-hidden="true">
+        <i class="fa-solid fa-graduation-cap"></i>
+      </div>
+      <div class="floating-exam-particle particle-2" aria-hidden="true">
+        <i class="fa-solid fa-book-open"></i>
+      </div>
+      <div class="floating-exam-particle particle-3" aria-hidden="true">
+        <i class="fa-solid fa-compass-drafting"></i>
+      </div>
+      <div class="floating-exam-particle particle-4" aria-hidden="true">
+        <i class="fa-solid fa-award"></i>
+      </div>
+      <div class="floating-exam-particle particle-5" aria-hidden="true">
+        <i class="fa-solid fa-brain"></i>
+      </div>
+      <div class="floating-exam-particle particle-6" aria-hidden="true">
+        <i class="fa-solid fa-shield-halved"></i>
+      </div>
 
-              <!-- Graphic / Big 404 Display with Orbiting Exam Badges -->
+      <div class="container py-4">
+        <div class="row justify-content-center">
+          <div class="col-xl-10 col-lg-11 col-md-12">
+            <div class="error-main-card">
+              <!-- Top Exam Status Pill -->
+              <div class="error-badge-wrapper">
+                <span class="error-badge">
+                  <span class="pulse-dot"></span>
+                  <i class="fa-solid fa-clipboard-question"></i>
+                  Question Out of Exam Syllabus • Error 404
+                </span>
+              </div>
+
+              <!-- Graphic / Big 404 Display with Orbiting Exam Badges & Animated Radar Target -->
               <div class="error-graphic-container">
                 <div class="error-big-number">
-                  <span>4</span>
+                  <span class="digit">4</span>
                   <div
-                    class="error-zero-icon"
-                    title="Exam Target Recalibrating"
+                    class="error-zero-target"
+                    title="Exam Target Radar - Question Unindexed"
                   >
-                    <i class="fa-solid fa-bullseye"></i>
+                    <div class="target-ring ring-outer"></div>
+                    <div class="target-ring ring-mid"></div>
+                    <div class="target-center-core">
+                      <i class="fa-solid fa-bullseye"></i>
+                    </div>
+                    <span class="radar-scan-beam"></span>
                   </div>
-                  <span>4</span>
+                  <span class="digit">4</span>
                 </div>
 
-                <!-- Floating Study Badges -->
+                <!-- Floating Study & Exam Badges -->
                 <div class="floating-study-badge badge-top-left">
                   <i class="fa-solid fa-award text-warning"></i>
                   <span>Target: Top 100 AIR</span>
                 </div>
                 <div class="floating-study-badge badge-top-right">
                   <i class="fa-solid fa-shield-check text-success"></i>
-                  <span>0% Negative Marks</span>
+                  <span>0% Negative Marks Deducted</span>
                 </div>
                 <div class="floating-study-badge badge-bottom-left">
                   <i class="fa-solid fa-book-open-reader text-primary"></i>
@@ -71,7 +158,7 @@
                 </div>
                 <div class="floating-study-badge badge-bottom-right">
                   <i class="fa-solid fa-clock-rotate-left text-warning"></i>
-                  <span>Attempt Diverted</span>
+                  <span>Attempt Diverted to Safe Track</span>
                 </div>
               </div>
 
@@ -81,10 +168,10 @@
                 <span class="highlight-gold">Outside The Syllabus!</span>
               </h1>
               <p class="error-desc">
-                Even top rankers take an unexpected turn during their
-                preparation journey. The page, study module, or examination
-                resource you are looking for might have been rescheduled,
-                archived, or moved to a new batch.
+                Even top rankers occasionally encounter an unexpected question.
+                The page, test series module, or study resource you are
+                attempting to access might have been upgraded, relocated, or
+                scheduled for a future batch.
               </p>
 
               <!-- Main Redirection and Go Back Buttons -->
@@ -106,36 +193,129 @@
                 </button>
               </div>
 
-              <!-- Quick Search Box -->
-              <div class="error-search-box">
-                <i class="fa-solid fa-magnifying-glass"></i>
-                <input
-                  type="text"
-                  id="errorSearchInput"
-                  class="error-search-input"
-                  placeholder="Search UPSC, Banking, SSC batches, mock tests, or syllabus..."
-                  aria-label="Search academy courses"
-                />
-                <button
-                  type="button"
-                  id="errorSearchBtn"
-                  class="error-search-btn"
-                >
-                  <span>Find Course</span>
-                  <i class="fa-solid fa-arrow-right"></i>
-                </button>
+              <!-- Quick Exam Search Box -->
+              <div class="error-search-section">
+                <div class="error-search-box">
+                  <i class="fa-solid fa-magnifying-glass search-icon"></i>
+                  <input
+                    type="text"
+                    id="errorSearchInput"
+                    class="error-search-input"
+                    placeholder="Search UPSC, Banking, SSC batches, mock tests, or syllabus..."
+                    aria-label="Search academy courses and study material"
+                  />
+                  <button
+                    type="button"
+                    id="errorSearchBtn"
+                    class="error-search-btn"
+                    aria-label="Submit search"
+                  >
+                    <span>Search</span>
+                    <i class="fa-solid fa-arrow-right"></i>
+                  </button>
+                </div>
               </div>
 
-              <!-- Aspirant Support / Helpline -->
+              <!-- Popular Exam Gateways Grid -->
+              <div class="error-gateways-section">
+                <h2 class="error-gateways-title">
+                  <i class="fa-solid fa-compass text-warning"></i>
+                  <span>Navigate Directly to Popular Academic Portals</span>
+                </h2>
+                <div class="row g-3">
+                  <div class="col-lg-3 col-md-6 col-sm-6">
+                    <a href="pages/courses.html" class="error-gateway-card">
+                      <div class="gateway-icon gateway-icon-teal">
+                        <i class="fa-solid fa-landmark"></i>
+                      </div>
+                      <div class="gateway-info">
+                        <h5>Civil Services (UPSC)</h5>
+                        <p>Prelims, Mains & Interview Mentorship Batches</p>
+                        <span class="gateway-link-text"
+                          >Explore Batches
+                          <i class="fa-solid fa-chevron-right"></i
+                        ></span>
+                      </div>
+                    </a>
+                  </div>
+
+                  <div class="col-lg-3 col-md-6 col-sm-6">
+                    <a href="pages/courses.html" class="error-gateway-card">
+                      <div class="gateway-icon gateway-icon-gold">
+                        <i class="fa-solid fa-building-columns"></i>
+                      </div>
+                      <div class="gateway-info">
+                        <h5>Banking & Insurance</h5>
+                        <p>IBPS, SBI PO, RBI Grade B & Special Mock Drills</p>
+                        <span class="gateway-link-text"
+                          >Explore Batches
+                          <i class="fa-solid fa-chevron-right"></i
+                        ></span>
+                      </div>
+                    </a>
+                  </div>
+
+                  <div class="col-lg-3 col-md-6 col-sm-6">
+                    <a href="pages/courses.html" class="error-gateway-card">
+                      <div class="gateway-icon gateway-icon-purple">
+                        <i class="fa-solid fa-scale-balanced"></i>
+                      </div>
+                      <div class="gateway-info">
+                        <h5>SSC & Central Govt</h5>
+                        <p>SSC CGL, CHSL, CPO & Technical Grade Exams</p>
+                        <span class="gateway-link-text"
+                          >Explore Batches
+                          <i class="fa-solid fa-chevron-right"></i
+                        ></span>
+                      </div>
+                    </a>
+                  </div>
+
+                  <div class="col-lg-3 col-md-6 col-sm-6">
+                    <a href="pages/blog.html" class="error-gateway-card">
+                      <div class="gateway-icon gateway-icon-green">
+                        <i class="fa-solid fa-file-lines"></i>
+                      </div>
+                      <div class="gateway-info">
+                        <h5>PYQs & Study Notes</h5>
+                        <p>Free Previous Year Papers & Model Answer Sheets</p>
+                        <span class="gateway-link-text"
+                          >Download Material
+                          <i class="fa-solid fa-chevron-right"></i
+                        ></span>
+                      </div>
+                    </a>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Aspirant Support & Counselling Bar -->
               <div class="aspirant-support-pill">
-                <span>
-                  <i class="fa-solid fa-headset text-warning me-1"></i>
-                  Need immediate admission guidance or counselling?
-                </span>
-                <a href="pages/contact.html">
-                  <i class="fa-solid fa-phone"></i>
-                  <span>Talk to Senior Mentor: +91 9876543210</span>
-                </a>
+                <div class="support-text-col">
+                  <div class="support-icon-badge">
+                    <i class="fa-solid fa-user-graduate"></i>
+                  </div>
+                  <div class="support-text-content">
+                    <strong
+                      >Need Personalized Admission Guidance or Syllabus
+                      Clarification?</strong
+                    >
+                    <p>
+                      Our senior exam counsellors and ex-officer mentors are
+                      available 8 AM – 8 PM.
+                    </p>
+                  </div>
+                </div>
+                <div class="support-cta-col">
+                  <a href="#" class="support-call-btn">
+                    <i class="fa-solid fa-phone-volume"></i>
+                    <span>Call +91 9876543210</span>
+                  </a>
+                  <a href="#" class="support-contact-btn">
+                    <i class="fa-solid fa-envelope"></i>
+                    <span>Contact Mentors</span>
+                  </a>
+                </div>
               </div>
             </div>
           </div>
@@ -143,9 +323,18 @@
       </div>
     </main>
 
-    <!-- Scripts -->
+    <!-- FOOTER COPYRIGHT STRIP -->
+    <footer class="error-mini-footer">
+      <div class="container text-center">
+        <p class="mb-0">
+          &copy; 2026 Competitive Exam Coaching Academy. All Rights Reserved.
+          Master UPSC, Banking, SSC & State PSC with Proven Strategies.
+        </p>
+      </div>
+    </footer>
+
+    <!-- Bootstrap Bundle JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="assets/js/script.js"></script>
     <script>
       // 404 Interactive Features
       document.addEventListener("DOMContentLoaded", function () {
@@ -153,7 +342,11 @@
         const goBackBtn = document.getElementById("goBackBtn");
         if (goBackBtn) {
           goBackBtn.addEventListener("click", function () {
-            if (window.history.length > 1) {
+            if (
+              window.history.length > 1 &&
+              document.referrer &&
+              !document.referrer.includes("404.html")
+            ) {
               window.history.back();
             } else {
               window.location.href = "index.html";
@@ -161,12 +354,18 @@
           });
         }
 
-        // 2. Search Box Redirect to Courses
+        // 2. Search Box & Quick Chips Redirect to Courses
         const searchInput = document.getElementById("errorSearchInput");
         const searchBtn = document.getElementById("errorSearchBtn");
+        const chips = document.querySelectorAll(".search-chip");
 
-        function handleSearch() {
-          const query = searchInput ? searchInput.value.trim() : "";
+        function handleSearch(term) {
+          const query =
+            term !== undefined
+              ? term
+              : searchInput
+                ? searchInput.value.trim()
+                : "";
           if (query) {
             window.location.href =
               "pages/courses.html?search=" + encodeURIComponent(query);
@@ -175,7 +374,12 @@
           }
         }
 
-        if (searchBtn) searchBtn.addEventListener("click", handleSearch);
+        if (searchBtn) {
+          searchBtn.addEventListener("click", function () {
+            handleSearch();
+          });
+        }
+
         if (searchInput) {
           searchInput.addEventListener("keydown", function (e) {
             if (e.key === "Enter") {
@@ -184,6 +388,15 @@
             }
           });
         }
+
+        chips.forEach((chip) => {
+          chip.addEventListener("click", function () {
+            const query =
+              this.getAttribute("data-search") || this.textContent.trim();
+            if (searchInput) searchInput.value = query;
+            handleSearch(query);
+          });
+        });
       });
     </script>
   </body>
