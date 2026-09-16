@@ -547,4 +547,30 @@ document.addEventListener("DOMContentLoaded", function () {
       });
     });
   });
+
+  // 8. Blog Aspirant Doubt & Reaction Buttons Interactivity
+  const reactionButtons = document.querySelectorAll(".reaction-btn");
+  reactionButtons.forEach((btn) => {
+    btn.addEventListener("click", function () {
+      const icon = this.querySelector("i");
+      if (icon && icon.classList.contains("fa-regular") && icon.classList.contains("fa-thumbs-up")) {
+        icon.classList.remove("fa-regular");
+        icon.classList.add("fa-solid");
+        this.style.background = "rgba(49, 100, 94, 0.15)";
+        this.style.color = "var(--main-color)";
+        const textSpan = this.querySelector("span");
+        if (textSpan && textSpan.textContent.includes("428")) {
+          textSpan.textContent = "Helpful (429)";
+        }
+      } else if (icon && icon.classList.contains("fa-regular") && icon.classList.contains("fa-bookmark")) {
+        icon.classList.remove("fa-regular");
+        icon.classList.add("fa-solid");
+        this.style.background = "rgba(49, 100, 94, 0.15)";
+        this.style.color = "var(--main-color)";
+        const textSpan = this.querySelector("span");
+        if (textSpan) textSpan.textContent = "Saved!";
+      }
+    });
+  });
 });
+
