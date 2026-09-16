@@ -331,11 +331,172 @@ document.addEventListener("DOMContentLoaded", function () {
   // Initial update
   updateFeeCalculation();
 
-  // 5. Generic Form Submission handler with alert
+  // 5. Real-Time Strict Input Validation & Restrictions
+  function initInputRestrictions() {
+    // 1. Letters Only (Full Name / Username) - prevents typing, pasting, dragging numbers & special characters
+    const lettersOnlyInputs = document.querySelectorAll(
+      '.letters-only-input, [data-restrict="letters-only"], #contactFullName'
+    );
+
+    lettersOnlyInputs.forEach((input) => {
+      // Keydown block
+      input.addEventListener("keydown", function (e) {
+        // Allow control & navigation keys
+        if (
+          e.key === "Backspace" ||
+          e.key === "Delete" ||
+          e.key === "Tab" ||
+          e.key === "Escape" ||
+          e.key === "Enter" ||
+          e.key === "ArrowLeft" ||
+          e.key === "ArrowRight" ||
+          e.key === "ArrowUp" ||
+          e.key === "ArrowDown" ||
+          e.key === "Home" ||
+          e.key === "End" ||
+          e.key === "PageUp" ||
+          e.key === "PageDown" ||
+          e.ctrlKey ||
+          e.metaKey
+        ) {
+          return;
+        }
+
+        // Only allow a-z, A-Z and space
+        if (e.key.length === 1 && !/^[a-zA-Z\s]$/.test(e.key)) {
+          e.preventDefault();
+        }
+      });
+
+      // Beforeinput block for mobile keyboards / autocomplete
+      input.addEventListener("beforeinput", function (e) {
+        if (e.data && !/^[a-zA-Z\s]+$/.test(e.data)) {
+          e.preventDefault();
+        }
+      });
+
+      // Input event cleaning (handles copy-paste, autofill, drag-drop)
+      input.addEventListener("input", function () {
+        const cleaned = this.value.replace(/[^a-zA-Z\s]/g, "");
+        if (this.value !== cleaned) {
+          this.value = cleaned;
+        }
+      });
+
+      // Paste event handling
+      input.addEventListener("paste", function (e) {
+        e.preventDefault();
+        const text = (e.clipboardData || window.clipboardData).getData("text");
+        const cleaned = text.replace(/[^a-zA-Z\s]/g, "");
+        const start = this.selectionStart || 0;
+        const end = this.selectionEnd || 0;
+        this.value =
+          this.value.substring(0, start) + cleaned + this.value.substring(end);
+        this.selectionStart = this.selectionEnd = start + cleaned.length;
+      });
+
+      // Prevent dropping invalid data
+      input.addEventListener("drop", function (e) {
+        e.preventDefault();
+        const text = e.dataTransfer.getData("text");
+        const cleaned = text.replace(/[^a-zA-Z\s]/g, "");
+        const start = this.selectionStart || 0;
+        const end = this.selectionEnd || 0;
+        this.value =
+          this.value.substring(0, start) + cleaned + this.value.substring(end);
+        this.selectionStart = this.selectionEnd = start + cleaned.length;
+      });
+    });
+
+    // 2. Numbers Only (Phone Number / Mobile) - prevents typing, pasting, dragging alphabets & special characters
+    const numbersOnlyInputs = document.querySelectorAll(
+      '.numbers-only-input, [data-restrict="numbers-only"], #contactPhone'
+    );
+
+    numbersOnlyInputs.forEach((input) => {
+      // Keydown block
+      input.addEventListener("keydown", function (e) {
+        // Allow control & navigation keys
+        if (
+          e.key === "Backspace" ||
+          e.key === "Delete" ||
+          e.key === "Tab" ||
+          e.key === "Escape" ||
+          e.key === "Enter" ||
+          e.key === "ArrowLeft" ||
+          e.key === "ArrowRight" ||
+          e.key === "ArrowUp" ||
+          e.key === "ArrowDown" ||
+          e.key === "Home" ||
+          e.key === "End" ||
+          e.key === "PageUp" ||
+          e.key === "PageDown" ||
+          e.ctrlKey ||
+          e.metaKey
+        ) {
+          return;
+        }
+
+        // Only allow 0-9 digits
+        if (e.key.length === 1 && !/^[0-9]$/.test(e.key)) {
+          e.preventDefault();
+        }
+      });
+
+      // Beforeinput block for mobile keyboards
+      input.addEventListener("beforeinput", function (e) {
+        if (e.data && !/^[0-9]+$/.test(e.data)) {
+          e.preventDefault();
+        }
+      });
+
+      // Input event cleaning
+      input.addEventListener("input", function () {
+        const cleaned = this.value.replace(/[^0-9]/g, "");
+        if (this.value !== cleaned) {
+          this.value = cleaned;
+        }
+      });
+
+      // Paste event handling
+      input.addEventListener("paste", function (e) {
+        e.preventDefault();
+        const text = (e.clipboardData || window.clipboardData).getData("text");
+        const cleaned = text.replace(/[^0-9]/g, "");
+        const start = this.selectionStart || 0;
+        const end = this.selectionEnd || 0;
+        this.value =
+          this.value.substring(0, start) + cleaned + this.value.substring(end);
+        this.selectionStart = this.selectionEnd = start + cleaned.length;
+      });
+
+      // Prevent dropping invalid data
+      input.addEventListener("drop", function (e) {
+        e.preventDefault();
+        const text = e.dataTransfer.getData("text");
+        const cleaned = text.replace(/[^0-9]/g, "");
+        const start = this.selectionStart || 0;
+        const end = this.selectionEnd || 0;
+        this.value =
+          this.value.substring(0, start) + cleaned + this.value.substring(end);
+        this.selectionStart = this.selectionEnd = start + cleaned.length;
+      });
+    });
+  }
+
+  initInputRestrictions();
+
+  // 6. Generic Form Submission handler with validation
   const contactForms = document.querySelectorAll(".ajax-contact-form");
   contactForms.forEach((form) => {
     form.addEventListener("submit", function (e) {
       e.preventDefault();
+
+      if (!form.checkValidity()) {
+        form.reportValidity();
+        return;
+      }
+
       const btn = form.querySelector('button[type="submit"]');
       const originalText = btn.innerHTML;
       btn.innerHTML =
@@ -358,7 +519,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 
-  // 6. Course / Project Filter Buttons
+  // 7. Course / Project Filter Buttons
   const filterBtns = document.querySelectorAll(".filter-btn");
   const filterItems = document.querySelectorAll(".filterable-item");
 

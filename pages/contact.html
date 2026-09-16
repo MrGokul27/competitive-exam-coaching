@@ -104,115 +104,226 @@
     </section>
 
     <!-- SECTION 3: Interactive Admission & Inquiry Form -->
-    <section class="section-padding">
+    <section class="section-padding contact-inquiry-section position-relative">
       <div class="container">
         <div class="row g-5 align-items-center">
           <div class="col-lg-5">
             <div class="sec-title mb-4">
-              <span class="sub-title color-two">Direct Admissions</span>
+              <span class="sub-title color-two"
+                ><i class="fa-solid fa-graduation-cap me-1"></i> Direct
+                Admissions</span
+              >
               <h2>Request a Free Counseling Session with Senior Faculty</h2>
               <p>
                 Fill out the form to book an in-person campus tour or schedule a
-                1-on-1 virtual mentoring session.
+                1-on-1 virtual mentoring session with exam toppers and mentors.
               </p>
             </div>
 
-            <div class="d-flex flex-column gap-3 mb-4">
-              <div class="d-flex align-items-center gap-3">
-                <i class="fa-solid fa-circle-check text-success fs-4"></i>
-                <span>Complete syllabus assessment & study planner</span>
+            <div class="inquiry-features-list d-flex flex-column gap-3 mb-4">
+              <div class="inquiry-feature-card">
+                <div class="inquiry-feature-icon">
+                  <i class="fa-solid fa-clipboard-check"></i>
+                </div>
+                <div class="inquiry-feature-text">
+                  <h6>Complete Syllabus Assessment</h6>
+                  <p>
+                    Personalized study roadmap and topic weightage breakdown
+                  </p>
+                </div>
               </div>
-              <div class="d-flex align-items-center gap-3">
-                <i class="fa-solid fa-circle-check text-success fs-4"></i>
-                <span>Free sample Prelims & Mains study kit booklets</span>
+              <div class="inquiry-feature-card">
+                <div class="inquiry-feature-icon">
+                  <i class="fa-solid fa-book-open-reader"></i>
+                </div>
+                <div class="inquiry-feature-text">
+                  <h6>Free Prelims & Mains Study Kit</h6>
+                  <p>
+                    Complimentary sample booklets and curated reference notes
+                  </p>
+                </div>
               </div>
-              <div class="d-flex align-items-center gap-3">
-                <i class="fa-solid fa-circle-check text-success fs-4"></i>
-                <span>Instant demo class login credentials</span>
+              <div class="inquiry-feature-card">
+                <div class="inquiry-feature-icon">
+                  <i class="fa-solid fa-laptop-code"></i>
+                </div>
+                <div class="inquiry-feature-text">
+                  <h6>Instant Demo Class Credentials</h6>
+                  <p>
+                    Immediate digital portal access to 3 live classroom
+                    recordings
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div class="counseling-trust-badge">
+              <i class="fa-solid fa-shield-halved text-success fs-4 me-2"></i>
+              <div>
+                <span class="d-block fw-bold text-dark"
+                  >100% Confidential & No Spam</span
+                >
+                <small class="text-muted"
+                  >Your details are only shared with dedicated
+                  counselors.</small
+                >
               </div>
             </div>
           </div>
 
           <div class="col-lg-7">
-            <div class="contact-form-container">
-              <h4 class="fw-bold mb-4">Send Us an Admission Inquiry</h4>
-              <form class="ajax-contact-form">
+            <div class="contact-form-container modern-form-card">
+              <div class="form-header-badge mb-3">
+                <span class="badge-tag"
+                  ><i class="fa-solid fa-bolt-lightning me-1"></i> Quick
+                  Response Within 20 Mins</span
+                >
+              </div>
+              <h3 class="fw-bold mb-2">Send Us an Admission Inquiry</h3>
+              <p class="text-muted small mb-4">
+                Please fill all required details marked with (<span
+                  class="text-danger"
+                  >*</span
+                >)
+              </p>
+
+              <form
+                class="ajax-contact-form"
+                id="admissionInquiryForm"
+                novalidate
+              >
                 <div class="row g-3">
                   <div class="col-md-6">
-                    <label class="form-label">Full Name *</label>
-                    <input
-                      type="text"
-                      class="form-control"
-                      placeholder="e.g. Rahul Sharma"
-                      required
-                    />
+                    <label class="form-label" for="contactFullName"
+                      >Full Name <span class="text-danger">*</span></label
+                    >
+                    <div class="input-with-icon">
+                      <i class="fa-regular fa-user form-icon"></i>
+                      <input
+                        type="text"
+                        id="contactFullName"
+                        name="fullName"
+                        class="form-control letters-only-input"
+                        placeholder="e.g. Rahul Sharma"
+                        required
+                        data-restrict="letters-only"
+                        maxlength="16"
+                        autocomplete="name"
+                      />
+                    </div>
                   </div>
                   <div class="col-md-6">
-                    <label class="form-label">Phone Number *</label>
-                    <input
-                      type="tel"
-                      class="form-control"
-                      placeholder="+91 9876543210"
-                      required
-                    />
+                    <label class="form-label" for="contactPhone"
+                      >Phone Number <span class="text-danger">*</span></label
+                    >
+                    <div class="input-with-icon">
+                      <i class="fa-solid fa-phone form-icon"></i>
+                      <input
+                        type="tel"
+                        id="contactPhone"
+                        name="phone"
+                        class="form-control numbers-only-input"
+                        placeholder="e.g. 9876543210"
+                        required
+                        data-restrict="numbers-only"
+                        inputmode="numeric"
+                        minlength="10"
+                        maxlength="10"
+                      />
+                    </div>
                   </div>
                   <div class="col-md-6">
-                    <label class="form-label">Email Address *</label>
-                    <input
-                      type="email"
-                      class="form-control"
-                      placeholder="name@example.com"
-                      required
-                    />
+                    <label class="form-label" for="contactEmail"
+                      >Email Address <span class="text-danger">*</span></label
+                    >
+                    <div class="input-with-icon">
+                      <i class="fa-regular fa-envelope form-icon"></i>
+                      <input
+                        type="email"
+                        id="contactEmail"
+                        name="email"
+                        class="form-control"
+                        placeholder="name@example.com"
+                        required
+                      />
+                    </div>
                   </div>
                   <div class="col-md-6">
-                    <label class="form-label">Target Exam *</label>
-                    <select class="form-select" required>
-                      <option value="" selected disabled>
-                        Select Target Exam
-                      </option>
-                      <option value="upsc">
-                        UPSC Civil Services (IAS/IPS)
-                      </option>
-                      <option value="statepcs">State PSC (Combined)</option>
-                      <option value="banking">
-                        Bank PO & Clerk (SBI/IBPS)
-                      </option>
-                      <option value="ssc">SSC CGL & CHSL</option>
-                      <option value="defence">Defence (NDA/CDS/AFCAT)</option>
-                    </select>
+                    <label class="form-label" for="contactExam"
+                      >Target Exam <span class="text-danger">*</span></label
+                    >
+                    <div class="input-with-icon">
+                      <i class="fa-solid fa-graduation-cap form-icon"></i>
+                      <select
+                        id="contactExam"
+                        name="exam"
+                        class="form-select"
+                        required
+                      >
+                        <option value="" selected disabled>
+                          Select Target Exam
+                        </option>
+                        <option value="upsc">
+                          UPSC Civil Services (IAS/IPS)
+                        </option>
+                        <option value="statepcs">State PSC (Combined)</option>
+                        <option value="banking">
+                          Bank PO & Clerk (SBI/IBPS)
+                        </option>
+                        <option value="ssc">SSC CGL & CHSL</option>
+                        <option value="defence">Defence (NDA/CDS/AFCAT)</option>
+                      </select>
+                    </div>
                   </div>
                   <div class="col-md-12">
-                    <label class="form-label">Preferred Mode *</label>
-                    <select class="form-select" required>
-                      <option value="classroom" selected>
-                        Offline Campus Classroom (London)
-                      </option>
-                      <option value="online">
-                        100% Online Live Interactive
-                      </option>
-                      <option value="hybrid">
-                        Hybrid (Classroom + Digital Portal)
-                      </option>
-                    </select>
+                    <label class="form-label" for="contactMode"
+                      >Preferred Mode <span class="text-danger">*</span></label
+                    >
+                    <div class="input-with-icon">
+                      <i class="fa-solid fa-chalkboard-user form-icon"></i>
+                      <select
+                        id="contactMode"
+                        name="mode"
+                        class="form-select"
+                        required
+                      >
+                        <option value="" disabled>Select Learning Mode</option>
+                        <option value="classroom" selected>
+                          Offline Campus Classroom (London)
+                        </option>
+                        <option value="online">
+                          100% Online Live Interactive
+                        </option>
+                        <option value="hybrid">
+                          Hybrid (Classroom + Digital Portal)
+                        </option>
+                      </select>
+                    </div>
                   </div>
                   <div class="col-12">
-                    <label class="form-label"
-                      >Your Message or Specific Question</label
+                    <label class="form-label" for="contactMessage"
+                      >Your Message or Specific Question
+                      <span class="text-danger">*</span></label
                     >
-                    <textarea
-                      class="form-control"
-                      rows="4"
-                      placeholder="Tell us about your educational background and target exam year..."
-                    ></textarea>
+                    <div class="input-with-icon textarea-icon-wrapper">
+                      <i class="fa-regular fa-comment-dots form-icon"></i>
+                      <textarea
+                        id="contactMessage"
+                        name="message"
+                        class="form-control"
+                        rows="4"
+                        placeholder="Tell us about your educational background and target exam year..."
+                        required
+                      ></textarea>
+                    </div>
                   </div>
                   <div class="col-12">
                     <button
                       type="submit"
-                      class="theme-btn btn-primary-theme w-100"
+                      class="theme-btn btn-primary-theme w-100 inquiry-submit-btn"
                     >
                       <span>Submit Inquiry for Free Counseling</span>
-                      <i class="fa-solid fa-paper-plane"></i>
+                      <i class="fa-solid fa-paper-plane ms-2"></i>
                     </button>
                   </div>
                 </div>
@@ -309,21 +420,51 @@
     </section>
 
     <!-- SECTION 6: Schedule a Campus Tour & Library Pass -->
-    <section class="section-padding bg-pattern-light">
+    <section
+      class="section-padding bg-pattern-light campus-tour-section position-relative"
+    >
       <div class="container">
         <div class="row align-items-center g-5">
           <div class="col-lg-6">
-            <img
-              src="../assets/images/home/home-campus-&-infrastructure-1.webp"
-              alt="Library Campus Tour"
-              class="rounded-4 shadow-lg w-100 object-fit-cover"
-              style="height: 380px"
-            />
+            <div class="tour-image-card">
+              <div class="tour-img-wrapper">
+                <img
+                  src="../assets/images/home/home-campus-&-infrastructure-1.webp"
+                  alt="Library Campus Tour"
+                  class="img-fluid tour-main-img"
+                />
+                <div class="tour-img-overlay"></div>
+              </div>
+
+              <!-- Floating Aesthetic Badges with Hover Effects -->
+              <div class="tour-floating-badge badge-top-left">
+                <div class="badge-icon-box bg-success text-white">
+                  <i class="fa-solid fa-book-bookmark"></i>
+                </div>
+                <div>
+                  <strong class="d-block">50,000+ Volumes</strong>
+                  <span>Physical & E-Library Vault</span>
+                </div>
+              </div>
+
+              <div class="tour-floating-badge badge-bottom-right">
+                <div class="badge-icon-box bg-warning text-dark">
+                  <i class="fa-solid fa-clock"></i>
+                </div>
+                <div>
+                  <strong class="d-block">24/7 Silent Cubicles</strong>
+                  <span>Air-Conditioned Access</span>
+                </div>
+              </div>
+            </div>
           </div>
 
           <div class="col-lg-6">
-            <div class="sec-title">
-              <span class="sub-title color-two">Visit in Person</span>
+            <div class="sec-title mb-4">
+              <span class="sub-title color-two"
+                ><i class="fa-solid fa-building-columns me-1"></i> Visit in
+                Person</span
+              >
               <h2>Book a 1-Day Trial Pass & Campus Tour</h2>
               <p>
                 Experience the silence of our 24/7 digital study cubicles,
@@ -331,46 +472,63 @@
                 standard reference textbook vault.
               </p>
             </div>
-            <ul class="list-unstyled mb-4">
-              <li class="d-flex align-items-center gap-3 mb-2">
-                <i class="fa-solid fa-check-circle text-success fs-5"></i>
-                <span>Free entry to 1 live classroom GS lecture</span>
-              </li>
-              <li class="d-flex align-items-center gap-3 mb-2">
-                <i class="fa-solid fa-check-circle text-success fs-5"></i>
-                <span>Full-day access to air-conditioned library</span>
-              </li>
-              <li class="d-flex align-items-center gap-3 mb-2">
-                <i class="fa-solid fa-check-circle text-success fs-5"></i>
-                <span>15-min diagnostic discussion with mentor</span>
-              </li>
-            </ul>
-            <a href="#" class="theme-btn btn-primary-theme"
-              >Call for Day Pass: +91 9876543210</a
-            >
-          </div>
-        </div>
-      </div>
-    </section>
 
-    <!-- SECTION 7: Dedicated Student & Parent Helpline -->
-    <section class="section-padding">
-      <div class="container">
-        <div class="p-4 p-md-5 rounded-4 bg-light border">
-          <div class="row align-items-center g-4">
-            <div class="col-lg-8">
-              <h4 class="fw-bold mb-2">
-                Existing Students & Parent Welfare Support
-              </h4>
-              <p class="text-muted mb-0">
-                For hostel accommodations, attendance reports, leave requests,
-                or test portal technical issues, reach our dedicated student
-                welfare cell directly.
-              </p>
+            <div class="tour-perks-grid mb-4">
+              <div class="tour-perk-item">
+                <div class="tour-perk-icon">
+                  <i class="fa-solid fa-chalkboard-user"></i>
+                </div>
+                <div class="tour-perk-content">
+                  <h6>Live Classroom Experience</h6>
+                  <p>
+                    Free entry to 1 live classroom GS lecture with faculty Q&A
+                  </p>
+                </div>
+                <div class="tour-perk-arrow">
+                  <i class="fa-solid fa-arrow-right"></i>
+                </div>
+              </div>
+
+              <div class="tour-perk-item">
+                <div class="tour-perk-icon">
+                  <i class="fa-solid fa-laptop"></i>
+                </div>
+                <div class="tour-perk-content">
+                  <h6>Digital Library Access</h6>
+                  <p>
+                    Full-day access to high-speed WiFi, CBT portals &
+                    e-resources
+                  </p>
+                </div>
+                <div class="tour-perk-arrow">
+                  <i class="fa-solid fa-arrow-right"></i>
+                </div>
+              </div>
+
+              <div class="tour-perk-item">
+                <div class="tour-perk-icon">
+                  <i class="fa-solid fa-comments"></i>
+                </div>
+                <div class="tour-perk-content">
+                  <h6>Personal Mentor Evaluation</h6>
+                  <p>
+                    15-min 1-on-1 diagnostic discussion & strategy formulation
+                  </p>
+                </div>
+                <div class="tour-perk-arrow">
+                  <i class="fa-solid fa-arrow-right"></i>
+                </div>
+              </div>
             </div>
-            <div class="col-lg-4 text-lg-end">
-              <a href="#" class="theme-btn btn-secondary-theme"
-                ><i class="fa-solid fa-phone me-2"></i> +91 9876543210</a
+
+            <div class="d-flex flex-wrap align-items-center gap-3">
+              <a href="#" class="theme-btn btn-primary-theme tour-call-btn">
+                <i class="fa-solid fa-phone-volume me-2"></i>
+                <span>Call for Day Pass: +91 9876543210</span>
+              </a>
+              <span class="text-muted small"
+                ><i class="fa-solid fa-circle-check text-success me-1"></i>
+                Instant Confirmation</span
               >
             </div>
           </div>
@@ -378,90 +536,334 @@
       </div>
     </section>
 
+    <!-- SECTION 7: Dedicated Student & Parent Helpline -->
+    <section class="section-padding helpline-section">
+      <div class="container">
+        <div class="helpline-hero-box position-relative overflow-hidden">
+          <div class="helpline-glow-orb orb-1"></div>
+          <div class="helpline-glow-orb orb-2"></div>
+
+          <div
+            class="row align-items-center g-4 position-relative"
+            style="z-index: 2"
+          >
+            <div class="col-lg-7">
+              <div
+                class="d-inline-flex align-items-center gap-2 helpline-status-pill mb-3"
+              >
+                <span class="pulse-dot"></span>
+                <span class="helpline-status-text"
+                  >Dedicated Support Desk • 24x7 Active</span
+                >
+              </div>
+              <h3 class="fw-bold text-white mb-2">
+                Existing Students & Parent Welfare Helpline
+              </h3>
+              <p class="text-white-50 mb-4">
+                Have queries regarding hostel accommodations, attendance
+                reports, leave requests, study material delivery, or test portal
+                technical issues? Reach our student welfare cell directly.
+              </p>
+
+              <div class="d-flex flex-wrap gap-2">
+                <div class="helpline-chip">
+                  <i class="fa-solid fa-shield-heart text-warning"></i>
+                  <span>Student Grievance Cell</span>
+                </div>
+                <div class="helpline-chip">
+                  <i class="fa-solid fa-hotel text-info"></i>
+                  <span>Hostel & Mess Inquiries</span>
+                </div>
+                <div class="helpline-chip">
+                  <i class="fa-solid fa-desktop text-success"></i>
+                  <span>Online Portal Support</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-lg-5">
+              <div class="helpline-action-card">
+                <div class="d-flex align-items-center gap-3 mb-3">
+                  <div class="helpline-phone-icon-box">
+                    <i class="fa-solid fa-headset"></i>
+                  </div>
+                  <div>
+                    <span class="text-white-50 text-uppercase small fw-bold"
+                      >Emergency & Welfare Desk</span
+                    >
+                    <h4 class="text-white mb-0 fw-bold">+91 9876543210</h4>
+                  </div>
+                </div>
+                <div class="d-flex flex-column gap-2 mt-3">
+                  <a
+                    href="#"
+                    class="theme-btn btn-secondary-theme w-100 helpline-call-btn"
+                  >
+                    <i class="fa-solid fa-phone me-2"></i>
+                    <span>Call Student Helpline</span>
+                  </a>
+                  <a href="#" class="helpline-mail-link text-center">
+                    <i class="fa-regular fa-envelope me-1"></i>
+                    support@stacklyexamcoaching.com
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- SECTION 8: Pre-Admission Counseling FAQs -->
-    <section class="section-padding bg-pattern-light">
+    <section class="section-padding bg-pattern-light contact-faq-section">
       <div class="container">
         <div class="sec-title centered">
-          <span class="sub-title">Pre-Admission Queries</span>
-          <h2>Common Admissions Questions</h2>
-          <p>Everything you need to know before visiting our academy.</p>
+          <span class="sub-title"
+            ><i class="fa-solid fa-circle-question me-1"></i> Pre-Admission
+            Queries</span
+          >
+          <h2>Frequently Asked Questions</h2>
+          <p>
+            Everything you need to know before visiting our academy or enrolling
+            in our programs.
+          </p>
         </div>
 
         <div class="row justify-content-center">
           <div class="col-lg-10">
-            <div class="accordion course-faq-accordion" id="contactFaq">
-              <div class="accordion-item">
-                <h2 class="accordion-header">
+            <div class="accordion contact-faq-accordion" id="contactFaq">
+              <!-- FAQ Item 1 -->
+              <div class="accordion-item faq-card-item">
+                <h2 class="accordion-header" id="headingFaq1">
                   <button
                     class="accordion-button"
                     type="button"
                     data-bs-toggle="collapse"
                     data-bs-target="#cFaq1"
+                    aria-expanded="true"
+                    aria-controls="cFaq1"
                   >
-                    Do I need an appointment for career counseling?
+                    <span class="faq-icon-bubble">
+                      <i class="fa-solid fa-user-doctor"></i>
+                    </span>
+                    <span class="faq-title-text"
+                      >Do I need a prior appointment for 1-on-1 career
+                      counseling?</span
+                    >
                   </button>
                 </h2>
                 <div
                   id="cFaq1"
                   class="accordion-collapse collapse show"
+                  aria-labelledby="headingFaq1"
                   data-bs-parent="#contactFaq"
                 >
                   <div class="accordion-body">
-                    While walk-ins are welcomed, booking an appointment via our
-                    form ensures you get dedicated time with our senior
-                    ex-bureaucrat faculty without waiting.
+                    <div class="faq-body-content">
+                      <p>
+                        While walk-ins are welcomed, booking an appointment via
+                        our online admission form ensures you get dedicated time
+                        with our senior ex-bureaucrat faculty and mentors
+                        without any waiting queue. We recommend booking at least
+                        24 hours in advance.
+                      </p>
+                    </div>
                   </div>
                 </div>
               </div>
 
-              <div class="accordion-item">
-                <h2 class="accordion-header">
+              <!-- FAQ Item 2 -->
+              <div class="accordion-item faq-card-item">
+                <h2 class="accordion-header" id="headingFaq2">
                   <button
                     class="accordion-button collapsed"
                     type="button"
                     data-bs-toggle="collapse"
                     data-bs-target="#cFaq2"
+                    aria-expanded="false"
+                    aria-controls="cFaq2"
                   >
-                    Are hostel and residential accommodations available near
-                    campus?
+                    <span class="faq-icon-bubble">
+                      <i class="fa-solid fa-hotel"></i>
+                    </span>
+                    <span class="faq-title-text"
+                      >Are hostel and residential accommodations available near
+                      the campus?</span
+                    >
                   </button>
                 </h2>
                 <div
                   id="cFaq2"
                   class="accordion-collapse collapse"
+                  aria-labelledby="headingFaq2"
                   data-bs-parent="#contactFaq"
                 >
                   <div class="accordion-body">
-                    Yes, we have verified separate partner student hostels for
-                    male and female aspirants located within a 5-minute walking
-                    radius of the main London campus, equipped with 24/7
-                    security and meal plans.
+                    <div class="faq-body-content">
+                      <p>
+                        Yes! We have verified separate partner student
+                        residences and hostels for male and female aspirants
+                        located within a 5-minute walking radius of the main
+                        London campus. These include 24/7 biometric security,
+                        nutritious hygienic meals, high-speed WiFi, and silent
+                        study zones.
+                      </p>
+                    </div>
                   </div>
                 </div>
               </div>
 
-              <div class="accordion-item">
-                <h2 class="accordion-header">
+              <!-- FAQ Item 3 -->
+              <div class="accordion-item faq-card-item">
+                <h2 class="accordion-header" id="headingFaq3">
                   <button
                     class="accordion-button collapsed"
                     type="button"
                     data-bs-toggle="collapse"
                     data-bs-target="#cFaq3"
+                    aria-expanded="false"
+                    aria-controls="cFaq3"
                   >
-                    How quickly are test series results evaluated?
+                    <span class="faq-icon-bubble">
+                      <i class="fa-solid fa-chart-line"></i>
+                    </span>
+                    <span class="faq-title-text"
+                      >How quickly are test series results and answer scripts
+                      evaluated?</span
+                    >
                   </button>
                 </h2>
                 <div
                   id="cFaq3"
                   class="accordion-collapse collapse"
+                  aria-labelledby="headingFaq3"
                   data-bs-parent="#contactFaq"
                 >
                   <div class="accordion-body">
-                    Prelims objective tests provide instant scores and analytics
-                    upon submission. Mains answer writing scripts are thoroughly
-                    evaluated and annotated by faculty within a guaranteed 24 to
-                    48-hour window.
+                    <div class="faq-body-content">
+                      <p>
+                        Prelims objective CBT tests provide instant scores,
+                        percentile rankings, and AI-powered accuracy analytics
+                        upon submission. Mains answer writing scripts are
+                        thoroughly evaluated and annotated by faculty within a
+                        guaranteed 24 to 48-hour window with 1-on-1 feedback
+                        sessions.
+                      </p>
+                    </div>
                   </div>
+                </div>
+              </div>
+
+              <!-- FAQ Item 4 -->
+              <div class="accordion-item faq-card-item">
+                <h2 class="accordion-header" id="headingFaq4">
+                  <button
+                    class="accordion-button collapsed"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#cFaq4"
+                    aria-expanded="false"
+                    aria-controls="cFaq4"
+                  >
+                    <span class="faq-icon-bubble">
+                      <i class="fa-solid fa-hand-holding-dollar"></i>
+                    </span>
+                    <span class="faq-title-text"
+                      >Can I pay tuition fees in monthly installments or apply
+                      for scholarships?</span
+                    >
+                  </button>
+                </h2>
+                <div
+                  id="cFaq4"
+                  class="accordion-collapse collapse"
+                  aria-labelledby="headingFaq4"
+                  data-bs-parent="#contactFaq"
+                >
+                  <div class="accordion-body">
+                    <div class="faq-body-content">
+                      <p>
+                        Yes, we offer zero-interest EMI options across 3, 6, and
+                        9 months with all major payment providers. Additionally,
+                        meritorious aspirants can take our National Scholarship
+                        Aptitude Test (NSAT) to earn up to 100% tuition fee
+                        waivers.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- FAQ Item 5 -->
+              <div class="accordion-item faq-card-item">
+                <h2 class="accordion-header" id="headingFaq5">
+                  <button
+                    class="accordion-button collapsed"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#cFaq5"
+                    aria-expanded="false"
+                    aria-controls="cFaq5"
+                  >
+                    <span class="faq-icon-bubble">
+                      <i class="fa-solid fa-arrows-rotate"></i>
+                    </span>
+                    <span class="faq-title-text"
+                      >Can I switch between Offline Classroom and Online Live
+                      modes?</span
+                    >
+                  </button>
+                </h2>
+                <div
+                  id="cFaq5"
+                  class="accordion-collapse collapse"
+                  aria-labelledby="headingFaq5"
+                  data-bs-parent="#contactFaq"
+                >
+                  <div class="accordion-body">
+                    <div class="faq-body-content">
+                      <p>
+                        Absolutely. We provide seamless hybrid flexibility
+                        allowing enrolled students to switch between offline
+                        classroom lectures and 100% live interactive online
+                        batches at any point during their session without any
+                        penalty or administrative delay.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- FAQ Helper Footer Box -->
+            <div class="faq-contact-help-box mt-4">
+              <div
+                class="d-flex flex-column flex-md-row align-items-center justify-content-between gap-3"
+              >
+                <div class="d-flex align-items-center gap-3">
+                  <div class="faq-help-icon">
+                    <i class="fa-solid fa-headset"></i>
+                  </div>
+                  <div>
+                    <h6 class="fw-bold mb-1">
+                      Still have questions regarding admissions?
+                    </h6>
+                    <p class="text-muted small mb-0">
+                      Our senior counselors are available Mon - Sat (8 AM - 8
+                      PM).
+                    </p>
+                  </div>
+                </div>
+                <div class="d-flex gap-2">
+                  <a href="#" class="theme-btn btn-sm-custom btn-primary-theme">
+                    <i class="fa-solid fa-phone me-1"></i> Call Desk
+                  </a>
+                  <a
+                    href="#"
+                    class="theme-btn btn-sm-custom btn-secondary-theme"
+                  >
+                    <i class="fa-solid fa-pen-to-square me-1"></i> Ask Online
+                  </a>
                 </div>
               </div>
             </div>
