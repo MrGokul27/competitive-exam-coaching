@@ -1,0 +1,353 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Register - Competitive Exam Coaching Institute</title>
+    <link
+      rel="shortcut icon"
+      href="../assets/images/logoStackly.webp"
+      type="image/webp"
+    />
+
+    <!-- Bootstrap 5 CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <!-- Font Awesome 6 CDN -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+    />
+    <!-- Main Custom CSS -->
+    <link rel="stylesheet" href="../assets/css/styles.css" />
+    <!-- Auth Specific CSS -->
+    <link rel="stylesheet" href="../assets/css/auth.css" />
+  </head>
+  <body>
+    <div class="auth-page-wrapper">
+      <!-- Back to Home Floating Button -->
+      <a
+        href="../index.html"
+        class="back-home-floating"
+        title="Return to Homepage"
+      >
+        <i class="fa-solid fa-arrow-left"></i>
+        <span>Back to Home</span>
+      </a>
+
+      <!-- Main Auth Card Container -->
+      <div class="auth-container">
+        <div class="auth-row">
+          <!-- Left Showcase Sidebar (Theme Visuals & Academy Milestones) -->
+          <div class="auth-showcase-sidebar">
+            <div class="auth-showcase-top">
+              <a href="../index.html" class="auth-brand-logo">
+                <img
+                  src="../assets/images/logoStackly.webp"
+                  alt="Competitive Exam Coaching Academy"
+                />
+              </a>
+
+              <div class="auth-showcase-badge">
+                <i class="fa-solid fa-trophy text-warning"></i> #1 Ranked Civil
+                Services & Aptitude Academy
+              </div>
+
+              <h1 class="auth-showcase-title">
+                Start Your Ambition with <span>Proven Mentors</span>
+              </h1>
+
+              <p class="auth-showcase-desc">
+                Join over 4,850+ selected officers and aspirants preparing for
+                UPSC CSE, State PSC, Banking, SSC, and Defense exams with
+                personalized 1-on-1 strategy.
+              </p>
+
+              <ul class="auth-feature-list">
+                <li>
+                  <span class="feat-icon"
+                    ><i class="fa-solid fa-user-graduate"></i
+                  ></span>
+                  <span>4,850+ Officer Selections Across India</span>
+                </li>
+                <li>
+                  <span class="feat-icon"
+                    ><i class="fa-solid fa-medal"></i
+                  ></span>
+                  <span>Rankers in Top 100 AIR Every Single Year</span>
+                </li>
+                <li>
+                  <span class="feat-icon"
+                    ><i class="fa-solid fa-file-pen"></i
+                  ></span>
+                  <span>Daily Evaluated Mains Answer Writing Practice</span>
+                </li>
+              </ul>
+            </div>
+
+            <!-- Testimonial card -->
+            <div class="auth-sidebar-testimonial">
+              <p>
+                "The mentors identified my weak areas in CSAT & Essay writing
+                early. Joining this academy was the best career decision."
+              </p>
+              <div class="auth-testimonial-author">
+                <img
+                  src="../assets/images/home/home-topper-photo-2.webp"
+                  alt="Vikramaditya Rao - AIR 38"
+                />
+                <div>
+                  <h6>Vikramaditya Rao</h6>
+                  <span>AIR 38, UPSC CSE 2024</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right Form Section -->
+          <div class="auth-form-section">
+            <div class="auth-form-header">
+              <span class="auth-tag">
+                <i class="fa-solid fa-user-plus"></i> New Candidate Registration
+              </span>
+              <h2>Create Aspirant Account</h2>
+              <p>
+                Fill out the required information below to register for the 2026
+                batches.
+              </p>
+            </div>
+
+            <!-- Dynamic Alert Box -->
+            <div
+              id="registerAlert"
+              class="auth-alert"
+              style="display: none"
+            ></div>
+
+            <!-- Register Form -->
+            <form id="registerForm" novalidate>
+              <!-- 1. Username Field (Restricted to Alphabets only; No Numbers or Special Characters) -->
+              <div class="auth-form-group">
+                <label for="regUsername" class="auth-label">
+                  Full Name / Username <span class="required-star">*</span>
+                </label>
+                <div class="auth-input-wrapper">
+                  <i class="fa-solid fa-user auth-input-icon"></i>
+                  <input
+                    type="text"
+                    id="regUsername"
+                    class="auth-input-control"
+                    placeholder="Enter your full name (letters only)"
+                    required
+                    autocomplete="name"
+                  />
+                </div>
+                <div id="usernameHint" class="auth-field-hint info-text">
+                  Only alphabetic letters (A-Z, a-z) allowed (numbers & symbols
+                  blocked)
+                </div>
+              </div>
+
+              <!-- 2. Target Role / Stream Field (Required) -->
+              <div class="auth-form-group">
+                <label for="regRole" class="auth-label">
+                  Target Exam Stream / Role <span class="required-star">*</span>
+                </label>
+                <div class="auth-input-wrapper">
+                  <i class="fa-solid fa-book-bookmark auth-input-icon"></i>
+                  <select id="regRole" class="auth-input-control" required>
+                    <option value="" disabled selected>
+                      -- Select Your Target Stream / Role --
+                    </option>
+                    <option value="upsc_ias">
+                      UPSC Civil Services (IAS / IPS / IFS)
+                    </option>
+                    <option value="state_psc">
+                      State Public Service Commission (State PSC)
+                    </option>
+                    <option value="banking_ibps">
+                      Banking Exams (IBPS PO / SBI PO / RBI Grade B)
+                    </option>
+                    <option value="ssc_cgl">
+                      Staff Selection Commission (SSC CGL / CHSL)
+                    </option>
+                    <option value="defense_nda">
+                      Defense Services (CDS / NDA / AFCAT)
+                    </option>
+                    <option value="mentor_faculty">
+                      Faculty / Subject Matter Expert
+                    </option>
+                  </select>
+                </div>
+                <div class="auth-field-hint info-text">
+                  Select the primary competitive examination track you are
+                  preparing for
+                </div>
+              </div>
+
+              <!-- 3. Email Address Field (Required) -->
+              <div class="auth-form-group">
+                <label for="regEmail" class="auth-label">
+                  Email Address <span class="required-star">*</span>
+                </label>
+                <div class="auth-input-wrapper">
+                  <i class="fa-solid fa-envelope auth-input-icon"></i>
+                  <input
+                    type="email"
+                    id="regEmail"
+                    class="auth-input-control"
+                    placeholder="e.g. yourname@example.com"
+                    required
+                    autocomplete="email"
+                  />
+                </div>
+                <div class="auth-field-hint info-text">
+                  We will send admission confirmations and study materials to
+                  this email
+                </div>
+              </div>
+
+              <!-- 4. Password Field (Required with Weak Password Validation) -->
+              <div class="auth-form-group">
+                <label for="regPassword" class="auth-label">
+                  Create Password <span class="required-star">*</span>
+                </label>
+                <div class="auth-input-wrapper">
+                  <i class="fa-solid fa-lock auth-input-icon"></i>
+                  <input
+                    type="password"
+                    id="regPassword"
+                    class="auth-input-control"
+                    placeholder="Create a strong password"
+                    required
+                    autocomplete="new-password"
+                  />
+                  <button
+                    type="button"
+                    class="password-toggle-btn"
+                    data-target="regPassword"
+                    aria-label="Toggle password visibility"
+                  >
+                    <i class="fa-solid fa-eye"></i>
+                  </button>
+                </div>
+
+                <!-- Password Strength Meter -->
+                <div id="passwordStrengthMeter" class="password-strength-meter">
+                  <div class="strength-bar-track">
+                    <div class="strength-bar-fill"></div>
+                  </div>
+                  <div class="strength-meta">
+                    <span class="strength-label">Password Strength:</span>
+                    <span id="strengthScoreText" class="strength-score"
+                      >Weak</span
+                    >
+                  </div>
+                  <!-- Checklist Rules -->
+                  <ul class="password-checklist">
+                    <li id="ruleLength">
+                      <i class="fa-regular fa-circle"></i> Min. 8 characters
+                    </li>
+                    <li id="ruleUpper">
+                      <i class="fa-regular fa-circle"></i> Uppercase letter
+                      (A-Z)
+                    </li>
+                    <li id="ruleLower">
+                      <i class="fa-regular fa-circle"></i> Lowercase letter
+                      (a-z)
+                    </li>
+                    <li id="ruleNumberSymbol">
+                      <i class="fa-regular fa-circle"></i> Number or symbol
+                    </li>
+                  </ul>
+                </div>
+              </div>
+
+              <!-- 5. Confirm Password Field (Required with Match Validation) -->
+              <div class="auth-form-group">
+                <label for="regConfirmPassword" class="auth-label">
+                  Confirm Password <span class="required-star">*</span>
+                </label>
+                <div class="auth-input-wrapper">
+                  <i class="fa-solid fa-shield-check auth-input-icon"></i>
+                  <input
+                    type="password"
+                    id="regConfirmPassword"
+                    class="auth-input-control"
+                    placeholder="Re-enter your password"
+                    required
+                    autocomplete="new-password"
+                  />
+                  <button
+                    type="button"
+                    class="password-toggle-btn"
+                    data-target="regConfirmPassword"
+                    aria-label="Toggle confirm password visibility"
+                  >
+                    <i class="fa-solid fa-eye"></i>
+                  </button>
+                </div>
+                <div id="confirmPasswordHint" class="auth-field-hint info-text">
+                  Re-enter the exact same password
+                </div>
+              </div>
+
+              <!-- 6. Terms & Conditions Field (Required Checkbox) -->
+              <div class="auth-checkbox-group">
+                <input
+                  type="checkbox"
+                  id="regTerms"
+                  class="form-check-input"
+                  required
+                />
+                <label for="regTerms" class="auth-checkbox-label">
+                  I agree to the
+                  <a href="#">Terms of Service</a>
+                  and
+                  <a href="#">Privacy Policy</a>
+                  <span class="required-star">*</span>
+                </label>
+              </div>
+
+              <!-- 7. Submit Button (Registers and redirects to login) -->
+              <button
+                type="submit"
+                id="registerSubmitBtn"
+                class="auth-submit-btn"
+              >
+                <span>Create Academy Account</span>
+                <i class="fa-solid fa-user-check"></i>
+              </button>
+
+              <!-- Switch to Login Link -->
+              <p class="auth-switch-text">
+                Already have an academy account?
+                <a href="login.html">Sign In here</a>
+              </p>
+
+              <!-- Security Badges -->
+              <div class="auth-security-badges">
+                <span class="auth-security-item">
+                  <i class="fa-solid fa-shield-halved"></i> Data Protected
+                </span>
+                <span class="auth-security-item">
+                  <i class="fa-solid fa-clock-rotate-left"></i> Immediate Portal
+                  Access
+                </span>
+                <span class="auth-security-item">
+                  <i class="fa-solid fa-circle-check"></i> Verified Academy
+                </span>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../assets/js/auth.js"></script>
+  </body>
+</html>

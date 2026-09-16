@@ -1,0 +1,261 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login - Competitive Exam Coaching Institute Portal</title>
+    <link
+      rel="shortcut icon"
+      href="../assets/images/logoStackly.webp"
+      type="image/webp"
+    />
+
+    <!-- Bootstrap 5 CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <!-- Font Awesome 6 CDN -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+    />
+    <!-- Main Custom CSS -->
+    <link rel="stylesheet" href="../assets/css/styles.css" />
+    <!-- Auth Specific CSS -->
+    <link rel="stylesheet" href="../assets/css/auth.css" />
+  </head>
+  <body>
+    <div class="auth-page-wrapper">
+      <!-- Back to Home Floating Button -->
+      <a
+        href="../index.html"
+        class="back-home-floating"
+        title="Return to Homepage"
+      >
+        <i class="fa-solid fa-arrow-left"></i>
+        <span>Back to Home</span>
+      </a>
+
+      <!-- Main Auth Card Container -->
+      <div class="auth-container">
+        <div class="auth-row">
+          <!-- Left Showcase Sidebar (Theme Visuals & Mentorship Highlights) -->
+          <div class="auth-showcase-sidebar">
+            <div class="auth-showcase-top">
+              <a href="../index.html" class="auth-brand-logo">
+                <img
+                  src="../assets/images/logoStackly.webp"
+                  alt="Competitive Exam Coaching Academy"
+                />
+              </a>
+
+              <div class="auth-showcase-badge">
+                <i class="fa-solid fa-graduation-cap"></i> Premier Aspirant
+                Portal
+              </div>
+
+              <h1 class="auth-showcase-title">
+                Welcome Back to Your <span>Rankers' Journey</span>
+              </h1>
+
+              <p class="auth-showcase-desc">
+                Access your personalized test analytics, daily live
+                answer-writing evaluations, recorded lectures, and 1-on-1 mentor
+                guidance.
+              </p>
+
+              <ul class="auth-feature-list">
+                <li>
+                  <span class="feat-icon"
+                    ><i class="fa-solid fa-chalkboard-user"></i
+                  ></span>
+                  <span>Daily Live Mentorship by Ex-Officers</span>
+                </li>
+                <li>
+                  <span class="feat-icon"
+                    ><i class="fa-solid fa-chart-line"></i
+                  ></span>
+                  <span>AI-Powered Test Series & Rank Predictions</span>
+                </li>
+                <li>
+                  <span class="feat-icon"
+                    ><i class="fa-solid fa-book-open"></i
+                  ></span>
+                  <span>Comprehensive 2026 Prelims & Mains Modules</span>
+                </li>
+              </ul>
+            </div>
+
+            <!-- Testimonial card -->
+            <div class="auth-sidebar-testimonial">
+              <p>
+                "The disciplined test series and structured feedback helped me
+                secure AIR 14 in my very first attempt."
+              </p>
+              <div class="auth-testimonial-author">
+                <img
+                  src="../assets/images/home/home-topper-photo-1.webp"
+                  alt="Ananya Sharma - AIR 14"
+                />
+                <div>
+                  <h6>Ananya Sharma</h6>
+                  <span>AIR 14, UPSC CSE 2024</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right Form Section -->
+          <div class="auth-form-section">
+            <div class="auth-form-header">
+              <span class="auth-tag">
+                <i class="fa-solid fa-shield-halved"></i> Secure Student &
+                Faculty Portal
+              </span>
+              <h2>Sign In to Your Account</h2>
+              <p>
+                Enter your credentials to access your exam preparation
+                dashboard.
+              </p>
+            </div>
+
+            <!-- Dynamic Alert Box -->
+            <div id="loginAlert" class="auth-alert" style="display: none"></div>
+
+            <!-- Login Form -->
+            <form id="loginForm" novalidate>
+              <!-- 1. Role Selection Field (Required) -->
+              <div class="auth-form-group">
+                <label for="loginRole" class="auth-label">
+                  Select Role / Category <span class="required-star">*</span>
+                </label>
+                <div class="auth-input-wrapper">
+                  <i class="fa-solid fa-user-tag auth-input-icon"></i>
+                  <select id="loginRole" class="auth-input-control" required>
+                    <option value="" disabled selected>
+                      -- Select Your Role --
+                    </option>
+                    <option value="student_upsc">
+                      UPSC / Civil Services Aspirant
+                    </option>
+                    <option value="student_banking">
+                      Banking & SSC Aspirant
+                    </option>
+                    <option value="student_state">
+                      State PSC / Defense Aspirant
+                    </option>
+                    <option value="faculty">Faculty / Subject Mentor</option>
+                    <option value="admin">Academy Administrator</option>
+                    <option value="parent">Parent / Guardian</option>
+                  </select>
+                </div>
+                <div class="auth-field-hint info-text">
+                  Choose the role associated with your registered profile
+                </div>
+              </div>
+
+              <!-- 2. Email Address Field (Required) -->
+              <div class="auth-form-group">
+                <label for="loginEmail" class="auth-label">
+                  Email Address <span class="required-star">*</span>
+                </label>
+                <div class="auth-input-wrapper">
+                  <i class="fa-solid fa-envelope auth-input-icon"></i>
+                  <input
+                    type="email"
+                    id="loginEmail"
+                    class="auth-input-control"
+                    placeholder="e.g. aspirant@example.com"
+                    required
+                    autocomplete="email"
+                  />
+                </div>
+                <div class="auth-field-hint info-text">
+                  Enter your registered institutional or personal email
+                </div>
+              </div>
+
+              <!-- 3. Password Field (Required with Weak Password validation) -->
+              <div class="auth-form-group">
+                <label for="loginPassword" class="auth-label">
+                  Password <span class="required-star">*</span>
+                </label>
+                <div class="auth-input-wrapper">
+                  <i class="fa-solid fa-lock auth-input-icon"></i>
+                  <input
+                    type="password"
+                    id="loginPassword"
+                    class="auth-input-control"
+                    placeholder="Enter your secret password"
+                    required
+                    autocomplete="current-password"
+                  />
+                  <button
+                    type="button"
+                    class="password-toggle-btn"
+                    data-target="loginPassword"
+                    aria-label="Toggle password visibility"
+                  >
+                    <i class="fa-solid fa-eye"></i>
+                  </button>
+                </div>
+                <div id="loginPasswordHint" class="auth-field-hint info-text">
+                  Minimum 6 characters required
+                </div>
+              </div>
+
+              <!-- 4. Remember Me (Required) & Forgot Password -->
+              <div class="auth-actions-row">
+                <div class="auth-checkbox-group">
+                  <input
+                    type="checkbox"
+                    id="loginRemember"
+                    class="form-check-input"
+                    required
+                  />
+                  <label for="loginRemember" class="auth-checkbox-label">
+                    Remember me on this device
+                    <span class="required-star">*</span>
+                  </label>
+                </div>
+
+                <a href="#" class="auth-forgot-link"> Forgot Password? </a>
+              </div>
+
+              <!-- 5. Submit Button -->
+              <button type="submit" id="loginSubmitBtn" class="auth-submit-btn">
+                <span>Sign In to Portal</span>
+                <i class="fa-solid fa-arrow-right-to-bracket"></i>
+              </button>
+
+              <!-- Switch to Register -->
+              <p class="auth-switch-text">
+                Don't have an academy account yet?
+                <a href="register.html">Register Now</a>
+              </p>
+
+              <!-- Trust & Security Badges -->
+              <div class="auth-security-badges">
+                <span class="auth-security-item">
+                  <i class="fa-solid fa-lock"></i> 256-Bit SSL Encrypted
+                </span>
+                <span class="auth-security-item">
+                  <i class="fa-solid fa-shield-check"></i> Official Academy
+                  Portal
+                </span>
+                <span class="auth-security-item">
+                  <i class="fa-solid fa-headset"></i> 24/7 Student Desk
+                </span>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../assets/js/auth.js"></script>
+  </body>
+</html>

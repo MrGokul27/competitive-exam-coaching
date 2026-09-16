@@ -42,6 +42,8 @@ document.addEventListener("DOMContentLoaded", function () {
         "projects.html",
         "blog.html",
         "contact.html",
+        "login.html",
+        "register.html",
       ];
       subpages.forEach((page) => {
         const hrefRegex = new RegExp(
@@ -335,7 +337,7 @@ document.addEventListener("DOMContentLoaded", function () {
   function initInputRestrictions() {
     // 1. Letters Only (Full Name / Username) - prevents typing, pasting, dragging numbers & special characters
     const lettersOnlyInputs = document.querySelectorAll(
-      '.letters-only-input, [data-restrict="letters-only"], #contactFullName'
+      '.letters-only-input, [data-restrict="letters-only"], #contactFullName',
     );
 
     lettersOnlyInputs.forEach((input) => {
@@ -410,7 +412,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // 2. Numbers Only (Phone Number / Mobile) - prevents typing, pasting, dragging alphabets & special characters
     const numbersOnlyInputs = document.querySelectorAll(
-      '.numbers-only-input, [data-restrict="numbers-only"], #contactPhone'
+      '.numbers-only-input, [data-restrict="numbers-only"], #contactPhone',
     );
 
     numbersOnlyInputs.forEach((input) => {
@@ -553,7 +555,11 @@ document.addEventListener("DOMContentLoaded", function () {
   reactionButtons.forEach((btn) => {
     btn.addEventListener("click", function () {
       const icon = this.querySelector("i");
-      if (icon && icon.classList.contains("fa-regular") && icon.classList.contains("fa-thumbs-up")) {
+      if (
+        icon &&
+        icon.classList.contains("fa-regular") &&
+        icon.classList.contains("fa-thumbs-up")
+      ) {
         icon.classList.remove("fa-regular");
         icon.classList.add("fa-solid");
         this.style.background = "rgba(49, 100, 94, 0.15)";
@@ -562,7 +568,11 @@ document.addEventListener("DOMContentLoaded", function () {
         if (textSpan && textSpan.textContent.includes("428")) {
           textSpan.textContent = "Helpful (429)";
         }
-      } else if (icon && icon.classList.contains("fa-regular") && icon.classList.contains("fa-bookmark")) {
+      } else if (
+        icon &&
+        icon.classList.contains("fa-regular") &&
+        icon.classList.contains("fa-bookmark")
+      ) {
         icon.classList.remove("fa-regular");
         icon.classList.add("fa-solid");
         this.style.background = "rgba(49, 100, 94, 0.15)";
@@ -573,4 +583,3 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 });
-
