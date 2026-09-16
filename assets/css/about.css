@@ -1,10 +1,4 @@
-/* ==========================================================================
-   ABOUT PAGE STYLES - COMPETITIVE EXAM COACHING INSTITUTE
-   ========================================================================== */
-
-/* --------------------------------------------------------------------------
-   SECTION 2: Vision, Mission & Core Values Cards
-   -------------------------------------------------------------------------- */
+/* SECTION 2: Vision, Mission & Core Values Cards */
 .vision-card {
   position: relative;
   overflow: hidden;
@@ -75,9 +69,7 @@
   color: var(--main-color);
 }
 
-/* --------------------------------------------------------------------------
-   SECTION 3: Legacy & Evolution Timeline
-   -------------------------------------------------------------------------- */
+/* SECTION 3: Legacy & Evolution Timeline */
 .timeline-track {
   position: relative;
   padding: 40px 0;
@@ -189,9 +181,7 @@
   color: var(--main-color);
 }
 
-/* --------------------------------------------------------------------------
-   SECTION 4: Founder's Note & Executive Leadership
-   -------------------------------------------------------------------------- */
+/* SECTION 4: Founder's Note & Executive Leadership */
 .founder-img-wrapper {
   position: relative;
 }
@@ -255,9 +245,7 @@
   box-shadow: 0 6px 16px rgba(49, 100, 94, 0.3);
 }
 
-/* --------------------------------------------------------------------------
-   SECTION 5: Pedagogical Framework (Teaching Model)
-   -------------------------------------------------------------------------- */
+/* SECTION 5: Pedagogical Framework (Teaching Model) */
 .pedagogy-box {
   position: relative;
   overflow: hidden;
@@ -326,9 +314,7 @@
   color: var(--main-color);
 }
 
-/* --------------------------------------------------------------------------
-   SECTION 6: Campus & Infrastructure Gallery
-   -------------------------------------------------------------------------- */
+/* SECTION 6: Campus & Infrastructure Gallery */
 .infra-card {
   position: relative;
   border-radius: var(--border-radius-md);
@@ -387,9 +373,7 @@
   margin: 0;
 }
 
-/* --------------------------------------------------------------------------
-   SECTION 7: Awards & National Recognitions (Equal Height & Content Alignment)
-   -------------------------------------------------------------------------- */
+/* SECTION 7: Awards & National Recognitions (Equal Height & Content Alignment) */
 .award-badge-card {
   background: var(--white-color);
   border-radius: var(--border-radius-md);
@@ -482,9 +466,7 @@
   text-align: center;
 }
 
-/* --------------------------------------------------------------------------
-   SECTION 8: Life at the Academy & Student Community
-   -------------------------------------------------------------------------- */
+/* SECTION 8: Life at the Academy & Student Community */
 .community-feature-list {
   margin-bottom: 28px;
 }
@@ -599,9 +581,7 @@
   transform: scale(1.1) rotate(6deg);
 }
 
-/* --------------------------------------------------------------------------
-   Responsive adjustments
-   -------------------------------------------------------------------------- */
+/* Responsive adjustments */
 @media (max-width: 767.98px) {
   .timeline-track::before {
     left: 20px;
