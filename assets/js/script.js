@@ -582,4 +582,68 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     });
   });
+
+  // 9. Global Empty / Hash (#) Link Interceptor -> Redirect to 404 Page
+  function initEmptyLinkRedirects() {
+    document.addEventListener("click", function (e) {
+      const anchor = e.target.closest("a");
+      if (!anchor) return;
+
+      // Ignore elements with special behaviors or interactive components
+      if (
+        anchor.id === "scrollTopBtn" ||
+        anchor.hasAttribute("data-bs-toggle") ||
+        anchor.hasAttribute("data-bs-target") ||
+        anchor.hasAttribute("data-bs-slide") ||
+        anchor.getAttribute("role") === "button" ||
+        anchor.getAttribute("role") === "tab" ||
+        anchor.classList.contains("mobile-nav-toggler") ||
+        anchor.classList.contains("close-mobile-menu") ||
+        anchor.classList.contains("filter-btn") ||
+        anchor.classList.contains("reaction-btn") ||
+        anchor.classList.contains("password-toggle-btn")
+      ) {
+        return;
+      }
+
+      const rawHref = anchor.getAttribute("href");
+
+      // Check if href is empty, #, or javascript pseudo-void
+      const isEmptyOrHash =
+        rawHref === null ||
+        rawHref === undefined ||
+        rawHref.trim() === "" ||
+        rawHref.trim() === "#" ||
+        rawHref.trim().toLowerCase() === "javascript:void(0)" ||
+        rawHref.trim().toLowerCase() === "javascript:void(0);" ||
+        rawHref.trim().toLowerCase() === "javascript:;" ||
+        rawHref.trim().toLowerCase() === "javascript:void(0)";
+
+      // Check if href is a dead in-page anchor (#something where element doesn't exist)
+      let isDeadAnchor = false;
+      if (rawHref && rawHref.startsWith("#") && rawHref.length > 1) {
+        try {
+          const targetElem = document.querySelector(rawHref);
+          if (!targetElem) {
+            isDeadAnchor = true;
+          }
+        } catch (err) {
+          isDeadAnchor = true;
+        }
+      }
+
+      if (isEmptyOrHash || isDeadAnchor) {
+        e.preventDefault();
+        e.stopPropagation();
+
+        const isCurrentlyInPages = window.location.pathname
+          .replace(/\\/g, "/")
+          .includes("/pages/");
+        const target404Url = isCurrentlyInPages ? "../404.html" : "404.html";
+        window.location.href = target404Url;
+      }
+    });
+  }
+
+  initEmptyLinkRedirects();
 });

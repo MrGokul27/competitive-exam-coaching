@@ -14,45 +14,7 @@
     url("../images/home/home-hero-banner-bg-image.webp") center/cover no-repeat
       fixed;
   position: relative;
-  overflow-x: hidden;
-}
-
-/* Background Ambient Orbs */
-.auth-page-wrapper::before,
-.auth-page-wrapper::after {
-  content: "";
-  position: absolute;
-  border-radius: 50%;
-  filter: blur(80px);
-  z-index: 0;
-  pointer-events: none;
-}
-
-.auth-page-wrapper::before {
-  width: 350px;
-  height: 350px;
-  background: rgba(49, 100, 94, 0.15);
-  top: 5%;
-  left: 5%;
-  animation: floatOrb 8s ease-in-out infinite alternate;
-}
-
-.auth-page-wrapper::after {
-  width: 400px;
-  height: 400px;
-  background: rgba(255, 204, 102, 0.2);
-  bottom: 5%;
-  right: 5%;
-  animation: floatOrb 10s ease-in-out infinite alternate-reverse;
-}
-
-@keyframes floatOrb {
-  0% {
-    transform: translate(0, 0) scale(1);
-  }
-  100% {
-    transform: translate(30px, 30px) scale(1.1);
-  }
+  overflow-x: clip;
 }
 
 /* Floating Back to Home Button */

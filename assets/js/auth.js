@@ -518,4 +518,37 @@ document.addEventListener("DOMContentLoaded", function () {
       }, 1500);
     });
   }
+
+  // 4. Empty / Hash (#) Link Interceptor in Auth Pages
+  document.addEventListener("click", function (e) {
+    const anchor = e.target.closest("a");
+    if (!anchor) return;
+
+    if (
+      anchor.id === "scrollTopBtn" ||
+      anchor.hasAttribute("data-bs-toggle") ||
+      anchor.classList.contains("password-toggle-btn")
+    ) {
+      return;
+    }
+
+    const rawHref = anchor.getAttribute("href");
+    const isEmptyOrHash =
+      rawHref === null ||
+      rawHref === undefined ||
+      rawHref.trim() === "" ||
+      rawHref.trim() === "#" ||
+      rawHref.trim().toLowerCase() === "javascript:void(0)" ||
+      rawHref.trim().toLowerCase() === "javascript:void(0);" ||
+      rawHref.trim().toLowerCase() === "javascript:;";
+
+    if (isEmptyOrHash) {
+      e.preventDefault();
+      e.stopPropagation();
+      const isCurrentlyInPages = window.location.pathname
+        .replace(/\\/g, "/")
+        .includes("/pages/");
+      window.location.href = isCurrentlyInPages ? "../404.html" : "404.html";
+    }
+  });
 });

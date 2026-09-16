@@ -1,0 +1,459 @@
+.error-page-wrapper {
+  min-height: 85vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  background-color: var(--white-color);
+  background-image: radial-gradient(
+    rgba(49, 100, 94, 0.05) 1.5px,
+    transparent 1.5px
+  );
+  background-size: 28px 28px;
+  overflow: hidden;
+}
+
+/* Background Ambient Glows & Shapes */
+.error-ambient-shape {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.error-shape-1 {
+  top: 10%;
+  left: 5%;
+  width: 320px;
+  height: 320px;
+  background: rgba(49, 100, 94, 0.12);
+}
+
+.error-shape-2 {
+  bottom: 10%;
+  right: 5%;
+  width: 380px;
+  height: 380px;
+  background: rgba(255, 228, 170, 0.35);
+}
+
+.error-shape-3 {
+  top: 45%;
+  left: 45%;
+  width: 260px;
+  height: 260px;
+  background: rgba(246, 234, 255, 0.4);
+}
+
+/* Main Error Content Card */
+.error-main-card {
+  position: relative;
+  z-index: 2;
+  background: rgba(255, 255, 255, 0.94);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(49, 100, 94, 0.12);
+  border-radius: var(--border-radius-lg);
+  padding: 60px 40px 50px;
+  box-shadow: 0 25px 60px rgba(49, 100, 94, 0.1);
+  text-align: center;
+}
+
+/* Error Tag Badge */
+.error-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 22px;
+  background: rgba(49, 100, 94, 0.09);
+  color: var(--main-color);
+  border: 1px solid rgba(49, 100, 94, 0.2);
+  border-radius: 50px;
+  font-family: var(--font-family-gilroy);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  margin-bottom: 24px;
+  animation: badgePulse 3s infinite ease-in-out;
+}
+
+@keyframes badgePulse {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 rgba(49, 100, 94, 0.2);
+  }
+  50% {
+    box-shadow: 0 0 0 8px rgba(49, 100, 94, 0);
+  }
+}
+
+/* Big Number 404 Showcase */
+.error-graphic-container {
+  position: relative;
+  margin: 15px auto 35px;
+  display: inline-block;
+}
+
+.error-big-number {
+  font-family: var(--font-family-gilroy);
+  font-size: clamp(90px, 14vw, 150px);
+  font-weight: 900;
+  line-height: 1;
+  letter-spacing: -3px;
+  color: var(--main-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  position: relative;
+}
+
+.error-zero-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: clamp(80px, 12vw, 130px);
+  height: clamp(80px, 12vw, 130px);
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--main-color) 0%, #1e4540 100%);
+  color: var(--main-color-two);
+  box-shadow: 0 15px 35px rgba(49, 100, 94, 0.35);
+  font-size: clamp(36px, 5vw, 55px);
+  animation: floatRotate 6s ease-in-out infinite;
+  border: 4px solid var(--white-color);
+}
+
+@keyframes floatRotate {
+  0%,
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-12px) rotate(8deg);
+  }
+}
+
+/* Floating Study / Exam Badges */
+.floating-study-badge {
+  position: absolute;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  background: var(--white-color);
+  border: 1px solid rgba(49, 100, 94, 0.15);
+  border-radius: 50px;
+  font-family: var(--font-family-gilroy);
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--heading-color);
+  box-shadow: 0 8px 20px rgba(49, 100, 94, 0.12);
+  white-space: nowrap;
+  pointer-events: none;
+  animation: floatItem 5s ease-in-out infinite;
+}
+
+.badge-top-left {
+  top: -10px;
+  left: -120px;
+  animation-delay: 0s;
+}
+
+.badge-top-right {
+  top: 5px;
+  right: -130px;
+  animation-delay: 1.5s;
+}
+
+.badge-bottom-left {
+  bottom: -5px;
+  left: -110px;
+  animation-delay: 2.5s;
+}
+
+.badge-bottom-right {
+  bottom: 5px;
+  right: -120px;
+  animation-delay: 3.5s;
+}
+
+@keyframes floatItem {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+/* Headings and Descriptions */
+.error-title {
+  font-size: clamp(24px, 3.5vw, 36px);
+  font-weight: 800;
+  color: var(--heading-color);
+  margin-bottom: 16px;
+  letter-spacing: -0.5px;
+}
+
+.error-title .highlight-gold {
+  color: #9a6b00;
+  background: linear-gradient(
+    120deg,
+    rgba(255, 228, 170, 0.5) 0%,
+    rgba(255, 228, 170, 0.1) 100%
+  );
+  padding: 0 8px;
+  border-radius: 6px;
+}
+
+.error-desc {
+  font-size: 16px;
+  color: var(--text-color);
+  max-width: 650px;
+  margin: 0 auto 32px;
+  line-height: 1.75;
+}
+
+/* CTA Action Buttons */
+.error-actions-group {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-bottom: 45px;
+}
+
+.error-actions-group .theme-btn {
+  min-width: 220px;
+  font-size: 15px;
+  padding: 14px 28px;
+}
+
+.btn-secondary-theme.error-btn {
+  background-color: var(--color-three);
+  border-color: rgba(49, 100, 94, 0.25);
+  color: var(--main-color);
+}
+
+.btn-secondary-theme.error-btn:hover {
+  background-color: var(--main-color);
+  color: var(--white-color);
+  border-color: var(--main-color);
+  transform: translateY(-3px);
+  box-shadow: var(--box-shadow-md);
+}
+
+/* Quick Search Box for Aspirants */
+.error-search-box {
+  max-width: 580px;
+  margin: 0 auto 40px;
+  background: var(--white-color);
+  border: 2px solid rgba(49, 100, 94, 0.15);
+  border-radius: 50px;
+  padding: 6px 8px 6px 20px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  box-shadow: 0 8px 24px rgba(49, 100, 94, 0.06);
+  transition: var(--transition);
+}
+
+.error-search-box:focus-within {
+  border-color: var(--main-color);
+  box-shadow: 0 10px 30px rgba(49, 100, 94, 0.15);
+}
+
+.error-search-box i {
+  color: var(--main-color);
+  font-size: 18px;
+}
+
+.error-search-input {
+  border: none;
+  outline: none;
+  background: transparent;
+  flex: 1;
+  font-size: 15px;
+  font-family: var(--font-family-roboto);
+  color: var(--heading-color);
+}
+
+.error-search-input::placeholder {
+  color: #999;
+}
+
+.error-search-btn {
+  background-color: var(--main-color);
+  color: var(--white-color);
+  border: none;
+  border-radius: 50px;
+  padding: 10px 22px;
+  font-family: var(--font-family-gilroy);
+  font-weight: 700;
+  font-size: 14px;
+  cursor: pointer;
+  transition: var(--transition);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.error-search-btn:hover {
+  background-color: #204641;
+  transform: scale(1.02);
+}
+
+/* Popular Exam Gateways Grid */
+.error-gateways-section {
+  border-top: 1px solid rgba(49, 100, 94, 0.1);
+  padding-top: 40px;
+  margin-top: 20px;
+  text-align: left;
+}
+
+.error-gateways-title {
+  font-size: 16px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--heading-color);
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.error-gateway-card {
+  background: var(--white-color);
+  border: 1px solid rgba(49, 100, 94, 0.1);
+  border-radius: var(--border-radius-md);
+  padding: 20px;
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  text-decoration: none;
+  transition: var(--transition);
+  height: 100%;
+}
+
+.error-gateway-card:hover {
+  border-color: var(--main-color);
+  transform: translateY(-5px);
+  box-shadow: 0 12px 28px rgba(49, 100, 94, 0.12);
+}
+
+.gateway-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  flex-shrink: 0;
+  background-color: rgba(49, 100, 94, 0.08);
+  color: var(--main-color);
+  transition: var(--transition);
+}
+
+.error-gateway-card:hover .gateway-icon {
+  background-color: var(--main-color);
+  color: var(--white-color);
+  transform: scale(1.08);
+}
+
+.gateway-info h5 {
+  font-size: 16px;
+  font-weight: 700;
+  margin-bottom: 4px;
+  color: var(--heading-color);
+  transition: var(--transition);
+}
+
+.error-gateway-card:hover .gateway-info h5 {
+  color: var(--main-color);
+}
+
+.gateway-info p {
+  font-size: 13px;
+  color: var(--text-color);
+  margin-bottom: 0;
+  line-height: 1.5;
+}
+
+/* Aspirant Support Banner */
+.aspirant-support-pill {
+  margin-top: 35px;
+  background: linear-gradient(
+    135deg,
+    var(--color-three) 0%,
+    rgba(255, 228, 170, 0.25) 100%
+  );
+  border: 1px dashed rgba(49, 100, 94, 0.3);
+  border-radius: var(--border-radius-md);
+  padding: 16px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 16px;
+  font-size: 14px;
+  color: var(--heading-color);
+}
+
+.aspirant-support-pill strong {
+  color: var(--main-color);
+}
+
+.aspirant-support-pill a {
+  color: var(--main-color);
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.aspirant-support-pill a:hover {
+  text-decoration: underline;
+  color: #1e4540;
+}
+
+/* Responsive adjustments */
+@media (max-width: 991px) {
+  .error-main-card {
+    padding: 40px 24px 35px;
+  }
+
+  .floating-study-badge {
+    display: none;
+  }
+}
+
+@media (max-width: 575px) {
+  .error-page-wrapper {
+    padding: 40px 0 60px;
+  }
+
+  .error-main-card {
+    padding: 30px 16px 25px;
+  }
+
+  .error-search-box {
+    flex-direction: column;
+    border-radius: var(--border-radius-md);
+    padding: 12px;
+  }
+
+  .error-search-btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .error-actions-group .theme-btn {
+    width: 100%;
+  }
+}

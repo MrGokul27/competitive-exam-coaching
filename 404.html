@@ -1,0 +1,190 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>404 - Page Not Found | Competitive Exam Coaching Academy</title>
+    <link
+      rel="shortcut icon"
+      href="assets/images/logoStackly.webp"
+      type="image/webp"
+    />
+
+    <!-- Bootstrap 5 CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <!-- Font Awesome 6 CDN -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+    />
+    <!-- Main Custom CSS -->
+    <link rel="stylesheet" href="assets/css/styles.css" />
+    <!-- 404 Page Specific CSS -->
+    <link rel="stylesheet" href="assets/css/404.css" />
+  </head>
+  <body>
+    <!-- MAIN 404 CONTENT SECTION -->
+    <main class="error-page-wrapper">
+      <!-- Ambient Glow Shapes -->
+      <div class="error-ambient-shape error-shape-1"></div>
+      <div class="error-ambient-shape error-shape-2"></div>
+      <div class="error-ambient-shape error-shape-3"></div>
+
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-xl-9 col-lg-10 col-md-12">
+            <div class="error-main-card">
+              <!-- Error Badge -->
+              <span class="error-badge">
+                <i class="fa-solid fa-compass-drafting text-warning"></i>
+                Error 404 • Out of Exam Syllabus
+              </span>
+
+              <!-- Graphic / Big 404 Display with Orbiting Exam Badges -->
+              <div class="error-graphic-container">
+                <div class="error-big-number">
+                  <span>4</span>
+                  <div
+                    class="error-zero-icon"
+                    title="Exam Target Recalibrating"
+                  >
+                    <i class="fa-solid fa-bullseye"></i>
+                  </div>
+                  <span>4</span>
+                </div>
+
+                <!-- Floating Study Badges -->
+                <div class="floating-study-badge badge-top-left">
+                  <i class="fa-solid fa-award text-warning"></i>
+                  <span>Target: Top 100 AIR</span>
+                </div>
+                <div class="floating-study-badge badge-top-right">
+                  <i class="fa-solid fa-shield-check text-success"></i>
+                  <span>0% Negative Marks</span>
+                </div>
+                <div class="floating-study-badge badge-bottom-left">
+                  <i class="fa-solid fa-book-open-reader text-primary"></i>
+                  <span>Topic Not In Question Paper</span>
+                </div>
+                <div class="floating-study-badge badge-bottom-right">
+                  <i class="fa-solid fa-clock-rotate-left text-warning"></i>
+                  <span>Attempt Diverted</span>
+                </div>
+              </div>
+
+              <!-- Engaging Exam-Themed Title & Description -->
+              <h1 class="error-title">
+                Looks Like This Question Is
+                <span class="highlight-gold">Outside The Syllabus!</span>
+              </h1>
+              <p class="error-desc">
+                Even top rankers take an unexpected turn during their
+                preparation journey. The page, study module, or examination
+                resource you are looking for might have been rescheduled,
+                archived, or moved to a new batch.
+              </p>
+
+              <!-- Main Redirection and Go Back Buttons -->
+              <div class="error-actions-group">
+                <a
+                  href="index.html"
+                  class="theme-btn btn-primary-theme error-btn"
+                >
+                  <i class="fa-solid fa-house"></i>
+                  <span>Return to Homepage</span>
+                </a>
+                <button
+                  type="button"
+                  id="goBackBtn"
+                  class="theme-btn btn-secondary-theme error-btn"
+                >
+                  <i class="fa-solid fa-arrow-left"></i>
+                  <span>Go Back to Previous Page</span>
+                </button>
+              </div>
+
+              <!-- Quick Search Box -->
+              <div class="error-search-box">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <input
+                  type="text"
+                  id="errorSearchInput"
+                  class="error-search-input"
+                  placeholder="Search UPSC, Banking, SSC batches, mock tests, or syllabus..."
+                  aria-label="Search academy courses"
+                />
+                <button
+                  type="button"
+                  id="errorSearchBtn"
+                  class="error-search-btn"
+                >
+                  <span>Find Course</span>
+                  <i class="fa-solid fa-arrow-right"></i>
+                </button>
+              </div>
+
+              <!-- Aspirant Support / Helpline -->
+              <div class="aspirant-support-pill">
+                <span>
+                  <i class="fa-solid fa-headset text-warning me-1"></i>
+                  Need immediate admission guidance or counselling?
+                </span>
+                <a href="pages/contact.html">
+                  <i class="fa-solid fa-phone"></i>
+                  <span>Talk to Senior Mentor: +91 9876543210</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/script.js"></script>
+    <script>
+      // 404 Interactive Features
+      document.addEventListener("DOMContentLoaded", function () {
+        // 1. Go Back Button with smart fallback to index.html
+        const goBackBtn = document.getElementById("goBackBtn");
+        if (goBackBtn) {
+          goBackBtn.addEventListener("click", function () {
+            if (window.history.length > 1) {
+              window.history.back();
+            } else {
+              window.location.href = "index.html";
+            }
+          });
+        }
+
+        // 2. Search Box Redirect to Courses
+        const searchInput = document.getElementById("errorSearchInput");
+        const searchBtn = document.getElementById("errorSearchBtn");
+
+        function handleSearch() {
+          const query = searchInput ? searchInput.value.trim() : "";
+          if (query) {
+            window.location.href =
+              "pages/courses.html?search=" + encodeURIComponent(query);
+          } else {
+            window.location.href = "pages/courses.html";
+          }
+        }
+
+        if (searchBtn) searchBtn.addEventListener("click", handleSearch);
+        if (searchInput) {
+          searchInput.addEventListener("keydown", function (e) {
+            if (e.key === "Enter") {
+              e.preventDefault();
+              handleSearch();
+            }
+          });
+        }
+      });
+    </script>
+  </body>
+</html>
