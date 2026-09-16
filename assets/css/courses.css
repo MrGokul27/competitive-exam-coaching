@@ -1,0 +1,169 @@
+/* Filter Nav Tabs */
+.course-filter-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: center;
+  margin-bottom: 45px;
+}
+
+.filter-btn {
+  padding: 10px 24px;
+  border-radius: 50px;
+  border: 1px solid rgba(49, 100, 94, 0.2);
+  background: var(--white-color);
+  color: var(--heading-color);
+  font-family: var(--font-family-gilroy);
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.filter-btn:hover,
+.filter-btn.active {
+  background: var(--main-color);
+  color: var(--white-color);
+  border-color: var(--main-color);
+  box-shadow: var(--box-shadow-sm);
+}
+
+/* Optional Subjects Grid */
+.optional-card {
+  background: var(--white-color);
+  border-radius: var(--border-radius-md);
+  padding: 26px 20px;
+  text-align: center;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  box-shadow: var(--box-shadow-sm);
+  transition: var(--transition);
+  height: 100%;
+}
+
+.optional-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--box-shadow-md);
+  border-color: var(--main-color);
+}
+
+.optional-icon {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: var(--color-three);
+  color: var(--main-color);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  margin-bottom: 15px;
+  transition: var(--transition);
+}
+
+.optional-card:hover .optional-icon {
+  background: var(--main-color);
+  color: var(--white-color);
+}
+
+/* Batch Schedule Calendar Table */
+.batch-calendar-table {
+  background: var(--white-color);
+  border-radius: var(--border-radius-lg);
+  padding: 30px;
+  box-shadow: var(--box-shadow-md);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.batch-date-badge {
+  background: rgba(49, 100, 94, 0.1);
+  color: var(--main-color);
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-size: 13px;
+  display: inline-block;
+}
+
+.batch-status-open {
+  color: #2b9348;
+  font-weight: 700;
+  font-size: 13px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.batch-status-open::before {
+  content: "";
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: #2b9348;
+}
+
+/* Scholarship Box */
+.scholarship-banner {
+  background: linear-gradient(135deg, #1f3d39, var(--main-color));
+  border-radius: var(--border-radius-lg);
+  padding: 50px 40px;
+  color: var(--white-color);
+  position: relative;
+  overflow: hidden;
+}
+
+.scholarship-banner::after {
+  content: "";
+  position: absolute;
+  top: -50%;
+  right: -20%;
+  width: 350px;
+  height: 350px;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(255, 228, 170, 0.15),
+    transparent 70%
+  );
+}
+
+.scholarship-banner h3 {
+  color: var(--main-color-two);
+  font-size: 34px;
+  margin-bottom: 12px;
+}
+
+.scholarship-banner p {
+  color: var(--white-color-opicity);
+  font-size: 16px;
+  max-width: 600px;
+}
+
+/* FAQ Accordion Styling */
+.course-faq-accordion .accordion-item {
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: var(--border-radius-sm);
+  margin-bottom: 14px;
+  overflow: hidden;
+}
+
+.course-faq-accordion .accordion-button {
+  font-family: var(--font-family-gilroy);
+  font-weight: 700;
+  font-size: 16px;
+  color: var(--heading-color);
+  padding: 18px 24px;
+  background: var(--white-color);
+}
+
+.course-faq-accordion .accordion-button:not(.collapsed) {
+  color: var(--main-color);
+  background-color: var(--color-three);
+  box-shadow: none;
+}
+
+.course-faq-accordion .accordion-body {
+  padding: 20px 24px;
+  font-size: 14px;
+  color: var(--text-color);
+  line-height: 1.7;
+}

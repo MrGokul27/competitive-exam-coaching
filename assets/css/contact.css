@@ -1,0 +1,129 @@
+/* Quick Info Cards */
+.contact-info-card {
+  background: var(--white-color);
+  border-radius: var(--border-radius-md);
+  padding: 32px 24px;
+  text-align: center;
+  box-shadow: var(--box-shadow-sm);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  transition: var(--transition);
+  height: 100%;
+}
+
+.contact-info-card:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--box-shadow-lg);
+  border-color: rgba(49, 100, 94, 0.3);
+}
+
+.contact-icon-bubble {
+  width: 65px;
+  height: 65px;
+  border-radius: 50%;
+  background: rgba(49, 100, 94, 0.1);
+  color: var(--main-color);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  margin-bottom: 20px;
+  transition: var(--transition);
+}
+
+.contact-info-card:hover .contact-icon-bubble {
+  background: var(--main-color);
+  color: var(--white-color);
+  transform: scale(1.1);
+}
+
+.contact-info-card h4 {
+  font-size: 18px;
+  margin-bottom: 8px;
+}
+
+.contact-info-card p,
+.contact-info-card a {
+  font-size: 14px;
+  color: var(--text-color);
+  margin: 0;
+}
+
+.contact-info-card a:hover {
+  color: var(--main-color);
+}
+
+/* Form Container */
+.contact-form-container {
+  background: var(--white-color);
+  border-radius: var(--border-radius-lg);
+  padding: 45px;
+  box-shadow: var(--box-shadow-md);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.contact-form-container .form-label {
+  font-family: var(--font-family-gilroy);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--heading-color);
+  margin-bottom: 6px;
+}
+
+.contact-form-container .form-control,
+.contact-form-container .form-select {
+  padding: 12px 18px;
+  border-radius: 8px;
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  font-size: 14px;
+  transition: var(--transition);
+}
+
+.contact-form-container .form-control:focus,
+.contact-form-container .form-select:focus {
+  border-color: var(--main-color);
+  box-shadow: 0 0 0 4px rgba(49, 100, 94, 0.15);
+  outline: none;
+}
+
+/* Branch Center Cards */
+.branch-card {
+  background: var(--white-color);
+  border-radius: var(--border-radius-md);
+  padding: 24px;
+  box-shadow: var(--box-shadow-sm);
+  border-left: 4px solid var(--main-color-two);
+  transition: var(--transition);
+  height: 100%;
+}
+
+.branch-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--box-shadow-md);
+  border-left-color: var(--main-color);
+}
+
+.branch-card h5 {
+  font-size: 17px;
+  margin-bottom: 8px;
+}
+
+.branch-card p {
+  font-size: 13.5px;
+  color: var(--text-color);
+  margin-bottom: 12px;
+}
+
+/* Map Wrapper */
+.map-embed-wrapper {
+  border-radius: var(--border-radius-lg);
+  overflow: hidden;
+  box-shadow: var(--box-shadow-md);
+  height: 420px;
+  width: 100%;
+}
+
+.map-embed-wrapper iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+}

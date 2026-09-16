@@ -1,0 +1,622 @@
+/* ==========================================================================
+   ABOUT PAGE STYLES - COMPETITIVE EXAM COACHING INSTITUTE
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   SECTION 2: Vision, Mission & Core Values Cards
+   -------------------------------------------------------------------------- */
+.vision-card {
+  position: relative;
+  overflow: hidden;
+  background-color: var(--white-color);
+  padding: 40px 30px;
+  border-radius: var(--border-radius-md);
+  box-shadow: var(--box-shadow-sm);
+  border: 1px solid rgba(49, 100, 94, 0.08);
+  border-top: 4px solid var(--main-color);
+  transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  z-index: 1;
+}
+
+.vision-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(49, 100, 94, 0.04) 0%,
+    rgba(255, 228, 170, 0.12) 100%
+  );
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  z-index: -1;
+}
+
+.vision-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 40px rgba(49, 100, 94, 0.16);
+  border-color: rgba(49, 100, 94, 0.25);
+  border-top-color: var(--main-color);
+}
+
+.vision-card:hover::before {
+  opacity: 1;
+}
+
+.vision-icon {
+  width: 68px;
+  height: 68px;
+  border-radius: 18px;
+  background-color: rgba(49, 100, 94, 0.08);
+  color: var(--main-color);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 26px;
+  margin-bottom: 24px;
+  transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.vision-card:hover .vision-icon {
+  background: linear-gradient(135deg, var(--main-color), #214440);
+  color: #ffffff;
+  transform: scale(1.12) rotate(6deg);
+  box-shadow: 0 10px 24px rgba(49, 100, 94, 0.35);
+}
+
+.vision-card h4 {
+  transition: color 0.3s ease;
+}
+
+.vision-card:hover h4 {
+  color: var(--main-color);
+}
+
+/* --------------------------------------------------------------------------
+   SECTION 3: Legacy & Evolution Timeline
+   -------------------------------------------------------------------------- */
+.timeline-track {
+  position: relative;
+  padding: 40px 0;
+}
+
+.timeline-track::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 3px;
+  background: linear-gradient(
+    180deg,
+    var(--main-color) 0%,
+    #20c997 50%,
+    var(--main-color-two) 100%
+  );
+  transform: translateX(-50%);
+  border-radius: 2px;
+}
+
+.timeline-item {
+  position: relative;
+  margin-bottom: 45px;
+}
+
+.timeline-item:last-child {
+  margin-bottom: 0;
+}
+
+.timeline-dot {
+  position: absolute;
+  top: 24px;
+  left: 50%;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--white-color);
+  border: 4px solid var(--main-color);
+  transform: translateX(-50%);
+  z-index: 3;
+  transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  box-shadow: 0 0 0 4px rgba(49, 100, 94, 0.15);
+}
+
+.timeline-content {
+  background: var(--white-color);
+  padding: 28px 32px;
+  border-radius: var(--border-radius-md);
+  box-shadow: var(--box-shadow-sm);
+  width: calc(50% - 45px);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+  position: relative;
+}
+
+.timeline-item.left .timeline-content {
+  margin-right: auto;
+  border-left: 4px solid rgba(49, 100, 94, 0.25);
+}
+
+.timeline-item.right .timeline-content {
+  margin-left: auto;
+  border-right: 4px solid rgba(49, 100, 94, 0.25);
+}
+
+.timeline-item:hover .timeline-dot {
+  background: var(--main-color);
+  border-color: #ffffff;
+  transform: translateX(-50%) scale(1.4);
+  box-shadow:
+    0 0 0 8px rgba(49, 100, 94, 0.25),
+    0 8px 18px rgba(49, 100, 94, 0.35);
+}
+
+.timeline-item:hover .timeline-content {
+  box-shadow: 0 16px 36px rgba(49, 100, 94, 0.15);
+  transform: translateY(-6px);
+  border-color: var(--main-color);
+}
+
+.timeline-year {
+  font-family: var(--font-family-gilroy);
+  font-size: 13.5px;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  color: var(--main-color);
+  background: rgba(49, 100, 94, 0.1);
+  display: inline-block;
+  padding: 4px 14px;
+  border-radius: 50px;
+  margin-bottom: 12px;
+  transition: all 0.35s ease;
+}
+
+.timeline-item:hover .timeline-year {
+  background: var(--main-color);
+  color: #ffffff;
+  transform: scale(1.05);
+  box-shadow: 0 4px 12px rgba(49, 100, 94, 0.25);
+}
+
+.timeline-content h5 {
+  transition: color 0.3s ease;
+}
+
+.timeline-item:hover .timeline-content h5 {
+  color: var(--main-color);
+}
+
+/* --------------------------------------------------------------------------
+   SECTION 4: Founder's Note & Executive Leadership
+   -------------------------------------------------------------------------- */
+.founder-img-wrapper {
+  position: relative;
+}
+
+.founder-img-box {
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.12);
+}
+
+.founder-img {
+  transition: transform 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.founder-img-wrapper:hover .founder-img {
+  transform: scale(1.06);
+}
+
+.founder-badge {
+  backdrop-filter: blur(8px);
+  background: rgba(255, 255, 255, 0.96) !important;
+  border-left: 4px solid #ffb703 !important;
+  transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.founder-img-wrapper:hover .founder-badge {
+  transform: translateY(-8px) scale(1.03);
+  box-shadow: 0 18px 36px rgba(0, 0, 0, 0.18) !important;
+  border-left-color: var(--main-color) !important;
+}
+
+.founder-sign-card {
+  transition: all 0.35s cubic-bezier(0.165, 0.84, 0.44, 1);
+  padding: 10px 14px;
+  border-radius: 12px;
+}
+
+.founder-sign-card:hover {
+  background: rgba(49, 100, 94, 0.05);
+  transform: translateX(6px);
+}
+
+.founder-sign-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: rgba(49, 100, 94, 0.1);
+  color: var(--main-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  transition: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+  flex-shrink: 0;
+}
+
+.founder-sign-card:hover .founder-sign-icon {
+  background: var(--main-color);
+  color: #ffffff;
+  transform: scale(1.12) rotate(12deg);
+  box-shadow: 0 6px 16px rgba(49, 100, 94, 0.3);
+}
+
+/* --------------------------------------------------------------------------
+   SECTION 5: Pedagogical Framework (Teaching Model)
+   -------------------------------------------------------------------------- */
+.pedagogy-box {
+  position: relative;
+  overflow: hidden;
+  background: var(--white-color);
+  border-radius: var(--border-radius-md);
+  padding: 36px 28px;
+  border: 1px solid rgba(49, 100, 94, 0.1);
+  box-shadow: var(--box-shadow-sm);
+  transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  z-index: 1;
+}
+
+.pedagogy-box::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--main-color), #20c997);
+  transition: width 0.4s ease;
+}
+
+.pedagogy-box:hover {
+  background: #ffffff;
+  transform: translateY(-10px);
+  box-shadow: 0 20px 40px rgba(49, 100, 94, 0.16);
+  border-color: rgba(49, 100, 94, 0.3);
+}
+
+.pedagogy-box:hover::after {
+  width: 100%;
+}
+
+.pedagogy-num {
+  font-family: var(--font-family-gilroy);
+  font-size: 26px;
+  font-weight: 800;
+  width: 56px;
+  height: 56px;
+  border-radius: 16px;
+  background: rgba(49, 100, 94, 0.08);
+  color: var(--main-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 22px;
+  transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.pedagogy-box:hover .pedagogy-num {
+  background: var(--main-color);
+  color: #ffffff;
+  transform: scale(1.12) rotate(-6deg);
+  box-shadow: 0 8px 20px rgba(49, 100, 94, 0.3);
+}
+
+.pedagogy-title {
+  transition: color 0.3s ease;
+}
+
+.pedagogy-box:hover .pedagogy-title {
+  color: var(--main-color);
+}
+
+/* --------------------------------------------------------------------------
+   SECTION 6: Campus & Infrastructure Gallery
+   -------------------------------------------------------------------------- */
+.infra-card {
+  position: relative;
+  border-radius: var(--border-radius-md);
+  overflow: hidden;
+  height: 260px;
+  box-shadow: var(--box-shadow-sm);
+  transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.infra-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.infra-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.18);
+}
+
+.infra-card:hover img {
+  transform: scale(1.12);
+}
+
+.infra-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    transparent 35%,
+    rgba(18, 38, 36, 0.92) 100%
+  );
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 24px;
+  color: var(--white-color);
+  transition: all 0.35s ease;
+}
+
+.infra-overlay h5 {
+  color: var(--white-color);
+  margin: 0 0 4px 0;
+  font-size: 18px;
+  transition: transform 0.3s ease;
+}
+
+.infra-card:hover .infra-overlay h5 {
+  transform: translateY(-3px);
+}
+
+.infra-overlay p {
+  color: var(--main-color-two);
+  font-size: 13.5px;
+  margin: 0;
+}
+
+/* --------------------------------------------------------------------------
+   SECTION 7: Awards & National Recognitions (Equal Height & Content Alignment)
+   -------------------------------------------------------------------------- */
+.award-badge-card {
+  background: var(--white-color);
+  border-radius: var(--border-radius-md);
+  padding: 32px 22px;
+  text-align: center;
+  border: 1.5px dashed rgba(49, 100, 94, 0.25);
+  transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  box-shadow: var(--box-shadow-sm);
+  position: relative;
+  overflow: hidden;
+}
+
+.award-badge-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #f77f00, #fcbf49);
+  opacity: 0;
+  transition: opacity 0.35s ease;
+}
+
+.award-badge-card:hover {
+  transform: translateY(-10px);
+  border-color: #f77f00;
+  border-style: solid;
+  box-shadow:
+    0 18px 40px rgba(247, 127, 0, 0.2),
+    0 4px 15px rgba(49, 100, 94, 0.08);
+}
+
+.award-badge-card:hover::before {
+  opacity: 1;
+}
+
+.award-icon-box {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  background: rgba(247, 127, 0, 0.1);
+  color: #f77f00;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 32px;
+  margin-bottom: 20px;
+  transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  flex-shrink: 0;
+}
+
+.award-badge-card:hover .award-icon-box {
+  background: linear-gradient(135deg, #f77f00, #fcbf49);
+  color: #ffffff;
+  transform: scale(1.15) rotate(10deg);
+  box-shadow: 0 10px 24px rgba(247, 127, 0, 0.4);
+}
+
+.award-title {
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--heading-color);
+  margin-bottom: 10px;
+  min-height: 52px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  width: 100%;
+  line-height: 1.35;
+  transition: color 0.3s ease;
+}
+
+.award-badge-card:hover .award-title {
+  color: var(--main-color);
+}
+
+.award-desc {
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--text-color);
+  margin-top: auto;
+  width: 100%;
+  text-align: center;
+}
+
+/* --------------------------------------------------------------------------
+   SECTION 8: Life at the Academy & Student Community
+   -------------------------------------------------------------------------- */
+.community-feature-list {
+  margin-bottom: 28px;
+}
+
+.community-feature-item {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 14px 18px;
+  background: var(--white-color);
+  border-radius: 12px;
+  margin-bottom: 14px;
+  border: 1px solid rgba(49, 100, 94, 0.08);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+  transition: all 0.35s cubic-bezier(0.165, 0.84, 0.44, 1);
+  cursor: default;
+}
+
+.community-feature-item:hover {
+  transform: translateX(10px);
+  border-color: var(--main-color);
+  box-shadow: 0 8px 24px rgba(49, 100, 94, 0.14);
+}
+
+.community-feature-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: rgba(25, 135, 84, 0.12);
+  color: #198754;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  flex-shrink: 0;
+  transition: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.community-feature-item:hover .community-feature-icon {
+  background: var(--main-color);
+  color: #ffffff;
+  transform: scale(1.15) rotate(10deg);
+  box-shadow: 0 4px 12px rgba(49, 100, 94, 0.3);
+}
+
+.community-feature-text {
+  font-weight: 600;
+  color: var(--heading-color);
+  font-size: 14.5px;
+  transition: color 0.3s ease;
+}
+
+.community-feature-item:hover .community-feature-text {
+  color: var(--main-color);
+}
+
+.community-img-wrapper {
+  position: relative;
+}
+
+.community-img-box {
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.12);
+}
+
+.community-img {
+  transition: transform 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.community-img-wrapper:hover .community-img {
+  transform: scale(1.06);
+}
+
+.community-floating-badge {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  background: rgba(255, 255, 255, 0.96);
+  backdrop-filter: blur(8px);
+  padding: 14px 20px;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  border-left: 4px solid var(--main-color);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+  transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.community-badge-icon {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: rgba(49, 100, 94, 0.1);
+  color: var(--main-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  transition: all 0.35s ease;
+}
+
+.community-img-wrapper:hover .community-floating-badge {
+  transform: translateY(-8px) scale(1.03);
+  box-shadow: 0 18px 36px rgba(49, 100, 94, 0.22);
+}
+
+.community-img-wrapper:hover .community-badge-icon {
+  background: var(--main-color);
+  color: #ffffff;
+  transform: scale(1.1) rotate(6deg);
+}
+
+/* --------------------------------------------------------------------------
+   Responsive adjustments
+   -------------------------------------------------------------------------- */
+@media (max-width: 767.98px) {
+  .timeline-track::before {
+    left: 20px;
+  }
+  .timeline-dot {
+    left: 20px;
+  }
+  .timeline-content {
+    width: calc(100% - 50px);
+    margin-left: 50px !important;
+    border-left: 4px solid rgba(49, 100, 94, 0.25) !important;
+    border-right: 1px solid rgba(0, 0, 0, 0.06) !important;
+  }
+  .community-floating-badge {
+    position: static;
+    margin-top: 15px;
+  }
+}

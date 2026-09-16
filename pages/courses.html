@@ -1,0 +1,762 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Courses & Batches - Competitive Exam Coaching</title>
+    <link
+      rel="shortcut icon"
+      href="../assets/images/logoStackly.webp"
+      type="image/webp"
+    />
+
+    <!-- Bootstrap 5 CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <!-- Font Awesome 6 CDN -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+    />
+    <!-- Main Custom CSS -->
+    <link rel="stylesheet" href="../assets/css/styles.css" />
+    <!-- Page Specific CSS -->
+    <link rel="stylesheet" href="../assets/css/courses.css" />
+  </head>
+  <body>
+    <!-- =========================================================================
+         HEADER & NAVIGATION (Dynamic Common Component)
+         ========================================================================= -->
+    <div id="header-placeholder"></div>
+
+    <!-- =========================================================================
+         SECTION 1: Standard Sub-Page Banner & Breadcrumbs
+         ========================================================================= -->
+    <section class="page-banner-section text-center">
+      <div class="container banner-content">
+        <span class="banner-badge"
+          ><i class="fa-solid fa-book-open me-2"></i> Academic Programs</span
+        >
+        <h1 class="banner-title">Courses & Flagship Batches</h1>
+        <p class="banner-desc">
+          Explore our comprehensively structured courses for UPSC Civil
+          Services, State PSC, Banking, SSC CGL, and Defence examinations
+          engineered for top rank attainment.
+        </p>
+
+        <div class="breadcrumb-nav">
+          <a href="../index.html"><i class="fa-solid fa-house"></i> Home</a>
+          <span class="separator">/</span>
+          <span class="current">Courses</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================================
+         SECTION 2: Course Filter Tabs
+         ========================================================================= -->
+    <section class="section-padding bg-pattern-light pb-0">
+      <div class="container">
+        <div class="sec-title centered mb-4">
+          <span class="sub-title">Explore by Exam</span>
+          <h2>Choose Your Target Examination</h2>
+          <p>
+            Filter through our foundation, integrated, and optional subject
+            batches.
+          </p>
+        </div>
+
+        <div class="course-filter-nav">
+          <button class="filter-btn active" data-filter="all">
+            All Batches
+          </button>
+          <button class="filter-btn" data-filter="upsc">
+            UPSC Civil Services
+          </button>
+          <button class="filter-btn" data-filter="statepcs">State PSC</button>
+          <button class="filter-btn" data-filter="banking">
+            Bank PO & Clerk
+          </button>
+          <button class="filter-btn" data-filter="ssc">SSC CGL / CHSL</button>
+          <button class="filter-btn" data-filter="defence">
+            Defence Exams
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================================
+         SECTION 3: Flagship Batches Grid (Filterable)
+         ========================================================================= -->
+    <section class="section-padding bg-pattern-light pt-4">
+      <div class="container">
+        <div class="row g-4">
+          <!-- Course 1 -->
+          <div class="col-lg-4 col-md-6 filterable-item upsc">
+            <div class="course-card">
+              <div class="course-thumb">
+                <img
+                  src="https://images.unsplash.com/photo-1434030216411-0b793f4b4173?q=80&w=800&auto=format&fit=crop"
+                  alt="UPSC Foundation"
+                />
+                <span class="course-badge">UPSC CSE</span>
+              </div>
+              <div class="course-content">
+                <div class="course-meta">
+                  <span><i class="fa-solid fa-clock"></i> 12 Months</span>
+                  <span><i class="fa-solid fa-book"></i> GS I-IV + CSAT</span>
+                </div>
+                <h4 class="course-title">
+                  <a href="contact.html"
+                    >UPSC GS Prelims + Mains Super 50 Comprehensive</a
+                  >
+                </h4>
+                <p class="course-desc">
+                  Complete NCERT base, standard reference books, daily answer
+                  evaluation, and 45 full-length test simulations.
+                </p>
+                <div class="course-footer">
+                  <div class="course-price">
+                    ₹85,000 <span class="old">₹1,10,000</span>
+                  </div>
+                  <a
+                    href="contact.html"
+                    class="btn btn-sm btn-outline-dark rounded-pill px-3 fw-bold"
+                    >Enroll Now</a
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Course 2 -->
+          <div class="col-lg-4 col-md-6 filterable-item statepcs">
+            <div class="course-card">
+              <div class="course-thumb">
+                <img
+                  src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?q=80&w=800&auto=format&fit=crop"
+                  alt="State PCS"
+                />
+                <span class="course-badge badge-gold">State PSC</span>
+              </div>
+              <div class="course-content">
+                <div class="course-meta">
+                  <span><i class="fa-solid fa-clock"></i> 9 Months</span>
+                  <span
+                    ><i class="fa-solid fa-map-location-dot"></i> State
+                    Specific</span
+                  >
+                </div>
+                <h4 class="course-title">
+                  <a href="contact.html"
+                    >State Civil Services (PCS) Master Integrated Batch</a
+                  >
+                </h4>
+                <p class="course-desc">
+                  Special emphasis on state geography, culture, administrative
+                  history, and regional language papers.
+                </p>
+                <div class="course-footer">
+                  <div class="course-price">
+                    ₹55,000 <span class="old">₹70,000</span>
+                  </div>
+                  <a
+                    href="contact.html"
+                    class="btn btn-sm btn-outline-dark rounded-pill px-3 fw-bold"
+                    >Enroll Now</a
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Course 3 -->
+          <div class="col-lg-4 col-md-6 filterable-item banking">
+            <div class="course-card">
+              <div class="course-thumb">
+                <img
+                  src="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?q=80&w=800&auto=format&fit=crop"
+                  alt="Bank PO"
+                />
+                <span class="course-badge">Banking</span>
+              </div>
+              <div class="course-content">
+                <div class="course-meta">
+                  <span><i class="fa-solid fa-clock"></i> 6 Months</span>
+                  <span><i class="fa-solid fa-calculator"></i> Quant & DI</span>
+                </div>
+                <h4 class="course-title">
+                  <a href="contact.html"
+                    >Bank PO & Clerk (SBI, IBPS, RBI) Rapid Target Batch</a
+                  >
+                </h4>
+                <p class="course-desc">
+                  Vedic mathematics shortcuts, dynamic puzzles, banking
+                  awareness, and 120+ computer-based speed mocks.
+                </p>
+                <div class="course-footer">
+                  <div class="course-price">
+                    ₹32,000 <span class="old">₹42,000</span>
+                  </div>
+                  <a
+                    href="contact.html"
+                    class="btn btn-sm btn-outline-dark rounded-pill px-3 fw-bold"
+                    >Enroll Now</a
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Course 4 -->
+          <div class="col-lg-4 col-md-6 filterable-item ssc">
+            <div class="course-card">
+              <div class="course-thumb">
+                <img
+                  src="https://images.unsplash.com/photo-1497633762265-9d179a990aa6?q=80&w=800&auto=format&fit=crop"
+                  alt="SSC CGL"
+                />
+                <span class="course-badge">SSC Exams</span>
+              </div>
+              <div class="course-content">
+                <div class="course-meta">
+                  <span><i class="fa-solid fa-clock"></i> 6 Months</span>
+                  <span
+                    ><i class="fa-solid fa-layer-group"></i> Tier I + Tier
+                    II</span
+                  >
+                </div>
+                <h4 class="course-title">
+                  <a href="contact.html"
+                    >SSC CGL & CHSL Complete Officer Batch (Tier I & II)</a
+                  >
+                </h4>
+                <p class="course-desc">
+                  Advanced geometry, algebra, English comprehension, and
+                  computer typing module training.
+                </p>
+                <div class="course-footer">
+                  <div class="course-price">
+                    ₹28,000 <span class="old">₹36,000</span>
+                  </div>
+                  <a
+                    href="contact.html"
+                    class="btn btn-sm btn-outline-dark rounded-pill px-3 fw-bold"
+                    >Enroll Now</a
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Course 5 -->
+          <div class="col-lg-4 col-md-6 filterable-item defence">
+            <div class="course-card">
+              <div class="course-thumb">
+                <img
+                  src="https://images.unsplash.com/photo-1541829070764-84a7d30dd3f3?q=80&w=800&auto=format&fit=crop"
+                  alt="NDA CDS Defence"
+                />
+                <span class="course-badge badge-gold">Defence</span>
+              </div>
+              <div class="course-content">
+                <div class="course-meta">
+                  <span><i class="fa-solid fa-clock"></i> 6 Months</span>
+                  <span><i class="fa-solid fa-shield"></i> Written + SSB</span>
+                </div>
+                <h4 class="course-title">
+                  <a href="contact.html"
+                    >NDA, CDS & AFCAT Written + SSB Personality Batch</a
+                  >
+                </h4>
+                <p class="course-desc">
+                  Mathematics & General Ability Test coaching plus 2-week
+                  intensive SSB psychological training.
+                </p>
+                <div class="course-footer">
+                  <div class="course-price">
+                    ₹40,000 <span class="old">₹52,000</span>
+                  </div>
+                  <a
+                    href="contact.html"
+                    class="btn btn-sm btn-outline-dark rounded-pill px-3 fw-bold"
+                    >Enroll Now</a
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Course 6 -->
+          <div class="col-lg-4 col-md-6 filterable-item upsc">
+            <div class="course-card">
+              <div class="course-thumb">
+                <img
+                  src="https://images.unsplash.com/photo-1513542789411-b6a5d4f31634?q=80&w=800&auto=format&fit=crop"
+                  alt="2-Year UPSC Foundation"
+                />
+                <span class="course-badge">UPSC 2-Year</span>
+              </div>
+              <div class="course-content">
+                <div class="course-meta">
+                  <span><i class="fa-solid fa-clock"></i> 24 Months</span>
+                  <span
+                    ><i class="fa-solid fa-graduation-cap"></i> College
+                    Integrated</span
+                  >
+                </div>
+                <h4 class="course-title">
+                  <a href="contact.html"
+                    >2-Year Undergrad Integrated Civil Services Foundation</a
+                  >
+                </h4>
+                <p class="course-desc">
+                  Specially designed for 1st & 2nd year college students to
+                  build early conceptual foundations without stress.
+                </p>
+                <div class="course-footer">
+                  <div class="course-price">
+                    ₹1,35,000 <span class="old">₹1,75,000</span>
+                  </div>
+                  <a
+                    href="contact.html"
+                    class="btn btn-sm btn-outline-dark rounded-pill px-3 fw-bold"
+                    >Enroll Now</a
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================================
+         SECTION 4: Optional Subject Specializations
+         ========================================================================= -->
+    <section class="section-padding">
+      <div class="container">
+        <div class="sec-title centered">
+          <span class="sub-title color-two">Optional Papers</span>
+          <h2>UPSC Mains Optional Subject Masterclasses</h2>
+          <p>
+            Score 300+ in your optional subject under the guidance of top
+            university professors and subject toppers.
+          </p>
+        </div>
+
+        <div class="row g-4">
+          <div class="col-lg-3 col-md-6">
+            <div class="optional-card">
+              <div class="optional-icon">
+                <i class="fa-solid fa-building-columns"></i>
+              </div>
+              <h5 class="fw-bold mb-1">Public Administration</h5>
+              <p class="text-muted small mb-2">By Dr. Alisha Verma (Ex-IAS)</p>
+              <span class="badge bg-light text-dark border">Paper I & II</span>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-6">
+            <div class="optional-card">
+              <div class="optional-icon">
+                <i class="fa-solid fa-landmark"></i>
+              </div>
+              <h5 class="fw-bold mb-1">History Optional</h5>
+              <p class="text-muted small mb-2">By Prof. Rajesh Malhotra</p>
+              <span class="badge bg-light text-dark border"
+                >Ancient to Modern</span
+              >
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-6">
+            <div class="optional-card">
+              <div class="optional-icon">
+                <i class="fa-solid fa-earth-americas"></i>
+              </div>
+              <h5 class="fw-bold mb-1">Geography Optional</h5>
+              <p class="text-muted small mb-2">By Dr. K. Ramanathan</p>
+              <span class="badge bg-light text-dark border"
+                >Physical & Human Geo</span
+              >
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-6">
+            <div class="optional-card">
+              <div class="optional-icon"><i class="fa-solid fa-users"></i></div>
+              <h5 class="fw-bold mb-1">Sociology Optional</h5>
+              <p class="text-muted small mb-2">By Dr. Smita Nair</p>
+              <span class="badge bg-light text-dark border"
+                >Thinkers & Indian Society</span
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================================
+         SECTION 5: Daily Answer Writing & Mentorship Modules
+         ========================================================================= -->
+    <section class="section-padding bg-pattern-light">
+      <div class="container">
+        <div class="row align-items-center g-5">
+          <div class="col-lg-6">
+            <div class="sec-title">
+              <span class="sub-title color-four">Mains Booster</span>
+              <h2>Year-Long Daily Answer Writing (DAW) Program</h2>
+              <p class="mb-4">
+                The only surefire way to crack the Mains exam is relentless
+                writing practice. Join our DAW program and submit answers daily
+                for expert reviews.
+              </p>
+            </div>
+            <div class="d-flex flex-column gap-3 mb-4">
+              <div
+                class="p-3 bg-white rounded-3 shadow-sm d-flex align-items-center gap-3"
+              >
+                <i class="fa-solid fa-calendar-check text-success fs-3"></i>
+                <div>
+                  <h6 class="mb-0 fw-bold">2 Questions Daily (Mon - Fri)</h6>
+                  <small class="text-muted"
+                    >Directly mapped to GS-I, II, III & IV static and current
+                    themes.</small
+                  >
+                </div>
+              </div>
+              <div
+                class="p-3 bg-white rounded-3 shadow-sm d-flex align-items-center gap-3"
+              >
+                <i class="fa-solid fa-clock-rotate-left text-primary fs-3"></i>
+                <div>
+                  <h6 class="mb-0 fw-bold">Strict 24-Hour Feedback SLA</h6>
+                  <small class="text-muted"
+                    >Line-by-line mark breakdown and value-added
+                    keywords.</small
+                  >
+                </div>
+              </div>
+            </div>
+            <a href="contact.html" class="theme-btn btn-primary-theme"
+              >Enroll in DAW Program</a
+            >
+          </div>
+
+          <div class="col-lg-6">
+            <img
+              src="https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?q=80&w=800&auto=format&fit=crop"
+              alt="Answer Writing Notes"
+              class="rounded-4 shadow-lg w-100 object-fit-cover"
+              style="height: 420px"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================================
+         SECTION 6: Batch Starting Dates Calendar
+         ========================================================================= -->
+    <section class="section-padding">
+      <div class="container">
+        <div class="sec-title centered">
+          <span class="sub-title">Upcoming Schedules</span>
+          <h2>Batch Starting Calendar 2026</h2>
+          <p>
+            Limited to 50 students per batch to ensure individual mentorship.
+          </p>
+        </div>
+
+        <div class="batch-calendar-table">
+          <div class="table-responsive">
+            <table class="table align-middle">
+              <thead>
+                <tr class="table-light">
+                  <th>Exam Target</th>
+                  <th>Batch Name</th>
+                  <th>Mode</th>
+                  <th>Start Date</th>
+                  <th>Timings</th>
+                  <th>Status</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>UPSC Civil Services</strong></td>
+                  <td>GS Foundation Batch A</td>
+                  <td><span class="badge bg-primary">Classroom</span></td>
+                  <td><span class="batch-date-badge">June 01, 2026</span></td>
+                  <td>8:00 AM - 12:00 PM</td>
+                  <td>
+                    <span class="batch-status-open"
+                      >Filling Fast (8 Seats Left)</span
+                    >
+                  </td>
+                  <td>
+                    <a
+                      href="contact.html"
+                      class="btn btn-sm btn-dark rounded-pill"
+                      >Reserve</a
+                    >
+                  </td>
+                </tr>
+                <tr>
+                  <td><strong>UPSC Civil Services</strong></td>
+                  <td>GS Foundation Batch B</td>
+                  <td>
+                    <span class="badge bg-info text-dark">Online Live</span>
+                  </td>
+                  <td><span class="batch-date-badge">June 15, 2026</span></td>
+                  <td>5:30 PM - 9:30 PM</td>
+                  <td>
+                    <span class="batch-status-open">Admissions Open</span>
+                  </td>
+                  <td>
+                    <a
+                      href="contact.html"
+                      class="btn btn-sm btn-dark rounded-pill"
+                      >Reserve</a
+                    >
+                  </td>
+                </tr>
+                <tr>
+                  <td><strong>Banking PO & Clerk</strong></td>
+                  <td>SBI/IBPS Target Super 50</td>
+                  <td><span class="badge bg-success">Hybrid</span></td>
+                  <td><span class="batch-date-badge">June 08, 2026</span></td>
+                  <td>10:00 AM - 1:00 PM</td>
+                  <td>
+                    <span class="batch-status-open">Admissions Open</span>
+                  </td>
+                  <td>
+                    <a
+                      href="contact.html"
+                      class="btn btn-sm btn-dark rounded-pill"
+                      >Reserve</a
+                    >
+                  </td>
+                </tr>
+                <tr>
+                  <td><strong>SSC CGL Tier I & II</strong></td>
+                  <td>CGL Fast-Track 2026</td>
+                  <td><span class="badge bg-primary">Classroom</span></td>
+                  <td><span class="batch-date-badge">June 20, 2026</span></td>
+                  <td>2:00 PM - 5:00 PM</td>
+                  <td>
+                    <span class="batch-status-open">Admissions Open</span>
+                  </td>
+                  <td>
+                    <a
+                      href="contact.html"
+                      class="btn btn-sm btn-dark rounded-pill"
+                      >Reserve</a
+                    >
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================================
+         SECTION 7: Scholarship Scheme & Flexible EMI
+         ========================================================================= -->
+    <section class="section-padding bg-pattern-light">
+      <div class="container">
+        <div class="scholarship-banner">
+          <div class="row align-items-center">
+            <div class="col-lg-8">
+              <span class="badge bg-warning text-dark px-3 py-2 fw-bold mb-3"
+                >Merit Scholarship & 0% EMI</span
+              >
+              <h3>No Deserving Aspirant Should Be Left Behind</h3>
+              <p>
+                We offer up to 100% tuition fee waivers through our National
+                Scholarship Entrance Test. Additionally, all programs feature
+                flexible monthly 0% interest EMI options.
+              </p>
+              <div class="d-flex gap-3 flex-wrap mt-4">
+                <a href="contact.html" class="theme-btn btn-secondary-theme"
+                  >Apply for Scholarship Test</a
+                >
+                <a href="contact.html" class="theme-btn btn-outline-light-theme"
+                  >Check EMI Options</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================================
+         SECTION 8: Frequently Asked Course Questions (Accordion)
+         ========================================================================= -->
+    <section class="section-padding">
+      <div class="container">
+        <div class="sec-title centered">
+          <span class="sub-title">Aspirant FAQs</span>
+          <h2>Frequently Asked Questions About Our Courses</h2>
+          <p>
+            Have questions before enrolling? Here are quick answers to the most
+            common queries.
+          </p>
+        </div>
+
+        <div class="row justify-content-center">
+          <div class="col-lg-10">
+            <div class="accordion course-faq-accordion" id="courseFaq">
+              <div class="accordion-item">
+                <h2 class="accordion-header">
+                  <button
+                    class="accordion-button"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#faq1"
+                  >
+                    Can I attend demo lectures before paying the full tuition
+                    fee?
+                  </button>
+                </h2>
+                <div
+                  id="faq1"
+                  class="accordion-collapse collapse show"
+                  data-bs-parent="#courseFaq"
+                >
+                  <div class="accordion-body">
+                    Yes, we offer 2 complimentary demo classroom or live online
+                    classes across GS Polity and Economy so you can experience
+                    our pedagogical standard first-hand.
+                  </div>
+                </div>
+              </div>
+
+              <div class="accordion-item">
+                <h2 class="accordion-header">
+                  <button
+                    class="accordion-button collapsed"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#faq2"
+                  >
+                    What happens if I miss a live classroom lecture?
+                  </button>
+                </h2>
+                <div
+                  id="faq2"
+                  class="accordion-collapse collapse"
+                  data-bs-parent="#courseFaq"
+                >
+                  <div class="accordion-body">
+                    All classroom lectures are recorded in high definition and
+                    uploaded to your student portal within 3 hours. You have
+                    unlimited re-watch access for the entire duration of your
+                    enrolled batch.
+                  </div>
+                </div>
+              </div>
+
+              <div class="accordion-item">
+                <h2 class="accordion-header">
+                  <button
+                    class="accordion-button collapsed"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#faq3"
+                  >
+                    Are hardcopy study materials included in the fee?
+                  </button>
+                </h2>
+                <div
+                  id="faq3"
+                  class="accordion-collapse collapse"
+                  data-bs-parent="#courseFaq"
+                >
+                  <div class="accordion-body">
+                    Yes! All 14 volumes of comprehensive static GS booklets,
+                    previous 10 years solved question compilations, and monthly
+                    current affairs summaries are included and delivered to your
+                    address at zero extra cost.
+                  </div>
+                </div>
+              </div>
+
+              <div class="accordion-item">
+                <h2 class="accordion-header">
+                  <button
+                    class="accordion-button collapsed"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#faq4"
+                  >
+                    How does the 1-on-1 personal mentorship work?
+                  </button>
+                </h2>
+                <div
+                  id="faq4"
+                  class="accordion-collapse collapse"
+                  data-bs-parent="#courseFaq"
+                >
+                  <div class="accordion-body">
+                    You will be assigned a dedicated full-time academic mentor.
+                    You will have a scheduled weekly 30-minute review call (in
+                    person or video) to discuss your test scores, revision
+                    schedule, and answer writing queries.
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================================
+         SECTION 9: Seat Booking & Advisory Call CTA
+         ========================================================================= -->
+    <section class="section-padding bg-pattern-dark text-white text-center">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-lg-8">
+            <span class="badge bg-warning text-dark px-3 py-2 fw-bold mb-3"
+              >Admissions Open 2026</span
+            >
+            <h2 class="text-white display-6 fw-bold mb-3">
+              Begin Your Civil Services Transformation
+            </h2>
+            <p class="text-white-50 fs-5 mb-4">
+              Speak with an admissions counselor today to assess your
+              preparation timeline and lock in early bird batch concessions.
+            </p>
+            <div class="d-flex justify-content-center gap-3 flex-wrap">
+              <a href="contact.html" class="theme-btn btn-secondary-theme"
+                >Book Free Counseling <i class="fa-solid fa-calendar-check"></i
+              ></a>
+              <a
+                href="tel:+919876543210"
+                class="theme-btn btn-outline-light-theme"
+                ><i class="fa-solid fa-phone"></i> Call +91 9876543210</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================================
+         FOOTER & SCROLL TO TOP (Dynamic Common Component)
+         ========================================================================= -->
+    <div id="footer-placeholder"></div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../assets/js/script.js"></script>
+  </body>
+</html>
