@@ -750,4 +750,59 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   initEmptyLinkRedirects();
+
+  // 10. Universal Scroll Reveal Animation Engine
+  function initScrollReveal() {
+    const rawPath = window.location.pathname.replace(/\\/g, "/").toLowerCase();
+
+    // Explicitly exclude dashboard and 404 pages
+    if (
+      rawPath.includes("dashboard.html") ||
+      rawPath.includes("404.html") ||
+      document.body.classList.contains("dashboard-page") ||
+      document.body.classList.contains("error-404-page")
+    ) {
+      return;
+    }
+
+    const revealElements = document.querySelectorAll(
+      "[data-reveal], .scroll-reveal",
+    );
+    if (!revealElements.length) return;
+
+    // Fallback if IntersectionObserver not supported
+    if (!("IntersectionObserver" in window)) {
+      revealElements.forEach((el) => el.classList.add("is-revealed"));
+      return;
+    }
+
+    const observerOptions = {
+      root: null,
+      rootMargin: "0px 0px -40px 0px",
+      threshold: 0.08,
+    };
+
+    const revealObserver = new IntersectionObserver((entries, observer) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const target = entry.target;
+          target.classList.add("is-revealed");
+          observer.unobserve(target);
+        }
+      });
+    }, observerOptions);
+
+    // If preloader is active, delay initial observation until preloader fades out
+    const preloader = document.getElementById("themePreloader");
+    if (preloader && document.body.classList.contains("preloader-active")) {
+      setTimeout(() => {
+        revealElements.forEach((el) => revealObserver.observe(el));
+      }, 2100);
+    } else {
+      revealElements.forEach((el) => revealObserver.observe(el));
+    }
+  }
+
+  initScrollReveal();
+  window.initScrollReveal = initScrollReveal;
 });
