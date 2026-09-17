@@ -464,8 +464,8 @@ document.addEventListener("DOMContentLoaded", function () {
         ) {
           return;
         }
-        // Only allow a-z, A-Z and space
-        if (e.key.length === 1 && !/^[a-zA-Z\s]$/.test(e.key)) {
+        // Only allow a-z, A-Z (no spaces)
+        if (e.key.length === 1 && !/^[a-zA-Z]$/.test(e.key)) {
           e.preventDefault();
           e.stopPropagation();
         }
@@ -492,7 +492,7 @@ document.addEventListener("DOMContentLoaded", function () {
       if (isLettersOnly(target)) {
         if (e.ctrlKey || e.metaKey || e.altKey) return;
         const char = String.fromCharCode(e.which || e.keyCode);
-        if (!/^[a-zA-Z\s]$/.test(char)) {
+        if (!/^[a-zA-Z]$/.test(char)) {
           e.preventDefault();
           e.stopPropagation();
         }
@@ -510,7 +510,7 @@ document.addEventListener("DOMContentLoaded", function () {
     document.addEventListener("beforeinput", function (e) {
       const target = e.target;
       if (isLettersOnly(target)) {
-        if (e.data && !/^[a-zA-Z\s]+$/.test(e.data)) {
+        if (e.data && !/^[a-zA-Z]+$/.test(e.data)) {
           e.preventDefault();
         }
       } else if (isNumbersOnly(target)) {
@@ -524,7 +524,7 @@ document.addEventListener("DOMContentLoaded", function () {
     document.addEventListener("input", function (e) {
       const target = e.target;
       if (isLettersOnly(target)) {
-        const cleaned = target.value.replace(/[^a-zA-Z\s]/g, "");
+        const cleaned = target.value.replace(/[^a-zA-Z]/g, "");
         if (target.value !== cleaned) {
           target.value = cleaned;
         }
@@ -543,7 +543,7 @@ document.addEventListener("DOMContentLoaded", function () {
         e.preventDefault();
         const text =
           (e.clipboardData || window.clipboardData).getData("text") || "";
-        const cleaned = text.replace(/[^a-zA-Z\s]/g, "");
+        const cleaned = text.replace(/[^a-zA-Z]/g, "");
         const start = target.selectionStart || 0;
         const end = target.selectionEnd || 0;
         target.value =
@@ -574,7 +574,7 @@ document.addEventListener("DOMContentLoaded", function () {
       if (isLettersOnly(target)) {
         e.preventDefault();
         const text = e.dataTransfer.getData("text") || "";
-        const cleaned = text.replace(/[^a-zA-Z\s]/g, "");
+        const cleaned = text.replace(/[^a-zA-Z]/g, "");
         const start = target.selectionStart || 0;
         const end = target.selectionEnd || 0;
         target.value =

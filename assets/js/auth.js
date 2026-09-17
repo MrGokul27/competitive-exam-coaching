@@ -67,8 +67,8 @@ document.addEventListener("DOMContentLoaded", function () {
         return;
       }
 
-      // Check if character is a letter (A-Z, a-z) or space
-      const isAlphabetOrSpace = /^[a-zA-Z\s]$/.test(e.key);
+      // Check if character is a letter (A-Z, a-z) — no spaces
+      const isAlphabetOrSpace = /^[a-zA-Z]$/.test(e.key);
       if (!isAlphabetOrSpace) {
         e.preventDefault();
         if (usernameHint) {
@@ -88,14 +88,14 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Handle beforeinput for virtual keyboards / IME
     regUsernameInput.addEventListener("beforeinput", function (e) {
-      if (e.data && !/^[a-zA-Z\s]+$/.test(e.data)) {
+      if (e.data && !/^[a-zA-Z]+$/.test(e.data)) {
         e.preventDefault();
       }
     });
 
     // Sanitize input in real-time (for paste, drag-and-drop, autofill)
     regUsernameInput.addEventListener("input", function () {
-      const sanitized = this.value.replace(/[^a-zA-Z\s]/g, "");
+      const sanitized = this.value.replace(/[^a-zA-Z]/g, "");
       if (this.value !== sanitized) {
         this.value = sanitized;
       }
@@ -129,7 +129,7 @@ document.addEventListener("DOMContentLoaded", function () {
       const pasteData = (e.clipboardData || window.clipboardData).getData(
         "text",
       );
-      const cleanData = pasteData.replace(/[^a-zA-Z\s]/g, "");
+      const cleanData = pasteData.replace(/[^a-zA-Z]/g, "");
       document.execCommand("insertText", false, cleanData);
     });
   }
@@ -398,6 +398,30 @@ document.addEventListener("DOMContentLoaded", function () {
   // Login Password Weakness / Format Validation
   if (loginPasswordInput) {
     const loginPasswordHint = document.getElementById("loginPasswordHint");
+    const loginStrengthMeter = document.getElementById(
+      "loginPasswordStrengthMeter",
+    );
+    const loginStrengthScoreText = document.getElementById(
+      "loginStrengthScoreText",
+    );
+    const loginRuleLength = document.getElementById("loginRuleLength");
+    const loginRuleUpper = document.getElementById("loginRuleUpper");
+    const loginRuleLower = document.getElementById("loginRuleLower");
+    const loginRuleNumberSymbol = document.getElementById(
+      "loginRuleNumberSymbol",
+    );
+
+    function updateLoginRuleUI(el, passed) {
+      if (!el) return;
+      const icon = el.querySelector("i");
+      if (passed) {
+        el.classList.add("rule-passed");
+        if (icon) icon.className = "fa-solid fa-circle-check";
+      } else {
+        el.classList.remove("rule-passed");
+        if (icon) icon.className = "fa-regular fa-circle";
+      }
+    }
 
     loginPasswordInput.addEventListener("input", function () {
       const val = this.value;
@@ -405,18 +429,52 @@ document.addEventListener("DOMContentLoaded", function () {
         this.classList.remove("is-valid", "is-invalid");
         if (loginPasswordHint) {
           loginPasswordHint.textContent =
-            "Enter your registered portal password";
+            "Min 8 chars with uppercase, lowercase & number/symbol";
           loginPasswordHint.className = "auth-field-hint info-text";
         }
+        if (loginStrengthMeter) {
+          loginStrengthMeter.className = "password-strength-meter";
+        }
+        if (loginStrengthScoreText) {
+          loginStrengthScoreText.textContent = "Weak";
+        }
+        [
+          loginRuleLength,
+          loginRuleUpper,
+          loginRuleLower,
+          loginRuleNumberSymbol,
+        ].forEach((rule) => {
+          if (rule) {
+            rule.classList.remove("rule-passed");
+            const icon = rule.querySelector("i");
+            if (icon) icon.className = "fa-regular fa-circle";
+          }
+        });
         return;
       }
 
-      if (val.length < 6) {
+      const { rules, score } = evaluatePasswordStrength(val);
+
+      // Update Checklist Rules UI
+      updateLoginRuleUI(loginRuleLength, rules.length);
+      updateLoginRuleUI(loginRuleUpper, rules.uppercase);
+      updateLoginRuleUI(loginRuleLower, rules.lowercase);
+      updateLoginRuleUI(loginRuleNumberSymbol, rules.numberOrSymbol);
+
+      // Update Strength Meter
+      if (loginStrengthMeter) {
+        loginStrengthMeter.className = `password-strength-meter strength-${score}`;
+      }
+      if (loginStrengthScoreText) {
+        loginStrengthScoreText.textContent = score.toUpperCase();
+      }
+
+      if (score === "weak" || val.length < 8) {
         this.classList.add("is-invalid");
         this.classList.remove("is-valid");
         if (loginPasswordHint) {
           loginPasswordHint.innerHTML =
-            '<i class="fa-solid fa-triangle-exclamation"></i> Password too short (minimum 6 characters)';
+            '<i class="fa-solid fa-triangle-exclamation"></i> Weak password — use 8+ chars with uppercase, lowercase & number/symbol';
           loginPasswordHint.className = "auth-field-hint error-text";
         }
       } else {
@@ -424,7 +482,7 @@ document.addEventListener("DOMContentLoaded", function () {
         this.classList.add("is-valid");
         if (loginPasswordHint) {
           loginPasswordHint.innerHTML =
-            '<i class="fa-solid fa-check"></i> Password format valid';
+            '<i class="fa-solid fa-check"></i> Password strength is valid';
           loginPasswordHint.className = "auth-field-hint success-text";
         }
       }
@@ -459,13 +517,22 @@ document.addEventListener("DOMContentLoaded", function () {
       }
 
       // Validate Password
-      if (!loginPasswordInput || loginPasswordInput.value.length < 6) {
+      const passwordVal = loginPasswordInput ? loginPasswordInput.value : "";
+      const loginPassStrength = loginPasswordInput
+        ? evaluatePasswordStrength(passwordVal)
+        : { score: "weak", rules: {} };
+      if (
+        !loginPasswordInput ||
+        !passwordVal ||
+        loginPassStrength.score === "weak" ||
+        passwordVal.length < 8
+      ) {
         isLoginFormValid = false;
         if (loginPasswordInput) loginPasswordInput.classList.add("is-invalid");
         if (loginAlertContainer) {
           loginAlertContainer.className = "auth-alert auth-alert-danger";
           loginAlertContainer.innerHTML =
-            '<i class="fa-solid fa-circle-exclamation"></i> Please enter a valid password (minimum 6 characters).';
+            '<i class="fa-solid fa-circle-exclamation"></i> Weak password: Must be at least 8 characters with uppercase, lowercase, and a number or symbol.';
           loginAlertContainer.style.display = "flex";
         }
         return;

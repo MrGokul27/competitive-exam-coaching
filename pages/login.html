@@ -213,7 +213,40 @@
                   </button>
                 </div>
                 <div id="loginPasswordHint" class="auth-field-hint info-text">
-                  Minimum 6 characters required
+                  Min 8 chars with uppercase, lowercase &amp; number/symbol
+                </div>
+
+                <!-- Password Strength Meter -->
+                <div
+                  id="loginPasswordStrengthMeter"
+                  class="password-strength-meter"
+                >
+                  <div class="strength-bar-track">
+                    <div class="strength-bar-fill"></div>
+                  </div>
+                  <div class="strength-meta">
+                    <span class="strength-label">Password Strength:</span>
+                    <span id="loginStrengthScoreText" class="strength-score"
+                      >Weak</span
+                    >
+                  </div>
+                  <!-- Checklist Rules -->
+                  <ul class="password-checklist">
+                    <li id="loginRuleLength">
+                      <i class="fa-regular fa-circle"></i> Min. 8 characters
+                    </li>
+                    <li id="loginRuleUpper">
+                      <i class="fa-regular fa-circle"></i> Uppercase letter
+                      (A-Z)
+                    </li>
+                    <li id="loginRuleLower">
+                      <i class="fa-regular fa-circle"></i> Lowercase letter
+                      (a-z)
+                    </li>
+                    <li id="loginRuleNumberSymbol">
+                      <i class="fa-regular fa-circle"></i> Number or symbol
+                    </li>
+                  </ul>
                 </div>
               </div>
 
