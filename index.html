@@ -25,7 +25,69 @@
     <!-- Main Custom CSS -->
     <link rel="stylesheet" href="assets/css/styles.css" />
   </head>
-  <body>
+  <body class="preloader-active">
+    <!-- PRELOADER (Competitive Exam Academy Theme) -->
+    <div id="themePreloader" class="theme-preloader">
+      <div class="preloader-backdrop-glow"></div>
+      <div class="preloader-content">
+        <!-- Emblem / Badge Visual -->
+        <div class="preloader-emblem-wrap">
+          <div class="preloader-orbital-ring ring-outer"></div>
+          <div class="preloader-orbital-ring ring-dashed"></div>
+          <div class="preloader-orbital-ring ring-inner"></div>
+          <div class="preloader-icon-core">
+            <img
+              src="assets/images/logoStackly.webp"
+              alt="Stackly Competitive Exam Academy Logo"
+              class="preloader-logo-img"
+            />
+          </div>
+          <div
+            class="preloader-floating-badge badge-top"
+            title="Academic Excellence"
+          >
+            <i class="fa-solid fa-graduation-cap"></i>
+          </div>
+          <div class="preloader-floating-badge badge-right" title="Target Rank">
+            <i class="fa-solid fa-bullseye"></i>
+          </div>
+          <div
+            class="preloader-floating-badge badge-left"
+            title="Top Mentorship"
+          >
+            <i class="fa-solid fa-award"></i>
+          </div>
+        </div>
+
+        <!-- Academy Brand & Text -->
+        <div class="preloader-brand-text">
+          <h2 class="preloader-title">
+            COMPETITIVE EXAM <span class="accent-text">COACHING</span>
+          </h2>
+          <p class="preloader-tagline">
+            <i class="fa-solid fa-star"></i>
+            <span>Pinnacle of Mentorship &amp; Rankers' Strategy</span>
+            <i class="fa-solid fa-star"></i>
+          </p>
+        </div>
+
+        <!-- Progress Bar & Status Milestones -->
+        <div class="preloader-progress-box">
+          <div class="preloader-progress-track">
+            <div class="preloader-progress-bar" id="preloaderProgressBar"></div>
+            <div class="preloader-progress-glow"></div>
+          </div>
+          <div class="preloader-status-row">
+            <span class="preloader-status-text" id="preloaderStatusText">
+              <i class="fa-solid fa-circle-notch fa-spin me-2"></i>Initializing
+              Rankers' Portal...
+            </span>
+            <span class="preloader-percent" id="preloaderPercent">0%</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <!-- HEADER & NAVIGATION (Dynamic Common Component) -->
     <div id="header-placeholder"></div>
 
@@ -721,10 +783,10 @@
                 </div>
                 <div class="col-md-6">
                   <div class="calc-input-group">
-                    <label class="form-label">
+                    <div class="form-label">
                       <i class="fa-solid fa-gift text-success me-1"></i>
                       Included Amenities
-                    </label>
+                    </div>
                     <div class="calc-amenities-wrap">
                       <span class="amenity-chip"
                         ><i class="fa-solid fa-circle-check"></i> Study

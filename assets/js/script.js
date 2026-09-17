@@ -1,6 +1,88 @@
 document.addEventListener("DOMContentLoaded", function () {
   "use strict";
 
+  // 0. Theme Preloader Controller (2 Seconds Duration)
+  function initThemePreloader() {
+    const preloader = document.getElementById("themePreloader");
+    if (!preloader) return;
+
+    document.body.classList.add("preloader-active");
+
+    const progressBar = document.getElementById("preloaderProgressBar");
+    const percentEl = document.getElementById("preloaderPercent");
+    const statusTextEl = document.getElementById("preloaderStatusText");
+
+    const duration = 2000; // 2 seconds
+    const startTime = performance.now();
+
+    const milestones = [
+      {
+        threshold: 0,
+        text: '<i class="fa-solid fa-circle-notch fa-spin me-2"></i>Initializing Rankers\' Portal...',
+      },
+      {
+        threshold: 30,
+        text: '<i class="fa-solid fa-book-open-reader me-2"></i>Loading Comprehensive Syllabus...',
+      },
+      {
+        threshold: 65,
+        text: '<i class="fa-solid fa-chart-line me-2"></i>Calibrating AI Test Analytics...',
+      },
+      {
+        threshold: 88,
+        text: '<i class="fa-solid fa-user-graduate me-2"></i>Synchronizing Faculty Mentorship...',
+      },
+      {
+        threshold: 100,
+        text: '<i class="fa-solid fa-circle-check text-warning me-2"></i>Ready for Success!',
+      },
+    ];
+
+    let lastMilestoneIndex = -1;
+
+    function updateProgress(currentTime) {
+      const elapsed = currentTime - startTime;
+      const progress = Math.min(elapsed / duration, 1);
+      const percent = Math.floor(progress * 100);
+
+      if (progressBar) {
+        progressBar.style.width = percent + "%";
+      }
+      if (percentEl) {
+        percentEl.textContent = percent + "%";
+      }
+
+      for (let i = milestones.length - 1; i >= 0; i--) {
+        if (percent >= milestones[i].threshold) {
+          if (lastMilestoneIndex !== i) {
+            lastMilestoneIndex = i;
+            if (statusTextEl) {
+              statusTextEl.innerHTML = milestones[i].text;
+            }
+          }
+          break;
+        }
+      }
+
+      if (progress < 1) {
+        requestAnimationFrame(updateProgress);
+      } else {
+        setTimeout(() => {
+          preloader.classList.add("fade-out");
+          document.body.classList.remove("preloader-active");
+
+          setTimeout(() => {
+            preloader.style.display = "none";
+          }, 650);
+        }, 150);
+      }
+    }
+
+    requestAnimationFrame(updateProgress);
+  }
+
+  initThemePreloader();
+
   // Determine if current page is inside the 'pages/' directory
   const currentPath = window.location.pathname.replace(/\\/g, "/");
   const isInPagesDir = currentPath.includes("/pages/");
