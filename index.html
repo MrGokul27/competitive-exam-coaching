@@ -1375,29 +1375,45 @@
                   instantly.
                 </p>
               </div>
-              <form class="ajax-contact-form mt-4">
+              <form
+                class="ajax-contact-form scholarship-form mt-4"
+                id="scholarshipForm"
+              >
                 <div class="mb-3 form-floating-field">
                   <i class="fa-regular fa-user form-field-icon"></i>
                   <input
                     type="text"
-                    class="form-control scholarship-input"
+                    id="scholarshipName"
+                    name="scholarshipName"
+                    class="form-control scholarship-input letters-only-input"
                     placeholder="Full Name *"
                     required
+                    data-restrict="letters-only"
+                    maxlength="16"
+                    autocomplete="name"
                   />
                 </div>
                 <div class="mb-3 form-floating-field">
                   <i class="fa-solid fa-phone form-field-icon"></i>
                   <input
                     type="tel"
-                    class="form-control scholarship-input"
+                    id="scholarshipPhone"
+                    name="scholarshipPhone"
+                    class="form-control scholarship-input numbers-only-input"
                     placeholder="Mobile Number (+91) *"
                     required
+                    data-restrict="numbers-only"
+                    inputmode="numeric"
+                    minlength="10"
+                    maxlength="10"
                   />
                 </div>
                 <div class="mb-3 form-floating-field">
                   <i class="fa-regular fa-envelope form-field-icon"></i>
                   <input
                     type="email"
+                    id="scholarshipEmail"
+                    name="scholarshipEmail"
                     class="form-control scholarship-input"
                     placeholder="Email Address *"
                     required

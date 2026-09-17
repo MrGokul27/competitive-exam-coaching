@@ -64,6 +64,10 @@ h6 {
   line-height: 1.3;
 }
 
+input[type="password"]::-ms-reveal {
+  display: none;
+}
+
 a {
   color: var(--main-color);
   text-decoration: none;

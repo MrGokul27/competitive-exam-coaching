@@ -162,6 +162,15 @@ document.addEventListener("DOMContentLoaded", function () {
     highlightActiveNav();
   }
 
+  // Helper to redirect to 404 page accurately from root or sub-pages
+  function redirectTo404() {
+    const isCurrentlyInPages = window.location.pathname
+      .replace(/\\/g, "/")
+      .includes("/pages/");
+    const target404Url = isCurrentlyInPages ? "../404.html" : "404.html";
+    window.location.href = target404Url;
+  }
+
   // Initialize Footer interactivity
   function initFooterFeatures() {
     // Scroll-to-Top Button Visibility & Action
@@ -186,20 +195,16 @@ document.addEventListener("DOMContentLoaded", function () {
       });
     }
 
-    // Newsletter submit handler
+    // Newsletter submit handler -> Redirect to 404 page
     const newsletterForm = document.querySelector(".footer-newsletter-form");
     if (newsletterForm) {
       newsletterForm.addEventListener("submit", function (e) {
         e.preventDefault();
-        const btn = newsletterForm.querySelector('button[type="submit"]');
-        if (btn) {
-          const original = btn.textContent;
-          btn.textContent = "✓ Joined!";
-          newsletterForm.reset();
-          setTimeout(() => {
-            btn.textContent = original;
-          }, 3000);
+        if (!newsletterForm.checkValidity()) {
+          newsletterForm.reportValidity();
+          return;
         }
+        redirectTo404();
       });
     }
   }
@@ -336,163 +341,197 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // 5. Real-Time Strict Input Validation & Restrictions
   function initInputRestrictions() {
-    // 1. Letters Only (Full Name / Username) - prevents typing, pasting, dragging numbers & special characters
-    const lettersOnlyInputs = document.querySelectorAll(
-      '.letters-only-input, [data-restrict="letters-only"], #contactFullName',
-    );
+    const lettersSelector =
+      '.letters-only-input, [data-restrict="letters-only"], #contactFullName, #scholarshipName';
+    const numbersSelector =
+      '.numbers-only-input, [data-restrict="numbers-only"], #contactPhone, #scholarshipPhone';
 
-    lettersOnlyInputs.forEach((input) => {
-      // Keydown block
-      input.addEventListener("keydown", function (e) {
-        // Allow control & navigation keys
+    function isLettersOnly(el) {
+      return el && el.matches && el.matches(lettersSelector);
+    }
+
+    function isNumbersOnly(el) {
+      return el && el.matches && el.matches(numbersSelector);
+    }
+
+    const allowedNavKeys = [
+      "Backspace",
+      "Delete",
+      "Tab",
+      "Escape",
+      "Enter",
+      "ArrowLeft",
+      "ArrowRight",
+      "ArrowUp",
+      "ArrowDown",
+      "Home",
+      "End",
+      "PageUp",
+      "PageDown",
+    ];
+
+    // Keydown block - prevent typing invalid characters at the event source
+    document.addEventListener("keydown", function (e) {
+      const target = e.target;
+      if (isLettersOnly(target)) {
         if (
-          e.key === "Backspace" ||
-          e.key === "Delete" ||
-          e.key === "Tab" ||
-          e.key === "Escape" ||
-          e.key === "Enter" ||
-          e.key === "ArrowLeft" ||
-          e.key === "ArrowRight" ||
-          e.key === "ArrowUp" ||
-          e.key === "ArrowDown" ||
-          e.key === "Home" ||
-          e.key === "End" ||
-          e.key === "PageUp" ||
-          e.key === "PageDown" ||
+          allowedNavKeys.includes(e.key) ||
           e.ctrlKey ||
-          e.metaKey
+          e.metaKey ||
+          e.altKey
         ) {
           return;
         }
-
         // Only allow a-z, A-Z and space
         if (e.key.length === 1 && !/^[a-zA-Z\s]$/.test(e.key)) {
           e.preventDefault();
+          e.stopPropagation();
         }
-      });
-
-      // Beforeinput block for mobile keyboards / autocomplete
-      input.addEventListener("beforeinput", function (e) {
-        if (e.data && !/^[a-zA-Z\s]+$/.test(e.data)) {
-          e.preventDefault();
-        }
-      });
-
-      // Input event cleaning (handles copy-paste, autofill, drag-drop)
-      input.addEventListener("input", function () {
-        const cleaned = this.value.replace(/[^a-zA-Z\s]/g, "");
-        if (this.value !== cleaned) {
-          this.value = cleaned;
-        }
-      });
-
-      // Paste event handling
-      input.addEventListener("paste", function (e) {
-        e.preventDefault();
-        const text = (e.clipboardData || window.clipboardData).getData("text");
-        const cleaned = text.replace(/[^a-zA-Z\s]/g, "");
-        const start = this.selectionStart || 0;
-        const end = this.selectionEnd || 0;
-        this.value =
-          this.value.substring(0, start) + cleaned + this.value.substring(end);
-        this.selectionStart = this.selectionEnd = start + cleaned.length;
-      });
-
-      // Prevent dropping invalid data
-      input.addEventListener("drop", function (e) {
-        e.preventDefault();
-        const text = e.dataTransfer.getData("text");
-        const cleaned = text.replace(/[^a-zA-Z\s]/g, "");
-        const start = this.selectionStart || 0;
-        const end = this.selectionEnd || 0;
-        this.value =
-          this.value.substring(0, start) + cleaned + this.value.substring(end);
-        this.selectionStart = this.selectionEnd = start + cleaned.length;
-      });
-    });
-
-    // 2. Numbers Only (Phone Number / Mobile) - prevents typing, pasting, dragging alphabets & special characters
-    const numbersOnlyInputs = document.querySelectorAll(
-      '.numbers-only-input, [data-restrict="numbers-only"], #contactPhone',
-    );
-
-    numbersOnlyInputs.forEach((input) => {
-      // Keydown block
-      input.addEventListener("keydown", function (e) {
-        // Allow control & navigation keys
+      } else if (isNumbersOnly(target)) {
         if (
-          e.key === "Backspace" ||
-          e.key === "Delete" ||
-          e.key === "Tab" ||
-          e.key === "Escape" ||
-          e.key === "Enter" ||
-          e.key === "ArrowLeft" ||
-          e.key === "ArrowRight" ||
-          e.key === "ArrowUp" ||
-          e.key === "ArrowDown" ||
-          e.key === "Home" ||
-          e.key === "End" ||
-          e.key === "PageUp" ||
-          e.key === "PageDown" ||
+          allowedNavKeys.includes(e.key) ||
           e.ctrlKey ||
-          e.metaKey
+          e.metaKey ||
+          e.altKey
         ) {
           return;
         }
-
-        // Only allow 0-9 digits
+        // Only allow digits 0-9
         if (e.key.length === 1 && !/^[0-9]$/.test(e.key)) {
           e.preventDefault();
+          e.stopPropagation();
         }
-      });
+      }
+    });
 
-      // Beforeinput block for mobile keyboards
-      input.addEventListener("beforeinput", function (e) {
+    // Keypress block for broader legacy/browser support
+    document.addEventListener("keypress", function (e) {
+      const target = e.target;
+      if (isLettersOnly(target)) {
+        if (e.ctrlKey || e.metaKey || e.altKey) return;
+        const char = String.fromCharCode(e.which || e.keyCode);
+        if (!/^[a-zA-Z\s]$/.test(char)) {
+          e.preventDefault();
+          e.stopPropagation();
+        }
+      } else if (isNumbersOnly(target)) {
+        if (e.ctrlKey || e.metaKey || e.altKey) return;
+        const char = String.fromCharCode(e.which || e.keyCode);
+        if (!/^[0-9]$/.test(char)) {
+          e.preventDefault();
+          e.stopPropagation();
+        }
+      }
+    });
+
+    // Beforeinput block for mobile keyboards / autocomplete / voice typing
+    document.addEventListener("beforeinput", function (e) {
+      const target = e.target;
+      if (isLettersOnly(target)) {
+        if (e.data && !/^[a-zA-Z\s]+$/.test(e.data)) {
+          e.preventDefault();
+        }
+      } else if (isNumbersOnly(target)) {
         if (e.data && !/^[0-9]+$/.test(e.data)) {
           e.preventDefault();
         }
-      });
+      }
+    });
 
-      // Input event cleaning
-      input.addEventListener("input", function () {
-        const cleaned = this.value.replace(/[^0-9]/g, "");
-        if (this.value !== cleaned) {
-          this.value = cleaned;
+    // Input event cleaning (handles copy-paste, autofill, drag-drop)
+    document.addEventListener("input", function (e) {
+      const target = e.target;
+      if (isLettersOnly(target)) {
+        const cleaned = target.value.replace(/[^a-zA-Z\s]/g, "");
+        if (target.value !== cleaned) {
+          target.value = cleaned;
         }
-      });
+      } else if (isNumbersOnly(target)) {
+        const cleaned = target.value.replace(/[^0-9]/g, "");
+        if (target.value !== cleaned) {
+          target.value = cleaned;
+        }
+      }
+    });
 
-      // Paste event handling
-      input.addEventListener("paste", function (e) {
+    // Paste event handling
+    document.addEventListener("paste", function (e) {
+      const target = e.target;
+      if (isLettersOnly(target)) {
         e.preventDefault();
-        const text = (e.clipboardData || window.clipboardData).getData("text");
+        const text =
+          (e.clipboardData || window.clipboardData).getData("text") || "";
+        const cleaned = text.replace(/[^a-zA-Z\s]/g, "");
+        const start = target.selectionStart || 0;
+        const end = target.selectionEnd || 0;
+        target.value =
+          target.value.substring(0, start) +
+          cleaned +
+          target.value.substring(end);
+        target.selectionStart = target.selectionEnd = start + cleaned.length;
+        target.dispatchEvent(new Event("input", { bubbles: true }));
+      } else if (isNumbersOnly(target)) {
+        e.preventDefault();
+        const text =
+          (e.clipboardData || window.clipboardData).getData("text") || "";
         const cleaned = text.replace(/[^0-9]/g, "");
-        const start = this.selectionStart || 0;
-        const end = this.selectionEnd || 0;
-        this.value =
-          this.value.substring(0, start) + cleaned + this.value.substring(end);
-        this.selectionStart = this.selectionEnd = start + cleaned.length;
-      });
+        const start = target.selectionStart || 0;
+        const end = target.selectionEnd || 0;
+        target.value =
+          target.value.substring(0, start) +
+          cleaned +
+          target.value.substring(end);
+        target.selectionStart = target.selectionEnd = start + cleaned.length;
+        target.dispatchEvent(new Event("input", { bubbles: true }));
+      }
+    });
 
-      // Prevent dropping invalid data
-      input.addEventListener("drop", function (e) {
+    // Drop event handling
+    document.addEventListener("drop", function (e) {
+      const target = e.target;
+      if (isLettersOnly(target)) {
         e.preventDefault();
-        const text = e.dataTransfer.getData("text");
+        const text = e.dataTransfer.getData("text") || "";
+        const cleaned = text.replace(/[^a-zA-Z\s]/g, "");
+        const start = target.selectionStart || 0;
+        const end = target.selectionEnd || 0;
+        target.value =
+          target.value.substring(0, start) +
+          cleaned +
+          target.value.substring(end);
+        target.selectionStart = target.selectionEnd = start + cleaned.length;
+        target.dispatchEvent(new Event("input", { bubbles: true }));
+      } else if (isNumbersOnly(target)) {
+        e.preventDefault();
+        const text = e.dataTransfer.getData("text") || "";
         const cleaned = text.replace(/[^0-9]/g, "");
-        const start = this.selectionStart || 0;
-        const end = this.selectionEnd || 0;
-        this.value =
-          this.value.substring(0, start) + cleaned + this.value.substring(end);
-        this.selectionStart = this.selectionEnd = start + cleaned.length;
-      });
+        const start = target.selectionStart || 0;
+        const end = target.selectionEnd || 0;
+        target.value =
+          target.value.substring(0, start) +
+          cleaned +
+          target.value.substring(end);
+        target.selectionStart = target.selectionEnd = start + cleaned.length;
+        target.dispatchEvent(new Event("input", { bubbles: true }));
+      }
     });
   }
 
   initInputRestrictions();
 
-  // 6. Generic Form Submission handler with validation
-  const contactForms = document.querySelectorAll(".ajax-contact-form");
-  contactForms.forEach((form) => {
-    form.addEventListener("submit", function (e) {
+  // 6. Generic Form Submission handler with validation -> Redirect to 404 Page
+  document.addEventListener("submit", function (e) {
+    const form = e.target;
+    if (!form) return;
+
+    if (
+      form.classList.contains("ajax-contact-form") ||
+      form.classList.contains("footer-newsletter-form") ||
+      form.classList.contains("blog-newsletter-form") ||
+      form.id === "admissionInquiryForm" ||
+      form.id === "scholarshipForm" ||
+      form.id === "blogNewsletterForm"
+    ) {
       e.preventDefault();
 
       if (!form.checkValidity()) {
@@ -500,26 +539,8 @@ document.addEventListener("DOMContentLoaded", function () {
         return;
       }
 
-      const btn = form.querySelector('button[type="submit"]');
-      const originalText = btn.innerHTML;
-      btn.innerHTML =
-        '<i class="fa-solid fa-spinner fa-spin"></i> Submitting...';
-      btn.disabled = true;
-
-      setTimeout(() => {
-        btn.innerHTML =
-          '<i class="fa-solid fa-check"></i> Inquiry Sent Successfully!';
-        btn.classList.remove("btn-primary-theme");
-        btn.classList.add("btn-success");
-        form.reset();
-        setTimeout(() => {
-          btn.innerHTML = originalText;
-          btn.classList.add("btn-primary-theme");
-          btn.classList.remove("btn-success");
-          btn.disabled = false;
-        }, 4000);
-      }, 1200);
-    });
+      redirectTo404();
+    }
   });
 
   // 7. Course / Project Filter Buttons
