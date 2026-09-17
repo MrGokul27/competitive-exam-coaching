@@ -557,12 +557,47 @@ ul {
 .page-banner-section {
   position: relative;
   background:
-    linear-gradient(135deg, rgba(34, 34, 34, 0.92), rgba(49, 100, 94, 0.88)),
-    url("https://images.unsplash.com/photo-1523240795612-9a054b0db644?q=80&w=1600&auto=format&fit=crop")
-      center/cover no-repeat;
+    linear-gradient(135deg, rgba(20, 30, 35, 0.9), rgba(49, 100, 94, 0.85)),
+    url("../images/about-banner-image.webp") center/cover no-repeat;
   padding: 110px 0 90px;
   color: var(--white-color);
   overflow: hidden;
+}
+
+.page-banner-section.about-banner {
+  background:
+    linear-gradient(135deg, rgba(20, 30, 35, 0.9), rgba(49, 100, 94, 0.85)),
+    url("../images/about-banner-image.webp") center/cover no-repeat;
+}
+
+.page-banner-section.courses-banner {
+  background:
+    linear-gradient(135deg, rgba(20, 30, 35, 0.9), rgba(49, 100, 94, 0.85)),
+    url("../images/courses-banner-image.webp") center/cover no-repeat;
+}
+
+.page-banner-section.services-banner {
+  background:
+    linear-gradient(135deg, rgba(20, 30, 35, 0.9), rgba(49, 100, 94, 0.85)),
+    url("../images/services-banner-image.webp") center/cover no-repeat;
+}
+
+.page-banner-section.projects-banner {
+  background:
+    linear-gradient(135deg, rgba(20, 30, 35, 0.9), rgba(49, 100, 94, 0.85)),
+    url("../images/project-banner-image.webp") center/cover no-repeat;
+}
+
+.page-banner-section.blog-banner {
+  background:
+    linear-gradient(135deg, rgba(20, 30, 35, 0.9), rgba(49, 100, 94, 0.85)),
+    url("../images/blog-banner-image.webp") center/cover no-repeat;
+}
+
+.page-banner-section.contact-banner {
+  background:
+    linear-gradient(135deg, rgba(20, 30, 35, 0.9), rgba(49, 100, 94, 0.85)),
+    url("../images/contact-banner-image.webp") center/cover no-repeat;
 }
 
 .page-banner-section::after {
