@@ -498,7 +498,7 @@ document.addEventListener("DOMContentLoaded", function () {
         return;
       }
 
-      // Success State Simulation
+      // Success State Simulation & Session Creation
       const submitBtn = document.getElementById("loginSubmitBtn");
       if (submitBtn) {
         submitBtn.disabled = true;
@@ -506,16 +506,69 @@ document.addEventListener("DOMContentLoaded", function () {
           '<span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span> Authenticating...';
       }
 
+      // Capture login form data
+      const selectedRole = loginRoleSelect
+        ? loginRoleSelect.value
+        : "student_upsc";
+      const enteredEmail = loginEmailInput
+        ? loginEmailInput.value.trim()
+        : "aspirant@stackly.edu";
+
+      // Derive display name from email (or registered session)
+      let displayName = "Aditya Verma";
+      const storedRegUser = localStorage.getItem("stackly_registered_user");
+      if (storedRegUser) {
+        try {
+          const parsed = JSON.parse(storedRegUser);
+          if (parsed.email === enteredEmail && parsed.username) {
+            displayName = parsed.username;
+          }
+        } catch (e) {}
+      }
+
+      if (displayName === "Aditya Verma" && enteredEmail) {
+        const namePart = enteredEmail.split("@")[0].replace(/[._-]/g, " ");
+        displayName = namePart
+          .split(" ")
+          .map((w) => w.charAt(0).toUpperCase() + w.slice(1).toLowerCase())
+          .join(" ");
+      }
+
+      const roleAvatars = {
+        student_upsc: "../assets/images/home/home-topper-photo-1.webp",
+        student_banking: "../assets/images/home/home-topper-photo-2.webp",
+        student_state: "../assets/images/home/home-topper-photo-3.webp",
+        faculty: "../assets/images/home/home-mentor-image-1.webp",
+        admin: "../assets/images/home/home-mentor-image-2.webp",
+        parent: "../assets/images/home/home-testimonial-author-1.webp",
+      };
+
+      const userSession = {
+        name: displayName,
+        email: enteredEmail,
+        role: selectedRole,
+        avatar:
+          roleAvatars[selectedRole] ||
+          "../assets/images/home/home-topper-photo-1.webp",
+        loggedInAt: new Date().toISOString(),
+      };
+
+      localStorage.setItem("stackly_user_profile", JSON.stringify(userSession));
+      sessionStorage.setItem(
+        "stackly_user_profile",
+        JSON.stringify(userSession),
+      );
+
       if (loginAlertContainer) {
         loginAlertContainer.className = "auth-alert auth-alert-success";
         loginAlertContainer.innerHTML =
-          '<i class="fa-solid fa-circle-check"></i> Login successful! Redirecting to student dashboard...';
+          '<i class="fa-solid fa-circle-check"></i> Login successful! Redirecting to dashboard...';
         loginAlertContainer.style.display = "flex";
       }
 
       setTimeout(function () {
-        window.location.href = "../index.html";
-      }, 1500);
+        window.location.href = "dashboard.html";
+      }, 1200);
     });
   }
 

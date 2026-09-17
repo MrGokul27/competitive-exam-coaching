@@ -1,0 +1,2910 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+      Academy Dashboard - Competitive Exam Coaching Institute Portal
+    </title>
+    <link
+      rel="shortcut icon"
+      href="../assets/images/logoStackly.webp"
+      type="image/webp"
+    />
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Roboto:wght@300;400;500;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Bootstrap 5 CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+
+    <!-- Font Awesome 6 CDN -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+    />
+
+    <!-- Chart.js CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+
+    <!-- Main Custom CSS -->
+    <link rel="stylesheet" href="../assets/css/styles.css" />
+    <!-- Dashboard Specific CSS -->
+    <link rel="stylesheet" href="../assets/css/dashboard.css" />
+  </head>
+  <body class="dashboard-body">
+    <!-- Mobile Overlay -->
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <div class="dashboard-wrapper">
+      <!-- SIDEBAR NAVIGATION -->
+      <aside class="dashboard-sidebar" id="dashboardSidebar">
+        <!-- Sidebar Brand Header -->
+        <div class="sidebar-header">
+          <a href="../index.html" class="sidebar-brand">
+            <img
+              src="../assets/images/logoStackly.webp"
+              alt="Competitive Exam Coaching Academy"
+            />
+          </a>
+          <button
+            type="button"
+            class="sidebar-close-btn"
+            id="sidebarCloseBtn"
+            aria-label="Close sidebar"
+          >
+            <i class="fa-solid fa-xmark"></i>
+          </button>
+        </div>
+
+        <!-- User Mini Profile Card in Sidebar -->
+        <div class="sidebar-user-card">
+          <img
+            src="../assets/images/home/home-topper-photo-1.webp"
+            alt="User Profile Avatar"
+            class="sidebar-user-avatar"
+            id="sidebarUserAvatar"
+          />
+          <div class="sidebar-user-info">
+            <h6 class="sidebar-user-name" id="sidebarUserName">Aditya Verma</h6>
+            <span class="sidebar-user-role-badge" id="sidebarUserRoleBadge"
+              >UPSC Aspirant</span
+            >
+          </div>
+        </div>
+
+        <!-- Navigation Section -->
+        <div class="sidebar-menu-section">
+          <div class="sidebar-menu-label">Role Navigation</div>
+          <ul class="sidebar-nav" id="sidebarNavList">
+            <!-- Dynamically populated per active role via dashboard.js -->
+          </ul>
+        </div>
+
+        <!-- Sidebar Footer -->
+        <div class="sidebar-footer">
+          <button type="button" class="sidebar-logout-btn">
+            <i class="fa-solid fa-arrow-right-from-bracket"></i>
+            <span>Sign Out</span>
+          </button>
+          <span class="sidebar-version-tag"
+            >Rankers Engine v3.4.2 • 2026 Portal</span
+          >
+        </div>
+      </aside>
+
+      <!-- MAIN DASHBOARD CONTAINER -->
+      <div class="dashboard-main">
+        <!-- Topbar Header -->
+        <header class="dashboard-topbar">
+          <div class="topbar-left">
+            <button
+              type="button"
+              class="sidebar-toggle-btn"
+              id="sidebarToggleBtn"
+              aria-label="Toggle Navigation Drawer"
+            >
+              <i class="fa-solid fa-bars-staggered"></i>
+            </button>
+            <div class="topbar-breadcrumb">
+              <h1 class="page-title">Exam Dashboard</h1>
+              <span class="breadcrumb-sub" id="topbarBreadcrumbSub">
+                <i class="fa-solid fa-shield-halved text-success"></i> Verified
+                Session Active
+              </span>
+            </div>
+          </div>
+
+          <div class="topbar-right">
+            <!-- Role Switcher -->
+            <!-- <div class="role-switch-container">
+              <span class="role-switch-label">
+                <i class="fa-solid fa-user-gear"></i> Role:
+              </span>
+              <select
+                id="topbarRoleSelect"
+                class="role-select-box"
+                aria-label="Switch User Role View"
+              >
+                <option value="student_upsc">UPSC Aspirant</option>
+                <option value="student_banking">Banking / SSC Aspirant</option>
+                <option value="student_state">State PSC / Defense</option>
+                <option value="faculty">Faculty / Subject Mentor</option>
+                <option value="admin">Academy Administrator</option>
+                <option value="parent">Parent / Guardian</option>
+              </select>
+            </div> -->
+
+            <!-- Notification Dropdown -->
+            <div class="dropdown">
+              <button
+                type="button"
+                class="topbar-action-btn dropdown-toggle"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+                aria-label="Notifications"
+              >
+                <i class="fa-regular fa-bell"></i>
+                <span class="badge-dot"></span>
+              </button>
+              <ul
+                class="dropdown-menu dropdown-menu-end shadow-sm"
+                style="min-width: 280px; font-size: 0.85rem"
+              >
+                <li
+                  class="dropdown-header fw-bold text-dark border-bottom py-2"
+                >
+                  <i class="fa-solid fa-bell text-warning me-1"></i> Recent Exam
+                  Alerts
+                </li>
+                <li>
+                  <a class="dropdown-item py-2" href="#">
+                    <div class="fw-bold text-dark">
+                      Prelims Mock Test 08 Released
+                    </div>
+                    <div class="text-muted small">
+                      GS Paper 1 live now • 100 MCQs
+                    </div>
+                  </a>
+                </li>
+                <li>
+                  <a class="dropdown-item py-2" href="#">
+                    <div class="fw-bold text-dark">
+                      Live Polity Class at 4:00 PM
+                    </div>
+                    <div class="text-muted small">
+                      By Dr. Vikas Sharma (Ex-IAS)
+                    </div>
+                  </a>
+                </li>
+                <li>
+                  <a class="dropdown-item py-2" href="#">
+                    <div class="fw-bold text-dark">
+                      Monthly Current Affairs PDF
+                    </div>
+                    <div class="text-muted small">
+                      September 2026 digest uploaded
+                    </div>
+                  </a>
+                </li>
+                <li class="border-top text-center py-2">
+                  <a class="dropdown-item text-primary fw-bold" href="#"
+                    >View All Notifications</a
+                  >
+                </li>
+              </ul>
+            </div>
+
+            <!-- User Profile Dropdown -->
+            <div class="dropdown">
+              <button
+                type="button"
+                class="topbar-user-profile dropdown-toggle"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                <img
+                  src="../assets/images/home/home-topper-photo-1.webp"
+                  alt="User Avatar"
+                  class="topbar-user-avatar"
+                  id="topbarUserAvatar"
+                />
+                <div class="topbar-user-meta">
+                  <span class="topbar-user-name" id="topbarUserName"
+                    >Aditya Verma</span
+                  >
+                  <span class="topbar-user-role" id="topbarUserRole"
+                    >UPSC Aspirant</span
+                  >
+                </div>
+              </button>
+              <ul
+                class="dropdown-menu dropdown-menu-end shadow-sm"
+                style="min-width: 200px"
+              >
+                <li>
+                  <a class="dropdown-item" href="#"
+                    ><i class="fa-regular fa-user me-2"></i> My Profile</a
+                  >
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#"
+                    ><i class="fa-solid fa-gear me-2"></i> Account Settings</a
+                  >
+                </li>
+                <li>
+                  <a class="dropdown-item" href="#"
+                    ><i class="fa-solid fa-headset me-2"></i> Help & Support</a
+                  >
+                </li>
+                <li><hr class="dropdown-divider" /></li>
+                <li>
+                  <a
+                    class="dropdown-item text-danger user-logout-action"
+                    href="login.html"
+                    ><i class="fa-solid fa-arrow-right-from-bracket me-2"></i>
+                    Sign Out</a
+                  >
+                </li>
+              </ul>
+            </div>
+          </div>
+        </header>
+
+        <!-- DASHBOARD MAIN BODY -->
+        <main class="dashboard-content">
+          <!-- ROLE 1: UPSC CIVIL SERVICES ASPIRANT VIEW -->
+          <div class="role-dashboard-view active" id="role-view-student_upsc">
+            <!-- TAB 1: UPSC Overview & Analytics -->
+            <div class="tab-pane-content active" id="upsc-overview">
+              <!-- Hero Banner -->
+              <div class="dash-hero-banner">
+                <div class="dash-hero-badge">
+                  <i class="fa-solid fa-crown"></i> UPSC Civil Services 2026
+                  Target
+                </div>
+                <h2 class="dash-hero-title">
+                  Welcome back, <span class="dyn-user-name">Aditya Verma</span>!
+                </h2>
+                <p class="dash-hero-desc">
+                  Your discipline determines your rank. You have completed
+                  <strong>68%</strong> of the GS Foundation syllabus. Today's
+                  live answer evaluation starts at <strong>4:00 PM IST</strong>.
+                </p>
+                <div class="dash-hero-stats">
+                  <div class="dash-hero-stat-pill">
+                    <i class="fa-solid fa-hourglass-half"></i>
+                    <span>Prelims Countdown: <strong>142 Days</strong></span>
+                  </div>
+                  <div class="dash-hero-stat-pill">
+                    <i class="fa-solid fa-chalkboard-user"></i>
+                    <span
+                      >Mentor:
+                      <strong class="dyn-user-mentor"
+                        >Dr. Vikas Sharma</strong
+                      ></span
+                    >
+                  </div>
+                  <div class="dash-hero-stat-pill">
+                    <i class="fa-solid fa-id-card-clip"></i>
+                    <span
+                      >ID:
+                      <strong class="dyn-user-id">UPSC-2026-8842</strong></span
+                    >
+                  </div>
+                </div>
+              </div>
+
+              <!-- KPI Metric Cards -->
+              <div class="row g-3 mb-4">
+                <div class="col-xl-3 col-md-6">
+                  <div class="stat-card">
+                    <div class="stat-card-header">
+                      <div class="stat-card-icon stat-icon-primary">
+                        <i class="fa-solid fa-chart-line"></i>
+                      </div>
+                      <span class="stat-card-trend trend-up">
+                        <i class="fa-solid fa-arrow-trend-up"></i> +14 Marks
+                      </span>
+                    </div>
+                    <div class="stat-card-body">
+                      <div class="stat-title">Latest Mock Score</div>
+                      <div class="stat-value">
+                        128
+                        <span
+                          style="font-size: 1rem; color: var(--dash-text-muted)"
+                          >/ 200</span
+                        >
+                      </div>
+                      <p class="stat-meta">Prelims GS Paper 1 • Cut-off: 88</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-xl-3 col-md-6">
+                  <div class="stat-card">
+                    <div class="stat-card-header">
+                      <div class="stat-card-icon stat-icon-warning">
+                        <i class="fa-solid fa-trophy"></i>
+                      </div>
+                      <span class="stat-card-trend trend-up">
+                        <i class="fa-solid fa-award"></i> Top 4%
+                      </span>
+                    </div>
+                    <div class="stat-card-body">
+                      <div class="stat-title">AIR Rank Prediction</div>
+                      <div class="stat-value">AIR 142</div>
+                      <p class="stat-meta">
+                        Among 18,400 All-India test takers
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-xl-3 col-md-6">
+                  <div class="stat-card">
+                    <div class="stat-card-header">
+                      <div class="stat-card-icon stat-icon-success">
+                        <i class="fa-solid fa-book-bookmark"></i>
+                      </div>
+                      <span class="stat-card-trend trend-up">
+                        <i class="fa-solid fa-check"></i> On Track
+                      </span>
+                    </div>
+                    <div class="stat-card-body">
+                      <div class="stat-title">Syllabus Coverage</div>
+                      <div class="stat-value">68.4%</div>
+                      <p class="stat-meta">GS Paper 1, 2, 3 & Ethics Modules</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-xl-3 col-md-6">
+                  <div class="stat-card">
+                    <div class="stat-card-header">
+                      <div class="stat-card-icon stat-icon-info">
+                        <i class="fa-solid fa-pen-nib"></i>
+                      </div>
+                      <span class="stat-card-trend trend-neutral">
+                        <i class="fa-solid fa-clock"></i> 2 Pending
+                      </span>
+                    </div>
+                    <div class="stat-card-body">
+                      <div class="stat-title">Mains Copies Evaluated</div>
+                      <div class="stat-value">
+                        14
+                        <span
+                          style="font-size: 1rem; color: var(--dash-text-muted)"
+                          >/ 20</span
+                        >
+                      </div>
+                      <p class="stat-meta">Avg Score: 9.8 / 15 per answer</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Charts Row -->
+              <div class="row g-4 mb-4">
+                <div class="col-lg-8">
+                  <div class="dash-card">
+                    <div class="dash-card-header">
+                      <h3 class="dash-card-title">
+                        <i class="fa-solid fa-chart-area"></i> Prelims Mock Test
+                        Score Progression
+                      </h3>
+                      <div class="dash-card-actions">
+                        <span class="dash-badge dash-badge-primary"
+                          >Series 2026</span
+                        >
+                      </div>
+                    </div>
+                    <div
+                      class="dash-card-body dash-chart-card-body"
+                      style="position: relative; height: 320px"
+                    >
+                      <canvas id="upscScoreChart"></canvas>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-lg-4">
+                  <div class="dash-card">
+                    <div class="dash-card-header">
+                      <h3 class="dash-card-title">
+                        <i class="fa-solid fa-bullseye"></i> Subject Accuracy %
+                      </h3>
+                    </div>
+                    <div
+                      class="dash-card-body dash-chart-card-body"
+                      style="position: relative; height: 320px"
+                    >
+                      <canvas id="upscSubjectChart"></canvas>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Schedule & Active Tests Row -->
+              <div class="row g-4">
+                <div class="col-lg-6">
+                  <div class="dash-card">
+                    <div class="dash-card-header">
+                      <h3 class="dash-card-title">
+                        <i class="fa-solid fa-calendar-check"></i> Today's Live
+                        Class & Mentorship
+                      </h3>
+                      <a href="#" class="table-btn table-btn-outline"
+                        >Full Schedule</a
+                      >
+                    </div>
+                    <div class="dash-card-body">
+                      <div class="schedule-list">
+                        <div class="schedule-item">
+                          <div class="schedule-time-box">
+                            <span class="time-hour">04:00</span>
+                            <span class="time-meridiem">PM IST</span>
+                          </div>
+                          <div class="schedule-content">
+                            <h6 class="schedule-title">
+                              Indian Polity: Constitutional Amendments & Basic
+                              Structure
+                            </h6>
+                            <span class="schedule-instructor"
+                              ><i class="fa-solid fa-user-tie"></i> Dr. Vikas
+                              Sharma • Live Classroom A</span
+                            >
+                          </div>
+                          <a href="#" class="table-btn table-btn-primary"
+                            >Join Live</a
+                          >
+                        </div>
+
+                        <div class="schedule-item">
+                          <div class="schedule-time-box">
+                            <span class="time-hour">06:30</span>
+                            <span class="time-meridiem">PM IST</span>
+                          </div>
+                          <div class="schedule-content">
+                            <h6 class="schedule-title">
+                              Daily Mains Answer Writing Peer Review
+                            </h6>
+                            <span class="schedule-instructor"
+                              ><i class="fa-solid fa-pen-nib"></i> Ethics GS 4
+                              Case Studies</span
+                            >
+                          </div>
+                          <a href="#" class="table-btn table-btn-outline"
+                            >Submit Copy</a
+                          >
+                        </div>
+
+                        <div class="schedule-item">
+                          <div class="schedule-time-box">
+                            <span class="time-hour">08:00</span>
+                            <span class="time-meridiem">PM IST</span>
+                          </div>
+                          <div class="schedule-content">
+                            <h6 class="schedule-title">
+                              CSAT Quantitative Speed Drill: Permutations &
+                              Probability
+                            </h6>
+                            <span class="schedule-instructor"
+                              ><i class="fa-solid fa-calculator"></i> Prof.
+                              Rajesh Nair</span
+                            >
+                          </div>
+                          <a href="#" class="table-btn table-btn-outline"
+                            >View Notes</a
+                          >
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-lg-6">
+                  <div class="dash-card">
+                    <div class="dash-card-header">
+                      <h3 class="dash-card-title">
+                        <i class="fa-solid fa-list-check"></i> Recent All-India
+                        Test Results
+                      </h3>
+                      <a href="#" class="table-btn table-btn-outline"
+                        >All Results</a
+                      >
+                    </div>
+                    <div class="dash-card-body p-0">
+                      <div class="table-responsive">
+                        <table class="dash-table">
+                          <thead>
+                            <tr>
+                              <th>Test Name</th>
+                              <th>Score</th>
+                              <th>Accuracy</th>
+                              <th>All India Rank</th>
+                              <th>Action</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <td>
+                                <div class="fw-bold">
+                                  All-India Prelims Mock 08
+                                </div>
+                                <small class="text-muted"
+                                  >GS Paper 1 (Full Syllabus)</small
+                                >
+                              </td>
+                              <td>
+                                <span class="fw-bold text-success">128</span> /
+                                200
+                              </td>
+                              <td>
+                                <span class="dash-badge dash-badge-success"
+                                  >84.2%</span
+                                >
+                              </td>
+                              <td>AIR 142</td>
+                              <td>
+                                <a href="#" class="table-btn table-btn-outline"
+                                  >Analysis</a
+                                >
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <div class="fw-bold">
+                                  Sectional: Modern History
+                                </div>
+                                <small class="text-muted"
+                                  >1857 to 1947 Freedom Struggle</small
+                                >
+                              </td>
+                              <td>
+                                <span class="fw-bold text-success">84</span> /
+                                100
+                              </td>
+                              <td>
+                                <span class="dash-badge dash-badge-success"
+                                  >88.0%</span
+                                >
+                              </td>
+                              <td>AIR 98</td>
+                              <td>
+                                <a href="#" class="table-btn table-btn-outline"
+                                  >Analysis</a
+                                >
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <div class="fw-bold">CSAT Speed Mock 04</div>
+                                <small class="text-muted"
+                                  >Reading Comp & Logical Reasoning</small
+                                >
+                              </td>
+                              <td>
+                                <span class="fw-bold text-primary">112</span> /
+                                200
+                              </td>
+                              <td>
+                                <span class="dash-badge dash-badge-primary"
+                                  >76.5%</span
+                                >
+                              </td>
+                              <td>AIR 210</td>
+                              <td>
+                                <a href="#" class="table-btn table-btn-outline"
+                                  >Analysis</a
+                                >
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <div class="fw-bold">Mains GS Paper 2 Test</div>
+                                <small class="text-muted"
+                                  >Governance, Constitution & IR</small
+                                >
+                              </td>
+                              <td>
+                                <span class="fw-bold text-success">108.5</span>
+                                / 250
+                              </td>
+                              <td>
+                                <span class="dash-badge dash-badge-warning"
+                                  >Evaluated</span
+                                >
+                              </td>
+                              <td>Rank 34</td>
+                              <td>
+                                <a href="#" class="table-btn table-btn-outline"
+                                  >Copy</a
+                                >
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- TAB 2: My Courses & Syllabus Tracker -->
+            <div class="tab-pane-content" id="upsc-courses">
+              <div class="dash-card">
+                <div class="dash-card-header">
+                  <h3 class="dash-card-title">
+                    <i class="fa-solid fa-book-open-reader"></i> Enrolled UPSC
+                    Courses & Syllabus Coverage
+                  </h3>
+                  <span class="dash-badge dash-badge-primary"
+                    >Super-50 Foundation Batch</span
+                  >
+                </div>
+                <div class="dash-card-body">
+                  <div class="row g-4">
+                    <div class="col-lg-4">
+                      <div class="dash-course-card">
+                        <div>
+                          <div class="dash-course-meta">
+                            <span class="dash-badge dash-badge-primary"
+                              >GS Paper 1 & 2</span
+                            >
+                            <span class="text-muted small">84 Lectures</span>
+                          </div>
+                          <h4 class="dash-course-title">
+                            UPSC Prelims Comprehensive GS Foundation 2026
+                          </h4>
+                          <p class="dash-course-desc">
+                            History, Art & Culture, Polity, Geography, Economy,
+                            Ecology and Science & Technology.
+                          </p>
+
+                          <div class="dash-progress-wrap">
+                            <div class="dash-progress-label">
+                              <span>Syllabus Completed</span>
+                              <span class="fw-bold">78%</span>
+                            </div>
+                            <div class="dash-progress-bar">
+                              <div
+                                class="dash-progress-fill"
+                                style="width: 78%"
+                              ></div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="d-flex gap-2 mt-3">
+                          <a
+                            href="#"
+                            class="table-btn table-btn-primary flex-fill text-center"
+                            >Continue Lecture</a
+                          >
+                          <a href="#" class="table-btn table-btn-outline"
+                            >Notes</a
+                          >
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="col-lg-4">
+                      <div class="dash-course-card">
+                        <div>
+                          <div class="dash-course-meta">
+                            <span class="dash-badge dash-badge-warning"
+                              >Mains Focus</span
+                            >
+                            <span class="text-muted small"
+                              >42 Case Studies</span
+                            >
+                          </div>
+                          <h4 class="dash-course-title">
+                            GS Paper 4 Ethics, Integrity & Aptitude Masterclass
+                          </h4>
+                          <p class="dash-course-desc">
+                            Structured answer writing for moral philosophy,
+                            administrative ethics, and real-life case dilemmas.
+                          </p>
+
+                          <div class="dash-progress-wrap">
+                            <div class="dash-progress-label">
+                              <span>Syllabus Completed</span>
+                              <span class="fw-bold">62%</span>
+                            </div>
+                            <div class="dash-progress-bar">
+                              <div
+                                class="dash-progress-fill"
+                                style="width: 62%"
+                              ></div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="d-flex gap-2 mt-3">
+                          <a
+                            href="#"
+                            class="table-btn table-btn-primary flex-fill text-center"
+                            >Continue Lecture</a
+                          >
+                          <a href="#" class="table-btn table-btn-outline"
+                            >Notes</a
+                          >
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="col-lg-4">
+                      <div class="dash-course-card">
+                        <div>
+                          <div class="dash-course-meta">
+                            <span class="dash-badge dash-badge-success"
+                              >Optional Paper</span
+                            >
+                            <span class="text-muted small">60 Lectures</span>
+                          </div>
+                          <h4 class="dash-course-title">
+                            Public Administration Optional Mentorship (Paper 1 &
+                            2)
+                          </h4>
+                          <p class="dash-course-desc">
+                            Administrative thought, personnel administration,
+                            public policy, and Indian administration.
+                          </p>
+
+                          <div class="dash-progress-wrap">
+                            <div class="dash-progress-label">
+                              <span>Syllabus Completed</span>
+                              <span class="fw-bold">54%</span>
+                            </div>
+                            <div class="dash-progress-bar">
+                              <div
+                                class="dash-progress-fill"
+                                style="width: 54%"
+                              ></div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="d-flex gap-2 mt-3">
+                          <a
+                            href="#"
+                            class="table-btn table-btn-primary flex-fill text-center"
+                            >Continue Lecture</a
+                          >
+                          <a href="#" class="table-btn table-btn-outline"
+                            >Notes</a
+                          >
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- TAB 3: Mock Tests & Daily Quizzes -->
+            <div class="tab-pane-content" id="upsc-mocks">
+              <div class="dash-card">
+                <div class="dash-card-header">
+                  <h3 class="dash-card-title">
+                    <i class="fa-solid fa-file-signature"></i> UPSC All-India
+                    Mock Test Series 2026
+                  </h3>
+                  <a href="#" class="table-btn table-btn-primary"
+                    >Take Next Mock Test</a
+                  >
+                </div>
+                <div class="dash-card-body p-0">
+                  <div class="table-responsive">
+                    <table class="dash-table">
+                      <thead>
+                        <tr>
+                          <th>Mock Series Code</th>
+                          <th>Subject & Paper</th>
+                          <th>Duration & Questions</th>
+                          <th>Status</th>
+                          <th>Your Score</th>
+                          <th>AIR Rank</th>
+                          <th>Action</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td><strong>AIM-2026-09</strong></td>
+                          <td>GS Paper 1 (Polity & International Relations)</td>
+                          <td>120 Min • 100 MCQs</td>
+                          <td>
+                            <span class="dash-badge dash-badge-warning"
+                              >Live Today</span
+                            >
+                          </td>
+                          <td>-- / 200</td>
+                          <td>--</td>
+                          <td>
+                            <a href="#" class="table-btn table-btn-primary"
+                              >Start Exam</a
+                            >
+                          </td>
+                        </tr>
+                        <tr>
+                          <td><strong>AIM-2026-08</strong></td>
+                          <td>GS Paper 1 (Full Length Mock 08)</td>
+                          <td>120 Min • 100 MCQs</td>
+                          <td>
+                            <span class="dash-badge dash-badge-success"
+                              >Completed</span
+                            >
+                          </td>
+                          <td><strong>128</strong> / 200</td>
+                          <td>AIR 142 / 18,400</td>
+                          <td>
+                            <a href="#" class="table-btn table-btn-outline"
+                              >Report & Solutions</a
+                            >
+                          </td>
+                        </tr>
+                        <tr>
+                          <td><strong>CSAT-2026-05</strong></td>
+                          <td>CSAT Paper 2 (Maths + Logical Reasoning)</td>
+                          <td>120 Min • 80 MCQs</td>
+                          <td>
+                            <span class="dash-badge dash-badge-success"
+                              >Completed</span
+                            >
+                          </td>
+                          <td><strong>112</strong> / 200</td>
+                          <td>AIR 210 / 16,800</td>
+                          <td>
+                            <a href="#" class="table-btn table-btn-outline"
+                              >Report & Solutions</a
+                            >
+                          </td>
+                        </tr>
+                        <tr>
+                          <td><strong>MAINS-GS2-03</strong></td>
+                          <td>Mains GS Paper 2 (Constitution & Governance)</td>
+                          <td>180 Min • 20 Questions</td>
+                          <td>
+                            <span class="dash-badge dash-badge-info"
+                              >Evaluated</span
+                            >
+                          </td>
+                          <td><strong>108.5</strong> / 250</td>
+                          <td>Top 6%</td>
+                          <td>
+                            <a href="#" class="table-btn table-btn-outline"
+                              >Download Copy</a
+                            >
+                          </td>
+                        </tr>
+                        <tr>
+                          <td><strong>MAINS-ETH-02</strong></td>
+                          <td>Mains GS Paper 4 (Ethics Case Studies)</td>
+                          <td>180 Min • 14 Questions</td>
+                          <td>
+                            <span class="dash-badge dash-badge-warning"
+                              >Under Review</span
+                            >
+                          </td>
+                          <td>Pending</td>
+                          <td>--</td>
+                          <td>
+                            <a href="#" class="table-btn table-btn-outline"
+                              >Track Evaluation</a
+                            >
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- TAB 4: Performance Analytics & AIR Matrix -->
+            <div class="tab-pane-content" id="upsc-analytics">
+              <div class="dash-card">
+                <div class="dash-card-header">
+                  <h3 class="dash-card-title">
+                    <i class="fa-solid fa-chart-pie"></i> Diagnostic Analytics &
+                    Negative Marking Penalty
+                  </h3>
+                </div>
+                <div class="dash-card-body">
+                  <div class="row g-4">
+                    <div class="col-lg-6">
+                      <h5 class="fw-bold mb-3 text-dark">
+                        Subject Accuracy Breakdown
+                      </h5>
+                      <div class="dash-progress-wrap mb-3">
+                        <div class="dash-progress-label">
+                          <span>Indian Polity & Governance</span>
+                          <span class="fw-bold text-success"
+                            >92% (High Mastery)</span
+                          >
+                        </div>
+                        <div class="dash-progress-bar">
+                          <div
+                            class="dash-progress-fill"
+                            style="width: 92%"
+                          ></div>
+                        </div>
+                      </div>
+                      <div class="dash-progress-wrap mb-3">
+                        <div class="dash-progress-label">
+                          <span>Modern Indian History</span>
+                          <span class="fw-bold text-success">84%</span>
+                        </div>
+                        <div class="dash-progress-bar">
+                          <div
+                            class="dash-progress-fill"
+                            style="width: 84%"
+                          ></div>
+                        </div>
+                      </div>
+                      <div class="dash-progress-wrap mb-3">
+                        <div class="dash-progress-label">
+                          <span>Indian Economy & Macro Trends</span>
+                          <span class="fw-bold text-warning">76%</span>
+                        </div>
+                        <div class="dash-progress-bar">
+                          <div
+                            class="dash-progress-fill"
+                            style="width: 76%"
+                          ></div>
+                        </div>
+                      </div>
+                      <div class="dash-progress-wrap mb-3">
+                        <div class="dash-progress-label">
+                          <span>Environment, Biodiversity & Ecology</span>
+                          <span class="fw-bold text-danger"
+                            >68% (Needs Revision)</span
+                          >
+                        </div>
+                        <div class="dash-progress-bar">
+                          <div
+                            class="dash-progress-fill"
+                            style="width: 68%"
+                          ></div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="col-lg-6">
+                      <h5 class="fw-bold mb-3 text-dark">
+                        Time & Accuracy Parameters
+                      </h5>
+                      <ul
+                        class="list-group list-group-flush border rounded-3 p-2"
+                      >
+                        <li
+                          class="list-group-item d-flex justify-content-between align-items-center"
+                        >
+                          <span>Average Time per Prelims MCQ</span>
+                          <span class="fw-bold text-primary"
+                            >54 Seconds (Ideal: &lt; 65s)</span
+                          >
+                        </li>
+                        <li
+                          class="list-group-item d-flex justify-content-between align-items-center"
+                        >
+                          <span>Negative Marks Lost in Last Mock</span>
+                          <span class="fw-bold text-danger"
+                            >-9.32 Marks (14 Incorrect)</span
+                          >
+                        </li>
+                        <li
+                          class="list-group-item d-flex justify-content-between align-items-center"
+                        >
+                          <span>Mains Writing Speed (Words / Min)</span>
+                          <span class="fw-bold text-success"
+                            >28 WPM (Target: 30 WPM)</span
+                          >
+                        </li>
+                        <li
+                          class="list-group-item d-flex justify-content-between align-items-center"
+                        >
+                          <span>Overall All India Percentile</span>
+                          <span class="fw-bold text-success"
+                            >96.8th Percentile</span
+                          >
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- TAB 5: Live Classes & Batch Timetable -->
+            <div class="tab-pane-content" id="upsc-classes">
+              <div class="dash-card">
+                <div class="dash-card-header">
+                  <h3 class="dash-card-title">
+                    <i class="fa-solid fa-calendar-days"></i> Weekly Live Class
+                    Timetable (GS Super-50)
+                  </h3>
+                  <a href="#" class="table-btn table-btn-primary"
+                    >Sync with Google Calendar</a
+                  >
+                </div>
+                <div class="dash-card-body p-0">
+                  <div class="table-responsive">
+                    <table class="dash-table">
+                      <thead>
+                        <tr>
+                          <th>Day & Date</th>
+                          <th>Time Slot</th>
+                          <th>Subject & Topic</th>
+                          <th>Faculty Mentor</th>
+                          <th>Room / Stream Link</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td><strong>Monday, Sep 21</strong></td>
+                          <td>04:00 PM - 06:00 PM</td>
+                          <td>Polity: Federalism & Inter-State Relations</td>
+                          <td>Dr. Vikas Sharma (Ex-IAS)</td>
+                          <td>
+                            <a href="#" class="table-btn table-btn-primary"
+                              >Join Room 1</a
+                            >
+                          </td>
+                        </tr>
+                        <tr>
+                          <td><strong>Tuesday, Sep 22</strong></td>
+                          <td>04:00 PM - 06:00 PM</td>
+                          <td>Economy: Monetary Policy & Inflation Control</td>
+                          <td>Prof. Anirudh Sen</td>
+                          <td>
+                            <a href="#" class="table-btn table-btn-primary"
+                              >Join Room 1</a
+                            >
+                          </td>
+                        </tr>
+                        <tr>
+                          <td><strong>Wednesday, Sep 23</strong></td>
+                          <td>04:00 PM - 06:00 PM</td>
+                          <td>
+                            Modern History: Gandhian Movements (1920-1942)
+                          </td>
+                          <td>Dr. Meenakshi Sundaram</td>
+                          <td>
+                            <a href="#" class="table-btn table-btn-primary"
+                              >Join Room 2</a
+                            >
+                          </td>
+                        </tr>
+                        <tr>
+                          <td><strong>Thursday, Sep 24</strong></td>
+                          <td>06:30 PM - 08:00 PM</td>
+                          <td>Ethics Case Study Master Workshop</td>
+                          <td>Dr. Vikas Sharma (Ex-IAS)</td>
+                          <td>
+                            <a href="#" class="table-btn table-btn-primary"
+                              >Join Room 1</a
+                            >
+                          </td>
+                        </tr>
+                        <tr>
+                          <td><strong>Friday, Sep 25</strong></td>
+                          <td>04:00 PM - 06:00 PM</td>
+                          <td>
+                            Current Affairs Weekly Round-up & Editorial Analysis
+                          </td>
+                          <td>Expert Editorial Team</td>
+                          <td>
+                            <a href="#" class="table-btn table-btn-primary"
+                              >Join Room 3</a
+                            >
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- TAB 6: Study Material & PYQs -->
+            <div class="tab-pane-content" id="upsc-materials">
+              <div class="dash-card">
+                <div class="dash-card-header">
+                  <h3 class="dash-card-title">
+                    <i class="fa-solid fa-folder-open"></i> Curated Study
+                    Material, PYQs & Monthly Compilations
+                  </h3>
+                </div>
+                <div class="dash-card-body">
+                  <div class="row g-3">
+                    <div class="col-md-6 col-lg-4">
+                      <div
+                        class="p-3 border rounded-3 bg-light d-flex align-items-center justify-content-between"
+                      >
+                        <div>
+                          <div class="fw-bold text-dark">
+                            Monthly Current Affairs (Sep 2026)
+                          </div>
+                          <small class="text-muted"
+                            >PDF • 142 Pages • The Hindu + Express</small
+                          >
+                        </div>
+                        <a href="#" class="table-btn table-btn-primary"
+                          ><i class="fa-solid fa-download"></i
+                        ></a>
+                      </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4">
+                      <div
+                        class="p-3 border rounded-3 bg-light d-flex align-items-center justify-content-between"
+                      >
+                        <div>
+                          <div class="fw-bold text-dark">
+                            UPSC Prelims 2014-2025 PYQs with Explanations
+                          </div>
+                          <small class="text-muted"
+                            >PDF • Subject-wise categorization</small
+                          >
+                        </div>
+                        <a href="#" class="table-btn table-btn-primary"
+                          ><i class="fa-solid fa-download"></i
+                        ></a>
+                      </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4">
+                      <div
+                        class="p-3 border rounded-3 bg-light d-flex align-items-center justify-content-between"
+                      >
+                        <div>
+                          <div class="fw-bold text-dark">
+                            NCERT Gist: Indian Constitution at Work
+                          </div>
+                          <small class="text-muted"
+                            >PDF • High-yield mindmaps</small
+                          >
+                        </div>
+                        <a href="#" class="table-btn table-btn-primary"
+                          ><i class="fa-solid fa-download"></i
+                        ></a>
+                      </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4">
+                      <div
+                        class="p-3 border rounded-3 bg-light d-flex align-items-center justify-content-between"
+                      >
+                        <div>
+                          <div class="fw-bold text-dark">
+                            Economic Survey & Budget 2026 Highlights
+                          </div>
+                          <small class="text-muted"
+                            >PDF • Infographics & Tables</small
+                          >
+                        </div>
+                        <a href="#" class="table-btn table-btn-primary"
+                          ><i class="fa-solid fa-download"></i
+                        ></a>
+                      </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4">
+                      <div
+                        class="p-3 border rounded-3 bg-light d-flex align-items-center justify-content-between"
+                      >
+                        <div>
+                          <div class="fw-bold text-dark">
+                            Ethics GS 4: 100 Solved Case Studies
+                          </div>
+                          <small class="text-muted"
+                            >PDF • Framework by Ex-Civil Servants</small
+                          >
+                        </div>
+                        <a href="#" class="table-btn table-btn-primary"
+                          ><i class="fa-solid fa-download"></i
+                        ></a>
+                      </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4">
+                      <div
+                        class="p-3 border rounded-3 bg-light d-flex align-items-center justify-content-between"
+                      >
+                        <div>
+                          <div class="fw-bold text-dark">
+                            Kurukshetra & Yojana Annual Compilation
+                          </div>
+                          <small class="text-muted"
+                            >PDF • Rural dev & governance issues</small
+                          >
+                        </div>
+                        <a href="#" class="table-btn table-btn-primary"
+                          ><i class="fa-solid fa-download"></i
+                        ></a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- TAB 7: 1-on-1 Mentor Doubt Desk -->
+            <div class="tab-pane-content" id="upsc-doubts">
+              <div class="dash-card">
+                <div class="dash-card-header">
+                  <h3 class="dash-card-title">
+                    <i class="fa-solid fa-comments"></i> 1-on-1 IAS Mentor Doubt
+                    Desk
+                  </h3>
+                  <a
+                    href="#"
+                    class="table-btn table-btn-primary"
+                    data-bs-toggle="modal"
+                    data-bs-target="#askDoubtModal"
+                  >
+                    <i class="fa-solid fa-plus"></i> Submit New Doubt
+                  </a>
+                </div>
+                <div class="dash-card-body p-0">
+                  <div class="table-responsive">
+                    <table class="dash-table">
+                      <thead>
+                        <tr>
+                          <th>Ticket ID</th>
+                          <th>Subject & Query</th>
+                          <th>Assigned Mentor</th>
+                          <th>Submitted On</th>
+                          <th>Status</th>
+                          <th>Action</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td><strong>#DBT-4091</strong></td>
+                          <td>
+                            <div class="fw-bold">
+                              Article 356 vs Article 365 distinction in Mains GS
+                              2
+                            </div>
+                            <small class="text-muted"
+                              >Clarification on Sarkaria Commission
+                              recommendations</small
+                            >
+                          </td>
+                          <td>Dr. Vikas Sharma</td>
+                          <td>16 Sep 2026</td>
+                          <td>
+                            <span class="dash-badge dash-badge-success"
+                              >Resolved (Audio Note)</span
+                            >
+                          </td>
+                          <td>
+                            <a href="#" class="table-btn table-btn-outline"
+                              >View Reply</a
+                            >
+                          </td>
+                        </tr>
+                        <tr>
+                          <td><strong>#DBT-4048</strong></td>
+                          <td>
+                            <div class="fw-bold">
+                              Feedback on GS 4 Case Study regarding
+                              Environmental Clearance vs Industrial Job Creation
+                            </div>
+                            <small class="text-muted"
+                              >Uploaded handwritten PDF answer copy</small
+                            >
+                          </td>
+                          <td>Dr. Vikas Sharma</td>
+                          <td>14 Sep 2026</td>
+                          <td>
+                            <span class="dash-badge dash-badge-success"
+                              >Graded (11.5/20)</span
+                            >
+                          </td>
+                          <td>
+                            <a href="#" class="table-btn table-btn-outline"
+                              >View Rubric</a
+                            >
+                          </td>
+                        </tr>
+                        <tr>
+                          <td><strong>#DBT-3992</strong></td>
+                          <td>
+                            <div class="fw-bold">
+                              Clarification on Core Inflation vs Headline
+                              Inflation CPI weighting
+                            </div>
+                            <small class="text-muted">Economy Doubt</small>
+                          </td>
+                          <td>Prof. Anirudh Sen</td>
+                          <td>10 Sep 2026</td>
+                          <td>
+                            <span class="dash-badge dash-badge-success"
+                              >Resolved</span
+                            >
+                          </td>
+                          <td>
+                            <a href="#" class="table-btn table-btn-outline"
+                              >View Notes</a
+                            >
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- TAB 8: Fee Receipts & Hall Ticket -->
+            <div class="tab-pane-content" id="upsc-fees">
+              <div class="dash-card">
+                <div class="dash-card-header">
+                  <h3 class="dash-card-title">
+                    <i class="fa-solid fa-receipt"></i> Academy Invoices, Fee
+                    Receipts & Exam Hall Ticket
+                  </h3>
+                </div>
+                <div class="dash-card-body">
+                  <div class="row g-4 mb-4">
+                    <div class="col-md-6">
+                      <div class="p-4 border rounded-3 bg-light">
+                        <div
+                          class="d-flex justify-content-between align-items-center mb-3"
+                        >
+                          <span class="dash-badge dash-badge-success"
+                            >Fully Paid</span
+                          >
+                          <span class="fw-bold text-primary"
+                            >UPSC-2026-8842</span
+                          >
+                        </div>
+                        <h5 class="fw-bold text-dark">
+                          UPSC CSE 2026 Super-50 Integrated Foundation Batch
+                        </h5>
+                        <p class="text-muted small">
+                          Includes GS Prelims + Mains, CSAT, Test Series &
+                          1-on-1 Mentorship.
+                        </p>
+                        <div
+                          class="d-flex justify-content-between border-top pt-2"
+                        >
+                          <span>Total Paid Amount:</span>
+                          <span class="fw-bold text-dark"
+                            >₹1,25,000 (Incl. GST)</span
+                          >
+                        </div>
+                        <a
+                          href="#"
+                          class="table-btn table-btn-outline w-100 mt-3 text-center"
+                        >
+                          <i class="fa-solid fa-file-pdf"></i> Download Official
+                          Tax Invoice
+                        </a>
+                      </div>
+                    </div>
+
+                    <div class="col-md-6">
+                      <div class="p-4 border rounded-3 bg-light">
+                        <div
+                          class="d-flex justify-content-between align-items-center mb-3"
+                        >
+                          <span class="dash-badge dash-badge-primary"
+                            >Active Hall Ticket</span
+                          >
+                          <span class="fw-bold text-dark"
+                            >Test Center: Main Hall B</span
+                          >
+                        </div>
+                        <h5 class="fw-bold text-dark">
+                          All-India Offline Mock Test Center Admit Card
+                        </h5>
+                        <p class="text-muted small">
+                          Valid for offline simulated Prelims & Mains mocks at
+                          Academy Test Arena.
+                        </p>
+                        <div
+                          class="d-flex justify-content-between border-top pt-2"
+                        >
+                          <span>Candidate Roll Number:</span>
+                          <span class="fw-bold text-dark">AIR-UP-2026-901</span>
+                        </div>
+                        <a
+                          href="#"
+                          class="table-btn table-btn-primary w-100 mt-3 text-center"
+                        >
+                          <i class="fa-solid fa-qrcode"></i> Print Verified Hall
+                          Ticket (with QR)
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- ROLE 2: BANKING & SSC ASPIRANT VIEW -->
+          <div class="role-dashboard-view" id="role-view-student_banking">
+            <div class="dash-hero-banner">
+              <div class="dash-hero-badge">
+                <i class="fa-solid fa-bolt"></i> Banking & SSC Speed Command
+              </div>
+              <h2 class="dash-hero-title">
+                Welcome back, <span class="dyn-user-name">Pooja Deshmukh</span>!
+              </h2>
+              <p class="dash-hero-desc">
+                Speed & Accuracy define Banking toppers. Your current
+                quantitative calculation speed is
+                <strong>32 Qs in 20 min</strong>. Today's SBI PO Mega Speed
+                Drill is scheduled at <strong>5:30 PM</strong>.
+              </p>
+              <div class="dash-hero-stats">
+                <div class="dash-hero-stat-pill">
+                  <i class="fa-solid fa-stopwatch"></i>
+                  <span>SBI PO Exam: <strong>58 Days Left</strong></span>
+                </div>
+                <div class="dash-hero-stat-pill">
+                  <i class="fa-solid fa-trophy"></i>
+                  <span
+                    >Sunday Mock Rank: <strong>AIR 142 / 18,400</strong></span
+                  >
+                </div>
+                <div class="dash-hero-stat-pill">
+                  <i class="fa-solid fa-award"></i>
+                  <span>Overall Accuracy: <strong>91.4%</strong></span>
+                </div>
+              </div>
+            </div>
+
+            <!-- TAB: Banking Overview -->
+            <div class="tab-pane-content active" id="banking-overview">
+              <div class="row g-3 mb-4">
+                <div class="col-xl-3 col-md-6">
+                  <div class="stat-card">
+                    <div class="stat-card-header">
+                      <div class="stat-card-icon stat-icon-primary">
+                        <i class="fa-solid fa-calculator"></i>
+                      </div>
+                      <span class="stat-card-trend trend-up">94% Acc</span>
+                    </div>
+                    <div class="stat-card-body">
+                      <div class="stat-title">Quant Speed Rate</div>
+                      <div class="stat-value">
+                        32 Qs
+                        <span
+                          style="
+                            font-size: 0.9rem;
+                            color: var(--dash-text-muted);
+                          "
+                          >/ 20m</span
+                        >
+                      </div>
+                      <p class="stat-meta">DI, Quadratic & Series Specialist</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-xl-3 col-md-6">
+                  <div class="stat-card">
+                    <div class="stat-card-header">
+                      <div class="stat-card-icon stat-icon-warning">
+                        <i class="fa-solid fa-puzzle-piece"></i>
+                      </div>
+                      <span class="stat-card-trend trend-up">91% Acc</span>
+                    </div>
+                    <div class="stat-card-body">
+                      <div class="stat-title">Reasoning Puzzles</div>
+                      <div class="stat-value">
+                        35 Qs
+                        <span
+                          style="
+                            font-size: 0.9rem;
+                            color: var(--dash-text-muted);
+                          "
+                          >/ 20m</span
+                        >
+                      </div>
+                      <p class="stat-meta">Floor & Circular Seating Master</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-xl-3 col-md-6">
+                  <div class="stat-card">
+                    <div class="stat-card-header">
+                      <div class="stat-card-icon stat-icon-success">
+                        <i class="fa-solid fa-newspaper"></i>
+                      </div>
+                      <span class="stat-card-trend trend-up">38 Qs</span>
+                    </div>
+                    <div class="stat-card-body">
+                      <div class="stat-title">Banking Awareness</div>
+                      <div class="stat-value">
+                        38
+                        <span
+                          style="
+                            font-size: 0.9rem;
+                            color: var(--dash-text-muted);
+                          "
+                          >/ 40</span
+                        >
+                      </div>
+                      <p class="stat-meta">RBI Monetary Policy & Current Fin</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-xl-3 col-md-6">
+                  <div class="stat-card">
+                    <div class="stat-card-header">
+                      <div class="stat-card-icon stat-icon-info">
+                        <i class="fa-solid fa-stopwatch"></i>
+                      </div>
+                      <span class="stat-card-trend trend-neutral"
+                        >Daily Streak</span
+                      >
+                    </div>
+                    <div class="stat-card-body">
+                      <div class="stat-title">Mock Drills Done</div>
+                      <div class="stat-value">48 Tests</div>
+                      <p class="stat-meta">Streak: 24 Consecutive Days</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="row g-4 mb-4">
+                <div class="col-lg-8">
+                  <div class="dash-card">
+                    <div class="dash-card-header">
+                      <h3 class="dash-card-title">
+                        <i class="fa-solid fa-chart-simple"></i> Sectional
+                        Attempt vs Correct Answers
+                      </h3>
+                    </div>
+                    <div
+                      class="dash-card-body dash-chart-card-body"
+                      style="position: relative; height: 300px"
+                    >
+                      <canvas id="bankingSpeedChart"></canvas>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-lg-4">
+                  <div class="dash-card">
+                    <div class="dash-card-header">
+                      <h3 class="dash-card-title">
+                        <i class="fa-solid fa-bolt"></i> Daily Speed Drills
+                      </h3>
+                    </div>
+                    <div class="dash-card-body">
+                      <div class="schedule-list">
+                        <div class="schedule-item">
+                          <div class="schedule-content">
+                            <h6 class="schedule-title">
+                              15-Min Fast Math: Simplifications
+                            </h6>
+                            <small class="text-muted"
+                              >30 Questions • Instant Ranking</small
+                            >
+                          </div>
+                          <a href="#" class="table-btn table-btn-primary"
+                            >Start Drill</a
+                          >
+                        </div>
+                        <div class="schedule-item">
+                          <div class="schedule-content">
+                            <h6 class="schedule-title">
+                              Seating Arrangement Puzzle Challenge
+                            </h6>
+                            <small class="text-muted"
+                              >4 High-Level Puzzles • SBI PO Level</small
+                            >
+                          </div>
+                          <a href="#" class="table-btn table-btn-primary"
+                            >Start Drill</a
+                          >
+                        </div>
+                        <div class="schedule-item">
+                          <div class="schedule-content">
+                            <h6 class="schedule-title">
+                              Banking Awareness 50 MCQs Capsule
+                            </h6>
+                            <small class="text-muted"
+                              >RBI Circulars & Digital Banking</small
+                            >
+                          </div>
+                          <a href="#" class="table-btn table-btn-primary"
+                            >Start Drill</a
+                          >
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- TAB: Banking Batches -->
+            <div class="tab-pane-content" id="banking-courses">
+              <div class="dash-card">
+                <div class="dash-card-header">
+                  <h3 class="dash-card-title">
+                    <i class="fa-solid fa-graduation-cap"></i> Enrolled Banking
+                    & SSC Batches
+                  </h3>
+                </div>
+                <div class="dash-card-body">
+                  <div class="row g-4">
+                    <div class="col-md-6">
+                      <div class="p-4 border rounded-3 bg-light">
+                        <span class="dash-badge dash-badge-primary mb-2"
+                          >Active Target Batch</span
+                        >
+                        <h4 class="fw-bold text-dark">
+                          SBI PO & IBPS PO 2026 Speed Pro Batch
+                        </h4>
+                        <p class="text-muted small">
+                          Complete Prelims + Mains coverage with 100+ Sectional
+                          Mock Drills.
+                        </p>
+                        <div class="dash-progress-wrap mb-3">
+                          <div class="dash-progress-label">
+                            <span>Batch Progress</span><span>82%</span>
+                          </div>
+                          <div class="dash-progress-bar">
+                            <div
+                              class="dash-progress-fill"
+                              style="width: 82%"
+                            ></div>
+                          </div>
+                        </div>
+                        <a href="#" class="table-btn table-btn-primary"
+                          >Access Video Archive</a
+                        >
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="p-4 border rounded-3 bg-light">
+                        <span class="dash-badge dash-badge-warning mb-2"
+                          >SSC CGL Special</span
+                        >
+                        <h4 class="fw-bold text-dark">
+                          SSC CGL Tier 1 + Tier 2 Super 50 Batch
+                        </h4>
+                        <p class="text-muted small">
+                          Advanced Arithmetic, Geometry, Trigonometry and
+                          English Comprehension.
+                        </p>
+                        <div class="dash-progress-wrap mb-3">
+                          <div class="dash-progress-label">
+                            <span>Batch Progress</span><span>70%</span>
+                          </div>
+                          <div class="dash-progress-bar">
+                            <div
+                              class="dash-progress-fill"
+                              style="width: 70%"
+                            ></div>
+                          </div>
+                        </div>
+                        <a href="#" class="table-btn table-btn-primary"
+                          >Access Video Archive</a
+                        >
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- TAB: Banking Speed Tests -->
+            <div class="tab-pane-content" id="banking-speedtests">
+              <div class="dash-card">
+                <div class="dash-card-header">
+                  <h3 class="dash-card-title">
+                    <i class="fa-solid fa-stopwatch-20"></i> Banking Sectional
+                    Speed Tests
+                  </h3>
+                  <a href="#" class="table-btn table-btn-primary"
+                    >Take New Test</a
+                  >
+                </div>
+                <div class="dash-card-body p-0">
+                  <div class="table-responsive">
+                    <table class="dash-table">
+                      <thead>
+                        <tr>
+                          <th>Test ID</th>
+                          <th>Topic</th>
+                          <th>Questions</th>
+                          <th>Time</th>
+                          <th>Accuracy</th>
+                          <th>Action</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td><strong>BANK-SPD-82</strong></td>
+                          <td>
+                            Data Interpretation: High-Level Radar & Table DI
+                          </td>
+                          <td>25 Qs</td>
+                          <td>15 Min</td>
+                          <td>
+                            <span class="dash-badge dash-badge-success"
+                              >92%</span
+                            >
+                          </td>
+                          <td>
+                            <a href="#" class="table-btn table-btn-outline"
+                              >Analysis</a
+                            >
+                          </td>
+                        </tr>
+                        <tr>
+                          <td><strong>BANK-SPD-81</strong></td>
+                          <td>Syllogisms (Only a few cases) & Inequality</td>
+                          <td>20 Qs</td>
+                          <td>10 Min</td>
+                          <td>
+                            <span class="dash-badge dash-badge-success"
+                              >100%</span
+                            >
+                          </td>
+                          <td>
+                            <a href="#" class="table-btn table-btn-outline"
+                              >Analysis</a
+                            >
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- TAB: Banking Analytics -->
+            <div class="tab-pane-content" id="banking-analytics">
+              <div class="dash-card">
+                <div class="dash-card-header">
+                  <h3 class="dash-card-title">
+                    <i class="fa-solid fa-chart-line"></i> Speed & Precision
+                    Matrix
+                  </h3>
+                </div>
+                <div class="dash-card-body">
+                  <p class="text-muted">
+                    Your question attempt rate exceeds 96% of Banking aspirants
+                    across India. Recommended focus: Cloze test vocabulary
+                    refinement.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- TAB: Banking Classes -->
+            <div class="tab-pane-content" id="banking-classes">
+              <div class="dash-card">
+                <div class="dash-card-header">
+                  <h3 class="dash-card-title">
+                    <i class="fa-solid fa-video"></i> Shortcut Tricks Live
+                    Studio
+                  </h3>
+                </div>
+                <div class="dash-card-body">
+                  <p class="text-muted">
+                    Join live masterclasses featuring speed Vedic math,
+                    10-second quadratic factor tricks, and syllogism Venn
+                    methods.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- TAB: Banking Capsules -->
+            <div class="tab-pane-content" id="banking-capsules">
+              <div class="dash-card">
+                <div class="dash-card-header">
+                  <h3 class="dash-card-title">
+                    <i class="fa-solid fa-newspaper"></i> Monthly Banking & GA
+                    Capsules
+                  </h3>
+                </div>
+                <div class="dash-card-body">
+                  <div
+                    class="d-flex justify-content-between p-3 border rounded bg-light mb-3"
+                  >
+                    <div>
+                      <h6 class="fw-bold mb-1">
+                        September 2026 Complete Banking Awareness Capsule
+                      </h6>
+                      <small class="text-muted"
+                        >PDF • 88 Pages • RBI Notifications & Mergers</small
+                      >
+                    </div>
+                    <a href="#" class="table-btn table-btn-primary"
+                      ><i class="fa-solid fa-download"></i> Download</a
+                    >
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- ROLE 3: STATE PSC & DEFENSE VIEW -->
+          <div class="role-dashboard-view" id="role-view-student_state">
+            <div class="dash-hero-banner">
+              <div class="dash-hero-badge">
+                <i class="fa-solid fa-shield-cat"></i> State PSC & Defense
+                Academy
+              </div>
+              <h2 class="dash-hero-title">
+                Welcome back,
+                <span class="dyn-user-name">Vikramaditya Singh</span>!
+              </h2>
+              <p class="dash-hero-desc">
+                State Civil Services Combined Prelims 2026 is scheduled in
+                <strong>89 Days</strong>. Keep your physical drill and state
+                special General Studies updated.
+              </p>
+              <div class="dash-hero-stats">
+                <div class="dash-hero-stat-pill">
+                  <i class="fa-solid fa-calendar"></i
+                  ><span>State Prelims: <strong>89 Days</strong></span>
+                </div>
+                <div class="dash-hero-stat-pill">
+                  <i class="fa-solid fa-person-military-pointing"></i
+                  ><span
+                    >SSB Interview Prep: <strong>Stage 2 Clear</strong></span
+                  >
+                </div>
+              </div>
+            </div>
+
+            <!-- TAB: State Overview -->
+            <div class="tab-pane-content active" id="state-overview">
+              <div class="row g-3 mb-4">
+                <div class="col-md-4">
+                  <div class="stat-card">
+                    <div class="stat-card-header">
+                      <div class="stat-card-icon stat-icon-primary">
+                        <i class="fa-solid fa-landmark"></i>
+                      </div>
+                      <span class="stat-card-trend trend-up">88%</span>
+                    </div>
+                    <div class="stat-card-body">
+                      <div class="stat-title">State Special GK</div>
+                      <div class="stat-value">88.4%</div>
+                      <p class="stat-meta">State History, Geography & Budget</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="stat-card">
+                    <div class="stat-card-header">
+                      <div class="stat-card-icon stat-icon-success">
+                        <i class="fa-solid fa-bullseye"></i>
+                      </div>
+                      <span class="stat-card-trend trend-up">AIR 38</span>
+                    </div>
+                    <div class="stat-card-body">
+                      <div class="stat-title">State Mock Rank</div>
+                      <div class="stat-value">Rank 38</div>
+                      <p class="stat-meta">Among 6,200 State Aspirants</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="stat-card">
+                    <div class="stat-card-header">
+                      <div class="stat-card-icon stat-icon-info">
+                        <i class="fa-solid fa-person-running"></i>
+                      </div>
+                      <span class="stat-card-trend trend-up">Grade A</span>
+                    </div>
+                    <div class="stat-card-body">
+                      <div class="stat-title">Physical & SSB Status</div>
+                      <div class="stat-value">SSB Ready</div>
+                      <p class="stat-meta">OIR + PPDT + Interview cleared</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="dash-card">
+                <div class="dash-card-header">
+                  <h3 class="dash-card-title">
+                    <i class="fa-solid fa-file-shield"></i> State PSC Mock Exam
+                    Series
+                  </h3>
+                  <a href="#" class="table-btn table-btn-primary"
+                    >Take Next State Mock</a
+                  >
+                </div>
+                <div class="dash-card-body p-0">
+                  <div class="table-responsive">
+                    <table class="dash-table">
+                      <thead>
+                        <tr>
+                          <th>Exam Paper</th>
+                          <th>Total Marks</th>
+                          <th>Your Score</th>
+                          <th>Cut-Off</th>
+                          <th>Action</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>
+                            <strong>State Combined Prelims Mock 04</strong>
+                          </td>
+                          <td>200 Marks</td>
+                          <td>
+                            <span class="fw-bold text-success">144.5</span>
+                          </td>
+                          <td>118.0</td>
+                          <td>
+                            <a href="#" class="table-btn table-btn-outline"
+                              >View Analysis</a
+                            >
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+                            <strong
+                              >State Special GK & Administrative Laws</strong
+                            >
+                          </td>
+                          <td>100 Marks</td>
+                          <td>
+                            <span class="fw-bold text-success">86.0</span>
+                          </td>
+                          <td>65.0</td>
+                          <td>
+                            <a href="#" class="table-btn table-btn-outline"
+                              >View Analysis</a
+                            >
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- TAB: State Modules -->
+            <div class="tab-pane-content" id="state-modules">
+              <div class="dash-card">
+                <div class="dash-card-header">
+                  <h3 class="dash-card-title">State GK & History Modules</h3>
+                </div>
+                <div class="dash-card-body">
+                  <p class="text-muted">
+                    Comprehensive modules covering state dynasties, geography,
+                    river systems, and tribal cultures.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <!-- TAB: State Mocks -->
+            <div class="tab-pane-content" id="state-mocks">
+              <div class="dash-card">
+                <div class="dash-card-header">
+                  <h3 class="dash-card-title">State PSC & SSB Tests</h3>
+                </div>
+                <div class="dash-card-body">
+                  <p class="text-muted">
+                    State mock test series and SSB psychological evaluation
+                    portal.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <!-- TAB: State Materials -->
+            <div class="tab-pane-content" id="state-materials">
+              <div class="dash-card">
+                <div class="dash-card-header">
+                  <h3 class="dash-card-title">Economic Survey & Maps</h3>
+                </div>
+                <div class="dash-card-body">
+                  <p class="text-muted">
+                    High-resolution state district maps and current legislative
+                    summaries.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- ROLE 4: FACULTY / SUBJECT MENTOR VIEW -->
+          <div class="role-dashboard-view" id="role-view-faculty">
+            <div class="dash-hero-banner">
+              <div class="dash-hero-badge">
+                <i class="fa-solid fa-chalkboard-user"></i> Faculty & Subject
+                Mentor Command Desk
+              </div>
+              <h2 class="dash-hero-title">
+                Welcome, <span class="dyn-user-name">Dr. Vikas Sharma</span>!
+              </h2>
+              <p class="dash-hero-desc">
+                You have <strong>3 Live Lectures</strong> scheduled today and
+                <strong>18 Student Mains Answer Copies</strong> awaiting
+                evaluation.
+              </p>
+              <div class="dash-hero-stats">
+                <div class="dash-hero-stat-pill">
+                  <i class="fa-solid fa-users"></i
+                  ><span
+                    >Enrolled Mentees: <strong>1,420 Aspirants</strong></span
+                  >
+                </div>
+                <div class="dash-hero-stat-pill">
+                  <i class="fa-solid fa-star text-warning"></i
+                  ><span>Mentor Rating: <strong>4.95 / 5.0</strong></span>
+                </div>
+                <div class="dash-hero-stat-pill">
+                  <i class="fa-solid fa-clock"></i
+                  ><span
+                    >Today's First Class:
+                    <strong>4:00 PM IST (Polity)</strong></span
+                  >
+                </div>
+              </div>
+            </div>
+
+            <!-- TAB: Faculty Overview -->
+            <div class="tab-pane-content active" id="faculty-overview">
+              <div class="row g-3 mb-4">
+                <div class="col-xl-3 col-md-6">
+                  <div class="stat-card">
+                    <div class="stat-card-header">
+                      <div class="stat-card-icon stat-icon-primary">
+                        <i class="fa-solid fa-video"></i>
+                      </div>
+                      <span class="stat-card-trend trend-up">3 Today</span>
+                    </div>
+                    <div class="stat-card-body">
+                      <div class="stat-title">Live Lectures Scheduled</div>
+                      <div class="stat-value">3 Classes</div>
+                      <p class="stat-meta">Polity & Ethics Foundation</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-xl-3 col-md-6">
+                  <div class="stat-card">
+                    <div class="stat-card-header">
+                      <div class="stat-card-icon stat-icon-warning">
+                        <i class="fa-solid fa-pen-to-square"></i>
+                      </div>
+                      <span class="stat-card-trend trend-down">18 Pending</span>
+                    </div>
+                    <div class="stat-card-body">
+                      <div class="stat-title">Pending Answer Copies</div>
+                      <div class="stat-value">18 Copies</div>
+                      <p class="stat-meta">Due within 24 hours</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-xl-3 col-md-6">
+                  <div class="stat-card">
+                    <div class="stat-card-header">
+                      <div class="stat-card-icon stat-icon-success">
+                        <i class="fa-solid fa-user-check"></i>
+                      </div>
+                      <span class="stat-card-trend trend-up">94.2%</span>
+                    </div>
+                    <div class="stat-card-body">
+                      <div class="stat-title">Student Attendance Rate</div>
+                      <div class="stat-value">94.2%</div>
+                      <p class="stat-meta">GS Super-50 Batch A-1</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-xl-3 col-md-6">
+                  <div class="stat-card">
+                    <div class="stat-card-header">
+                      <div class="stat-card-icon stat-icon-info">
+                        <i class="fa-solid fa-comments"></i>
+                      </div>
+                      <span class="stat-card-trend trend-neutral"
+                        >9 Unread</span
+                      >
+                    </div>
+                    <div class="stat-card-body">
+                      <div class="stat-title">Student Doubts Desk</div>
+                      <div class="stat-value">9 Doubts</div>
+                      <p class="stat-meta">Avg response time: 2.1 hrs</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="row g-4 mb-4">
+                <div class="col-lg-8">
+                  <div class="dash-card">
+                    <div class="dash-card-header">
+                      <h3 class="dash-card-title">
+                        <i class="fa-solid fa-chart-line"></i> Weekly Mains
+                        Copies Evaluated
+                      </h3>
+                    </div>
+                    <div
+                      class="dash-card-body dash-chart-card-body"
+                      style="position: relative; height: 300px"
+                    >
+                      <canvas id="facultyGradingChart"></canvas>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-lg-4">
+                  <div class="dash-card">
+                    <div class="dash-card-header">
+                      <h3 class="dash-card-title">
+                        <i class="fa-solid fa-bolt"></i> Quick Mentor Actions
+                      </h3>
+                    </div>
+                    <div class="dash-card-body">
+                      <div class="quick-action-grid">
+                        <a href="#" class="quick-action-btn"
+                          ><i class="fa-solid fa-video"></i
+                          ><span>Start Stream</span></a
+                        >
+                        <a href="#" class="quick-action-btn"
+                          ><i class="fa-solid fa-file-pen"></i
+                          ><span>Grade Copies</span></a
+                        >
+                        <a href="#" class="quick-action-btn"
+                          ><i class="fa-solid fa-circle-question"></i
+                          ><span>Create MCQ</span></a
+                        >
+                        <a href="#" class="quick-action-btn"
+                          ><i class="fa-solid fa-bullhorn"></i
+                          ><span>Post Notice</span></a
+                        >
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- TAB: Faculty Batches -->
+            <div class="tab-pane-content" id="faculty-batches">
+              <div class="dash-card">
+                <div class="dash-card-header">
+                  <h3 class="dash-card-title">
+                    <i class="fa-solid fa-users-rectangle"></i> Assigned Batches
+                    & Student Roster
+                  </h3>
+                </div>
+                <div class="dash-card-body p-0">
+                  <div class="table-responsive">
+                    <table class="dash-table">
+                      <thead>
+                        <tr>
+                          <th>Batch Code</th>
+                          <th>Target Exam</th>
+                          <th>Enrolled Students</th>
+                          <th>Attendance</th>
+                          <th>Action</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td><strong>UPSC-A1-SUPER50</strong></td>
+                          <td>UPSC Civil Services GS Foundation 2026</td>
+                          <td>50 Aspirants</td>
+                          <td>
+                            <span class="dash-badge dash-badge-success"
+                              >96.4%</span
+                            >
+                          </td>
+                          <td>
+                            <a href="#" class="table-btn table-btn-primary"
+                              >View Student List</a
+                            >
+                          </td>
+                        </tr>
+                        <tr>
+                          <td><strong>UPSC-ETHICS-M1</strong></td>
+                          <td>GS 4 Ethics & Integrity Mentorship</td>
+                          <td>120 Aspirants</td>
+                          <td>
+                            <span class="dash-badge dash-badge-success"
+                              >92.0%</span
+                            >
+                          </td>
+                          <td>
+                            <a href="#" class="table-btn table-btn-primary"
+                              >View Student List</a
+                            >
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- TAB: Faculty Grading -->
+            <div class="tab-pane-content" id="faculty-grading">
+              <div class="dash-card">
+                <div class="dash-card-header">
+                  <h3 class="dash-card-title">
+                    <i class="fa-solid fa-pen-to-square"></i> Student Mains
+                    Answer Copy Evaluation Queue
+                  </h3>
+                </div>
+                <div class="dash-card-body p-0">
+                  <div class="table-responsive">
+                    <table class="dash-table">
+                      <thead>
+                        <tr>
+                          <th>Student Name & ID</th>
+                          <th>Paper & Question</th>
+                          <th>Uploaded Time</th>
+                          <th>Rubric Status</th>
+                          <th>Action</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>
+                            <div class="fw-bold">Aditya Verma</div>
+                            <small class="text-muted">ID: UPSC-2026-8842</small>
+                          </td>
+                          <td>GS 2: Federalism and Sarkaria Commission</td>
+                          <td>Today, 10:15 AM</td>
+                          <td>
+                            <span class="dash-badge dash-badge-warning"
+                              >Pending Review</span
+                            >
+                          </td>
+                          <td>
+                            <a href="#" class="table-btn table-btn-primary"
+                              >Evaluate Copy</a
+                            >
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+                            <div class="fw-bold">Rohit Chawla</div>
+                            <small class="text-muted">ID: UPSC-2026-8910</small>
+                          </td>
+                          <td>GS 4: Ethical Dilemma in Disaster Management</td>
+                          <td>Today, 09:30 AM</td>
+                          <td>
+                            <span class="dash-badge dash-badge-warning"
+                              >Pending Review</span
+                            >
+                          </td>
+                          <td>
+                            <a href="#" class="table-btn table-btn-primary"
+                              >Evaluate Copy</a
+                            >
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Other Faculty Tabs -->
+            <div class="tab-pane-content" id="faculty-studio">
+              <div class="dash-card">
+                <div class="dash-card-header">
+                  <h3 class="dash-card-title">Live Lecture Studio Controls</h3>
+                </div>
+                <div class="dash-card-body">
+                  <p class="text-muted">
+                    Launch high-definition live streams, screen sharing, and
+                    interactive polls for online batches.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="tab-pane-content" id="faculty-quizzes">
+              <div class="dash-card">
+                <div class="dash-card-header">
+                  <h3 class="dash-card-title">Create Tests & MCQs</h3>
+                </div>
+                <div class="dash-card-body">
+                  <p class="text-muted">
+                    Add new questions, configure negative marking penalties, and
+                    publish simulated test series.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="tab-pane-content" id="faculty-doubts">
+              <div class="dash-card">
+                <div class="dash-card-header">
+                  <h3 class="dash-card-title">Student Doubt Inbox</h3>
+                </div>
+                <div class="dash-card-body">
+                  <p class="text-muted">
+                    Respond to aspirant doubt tickets with audio feedback or
+                    attached model solution diagrams.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- ROLE 5: ACADEMY ADMINISTRATOR VIEW -->
+          <div class="role-dashboard-view" id="role-view-admin">
+            <div class="dash-hero-banner">
+              <div class="dash-hero-badge">
+                <i class="fa-solid fa-building-columns"></i> Academy Executive
+                Command Portal
+              </div>
+              <h2 class="dash-hero-title">
+                Academy KPI Overview,
+                <span class="dyn-user-name">Admin Arthur</span>!
+              </h2>
+              <p class="dash-hero-desc">
+                Total active student enrollments: <strong>12,450</strong>.
+                Monthly fee collection is at <strong>₹48.5 Lakhs</strong> with
+                <strong>28 Batches Active</strong> across Prelims, Mains,
+                Banking and State PSC.
+              </p>
+              <div class="dash-hero-stats">
+                <div class="dash-hero-stat-pill">
+                  <i class="fa-solid fa-user-graduate"></i
+                  ><span>Active Aspirants: <strong>12,450</strong></span>
+                </div>
+                <div class="dash-hero-stat-pill">
+                  <i class="fa-solid fa-chalkboard-user"></i
+                  ><span>Faculty Mentors: <strong>48 Active</strong></span>
+                </div>
+                <div class="dash-hero-stat-pill">
+                  <i class="fa-solid fa-shield-check text-success"></i
+                  ><span>Server Health: <strong>99.98% Uptime</strong></span>
+                </div>
+              </div>
+            </div>
+
+            <!-- TAB: Admin Overview -->
+            <div class="tab-pane-content active" id="admin-overview">
+              <div class="row g-3 mb-4">
+                <div class="col-xl-3 col-md-6">
+                  <div class="stat-card">
+                    <div class="stat-card-header">
+                      <div class="stat-card-icon stat-icon-primary">
+                        <i class="fa-solid fa-user-graduate"></i>
+                      </div>
+                      <span class="stat-card-trend trend-up"
+                        >+940 This Month</span
+                      >
+                    </div>
+                    <div class="stat-card-body">
+                      <div class="stat-title">Total Enrolled Aspirants</div>
+                      <div class="stat-value">12,450</div>
+                      <p class="stat-meta">
+                        UPSC: 6,400 • Banking: 4,100 • State: 1,950
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-xl-3 col-md-6">
+                  <div class="stat-card">
+                    <div class="stat-card-header">
+                      <div class="stat-card-icon stat-icon-success">
+                        <i class="fa-solid fa-indian-rupee-sign"></i>
+                      </div>
+                      <span class="stat-card-trend trend-up">+18.5% YoY</span>
+                    </div>
+                    <div class="stat-card-body">
+                      <div class="stat-title">Monthly Fee Collection</div>
+                      <div class="stat-value">₹48.5 L</div>
+                      <p class="stat-meta">98.2% Collection Efficiency</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-xl-3 col-md-6">
+                  <div class="stat-card">
+                    <div class="stat-card-header">
+                      <div class="stat-card-icon stat-icon-warning">
+                        <i class="fa-solid fa-graduation-cap"></i>
+                      </div>
+                      <span class="stat-card-trend trend-up">AIR 14 & 38</span>
+                    </div>
+                    <div class="stat-card-body">
+                      <div class="stat-title">2025 Mains Pass Rate</div>
+                      <div class="stat-value">42.8%</div>
+                      <p class="stat-meta">Highest selection ratio in region</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-xl-3 col-md-6">
+                  <div class="stat-card">
+                    <div class="stat-card-header">
+                      <div class="stat-card-icon stat-icon-info">
+                        <i class="fa-solid fa-layer-group"></i>
+                      </div>
+                      <span class="stat-card-trend trend-neutral"
+                        >28 Active</span
+                      >
+                    </div>
+                    <div class="stat-card-body">
+                      <div class="stat-title">Active Batches & Rooms</div>
+                      <div class="stat-value">28 Batches</div>
+                      <p class="stat-meta">16 Offline Halls + 12 Digital</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="row g-4 mb-4">
+                <div class="col-lg-8">
+                  <div class="dash-card">
+                    <div class="dash-card-header">
+                      <h3 class="dash-card-title">
+                        <i class="fa-solid fa-chart-column"></i> Admissions &
+                        Revenue Growth (2026)
+                      </h3>
+                    </div>
+                    <div
+                      class="dash-card-body dash-chart-card-body"
+                      style="position: relative; height: 320px"
+                    >
+                      <canvas id="adminRevenueChart"></canvas>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-lg-4">
+                  <div class="dash-card">
+                    <div class="dash-card-header">
+                      <h3 class="dash-card-title">
+                        <i class="fa-solid fa-shield-halved"></i> Institute
+                        Operational Status
+                      </h3>
+                    </div>
+                    <div class="dash-card-body">
+                      <ul class="list-group list-group-flush">
+                        <li
+                          class="list-group-item d-flex justify-content-between"
+                        >
+                          <span>Database Cluster</span
+                          ><span class="dash-badge dash-badge-success"
+                            >Operational</span
+                          >
+                        </li>
+                        <li
+                          class="list-group-item d-flex justify-content-between"
+                        >
+                          <span>Video Streaming CDN</span
+                          ><span class="dash-badge dash-badge-success"
+                            >99.98% Healthy</span
+                          >
+                        </li>
+                        <li
+                          class="list-group-item d-flex justify-content-between"
+                        >
+                          <span>Payment Gateways</span
+                          ><span class="dash-badge dash-badge-success"
+                            >Connected</span
+                          >
+                        </li>
+                        <li
+                          class="list-group-item d-flex justify-content-between"
+                        >
+                          <span>SMS & Email Gateway</span
+                          ><span class="dash-badge dash-badge-success"
+                            >Active</span
+                          >
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- TAB: Admin Students Directory -->
+            <div class="tab-pane-content" id="admin-students">
+              <div class="dash-card">
+                <div class="dash-card-header">
+                  <h3 class="dash-card-title">
+                    <i class="fa-solid fa-user-graduate"></i> Aspirant Student
+                    Directory
+                  </h3>
+                  <a href="#" class="table-btn table-btn-primary"
+                    >+ Enrol New Aspirant</a
+                  >
+                </div>
+                <div class="dash-card-body p-0">
+                  <div class="table-responsive">
+                    <table class="dash-table">
+                      <thead>
+                        <tr>
+                          <th>Enrollment ID</th>
+                          <th>Student Name & Email</th>
+                          <th>Target Stream</th>
+                          <th>Batch Code</th>
+                          <th>Fee Status</th>
+                          <th>Action</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td><strong>UPSC-2026-8842</strong></td>
+                          <td>
+                            <div class="fw-bold">Aditya Verma</div>
+                            <small class="text-muted"
+                              >aditya.upsc2026@stackly.edu</small
+                            >
+                          </td>
+                          <td>UPSC Civil Services</td>
+                          <td>GS Super-50 Batch A-1</td>
+                          <td>
+                            <span class="dash-badge dash-badge-success"
+                              >Fully Paid</span
+                            >
+                          </td>
+                          <td>
+                            <a href="#" class="table-btn table-btn-outline"
+                              >Manage</a
+                            >
+                          </td>
+                        </tr>
+                        <tr>
+                          <td><strong>BANK-2026-3490</strong></td>
+                          <td>
+                            <div class="fw-bold">Pooja Deshmukh</div>
+                            <small class="text-muted"
+                              >pooja.bankpo@stackly.edu</small
+                            >
+                          </td>
+                          <td>SBI PO & SSC CGL</td>
+                          <td>Banking Speed Batch B-3</td>
+                          <td>
+                            <span class="dash-badge dash-badge-success"
+                              >Fully Paid</span
+                            >
+                          </td>
+                          <td>
+                            <a href="#" class="table-btn table-btn-outline"
+                              >Manage</a
+                            >
+                          </td>
+                        </tr>
+                        <tr>
+                          <td><strong>STATE-2026-6120</strong></td>
+                          <td>
+                            <div class="fw-bold">Vikramaditya Singh</div>
+                            <small class="text-muted"
+                              >vikram.statepsc@stackly.edu</small
+                            >
+                          </td>
+                          <td>State PSC + Defense</td>
+                          <td>State Command Batch</td>
+                          <td>
+                            <span class="dash-badge dash-badge-warning"
+                              >Installment Due</span
+                            >
+                          </td>
+                          <td>
+                            <a href="#" class="table-btn table-btn-outline"
+                              >Manage</a
+                            >
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Other Admin Tabs -->
+            <div class="tab-pane-content" id="admin-faculty">
+              <div class="dash-card">
+                <div class="dash-card-header">
+                  <h3 class="dash-card-title">Faculty & Mentors Roster</h3>
+                </div>
+                <div class="dash-card-body">
+                  <p class="text-muted">
+                    Manage 48 subject matter specialists, assign lecture halls,
+                    and monitor feedback ratings.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="tab-pane-content" id="admin-batches">
+              <div class="dash-card">
+                <div class="dash-card-header">
+                  <h3 class="dash-card-title">
+                    Batch & Room Allocation Scheduler
+                  </h3>
+                </div>
+                <div class="dash-card-body">
+                  <p class="text-muted">
+                    Configure batch timings, assign physical auditoriums and
+                    digital live stream channels.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="tab-pane-content" id="admin-finance">
+              <div class="dash-card">
+                <div class="dash-card-header">
+                  <h3 class="dash-card-title">
+                    Revenue & Fee Transaction Ledger
+                  </h3>
+                </div>
+                <div class="dash-card-body">
+                  <p class="text-muted">
+                    View live payment gateway reconciliation logs, scholarship
+                    allocations, and tax reports.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="tab-pane-content" id="admin-notices">
+              <div class="dash-card">
+                <div class="dash-card-header">
+                  <h3 class="dash-card-title">Broadcast Notice Board</h3>
+                </div>
+                <div class="dash-card-body">
+                  <p class="text-muted">
+                    Push official notifications to mobile app and student
+                    dashboard.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="tab-pane-content" id="admin-logs">
+              <div class="dash-card">
+                <div class="dash-card-header">
+                  <h3 class="dash-card-title">System & Security Audit Logs</h3>
+                </div>
+                <div class="dash-card-body">
+                  <p class="text-muted">
+                    256-bit SSL encrypted login audit trail with timestamp
+                    tracking.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- ROLE 6: PARENT / GUARDIAN VIEW -->
+          <div class="role-dashboard-view" id="role-view-parent">
+            <div class="dash-hero-banner">
+              <div class="dash-hero-badge">
+                <i class="fa-solid fa-house-user"></i> Parent & Guardian Portal
+              </div>
+              <h2 class="dash-hero-title">
+                Welcome,
+                <span class="dyn-user-name">Suresh & Meena Verma</span>!
+              </h2>
+              <p class="dash-hero-desc">
+                Monitoring your ward
+                <strong>Aditya Verma (UPSC CSE 2026 Batch)</strong>. His weekly
+                study engagement is <strong>46.5 Hours</strong> with an overall
+                test ranking in the <strong>Top 8%</strong>.
+              </p>
+              <div class="dash-hero-stats">
+                <div class="dash-hero-stat-pill">
+                  <i class="fa-solid fa-user-check"></i
+                  ><span>Class Attendance: <strong>96.4%</strong></span>
+                </div>
+                <div class="dash-hero-stat-pill">
+                  <i class="fa-solid fa-clock"></i
+                  ><span>Weekly Study Hours: <strong>46.5 Hrs</strong></span>
+                </div>
+                <div class="dash-hero-stat-pill">
+                  <i class="fa-solid fa-chalkboard-user"></i
+                  ><span
+                    >Assigned Mentor: <strong>Dr. Vikas Sharma</strong></span
+                  >
+                </div>
+              </div>
+            </div>
+
+            <!-- TAB: Parent Overview -->
+            <div class="tab-pane-content active" id="parent-overview">
+              <div class="row g-4 mb-4">
+                <div class="col-lg-8">
+                  <div class="dash-card">
+                    <div class="dash-card-header">
+                      <h3 class="dash-card-title">
+                        <i class="fa-solid fa-chart-line"></i> Ward
+                        Month-on-Month Test Score Growth
+                      </h3>
+                    </div>
+                    <div
+                      class="dash-card-body dash-chart-card-body"
+                      style="position: relative; height: 300px"
+                    >
+                      <canvas id="parentWardScoreChart"></canvas>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-lg-4">
+                  <div class="dash-card">
+                    <div class="dash-card-header">
+                      <h3 class="dash-card-title">
+                        <i class="fa-solid fa-comment-dots"></i> Mentor's
+                        Monthly Feedback
+                      </h3>
+                    </div>
+                    <div class="dash-card-body">
+                      <div class="p-3 bg-light rounded-3 border mb-3">
+                        <div class="d-flex align-items-center gap-2 mb-2">
+                          <img
+                            src="../assets/images/home/home-mentor-image-1.webp"
+                            alt="Mentor"
+                            style="
+                              width: 32px;
+                              height: 32px;
+                              border-radius: 50%;
+                            "
+                          />
+                          <div>
+                            <strong class="text-dark d-block"
+                              >Dr. Vikas Sharma</strong
+                            ><small class="text-muted">Lead UPSC Mentor</small>
+                          </div>
+                        </div>
+                        <p class="small text-muted mb-0">
+                          "Aditya has shown remarkable consistency in Indian
+                          Polity and Modern History. His Prelims mock scores are
+                          well above the national cut-off. We recommend
+                          reinforcing Ecology topics."
+                        </p>
+                      </div>
+                      <a
+                        href="#"
+                        class="table-btn table-btn-primary w-100 text-center"
+                        ><i class="fa-solid fa-phone"></i> Book Counselor
+                        Call</a
+                      >
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Other Parent Tabs -->
+            <div class="tab-pane-content" id="parent-growth">
+              <div class="dash-card">
+                <div class="dash-card-header">
+                  <h3 class="dash-card-title">Academic Marks Progression</h3>
+                </div>
+                <div class="dash-card-body">
+                  <p class="text-muted">
+                    Comprehensive breakdown of monthly test series results and
+                    daily answer evaluation scores.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="tab-pane-content" id="parent-fees">
+              <div class="dash-card">
+                <div class="dash-card-header">
+                  <h3 class="dash-card-title">Fee Ledger & Payment Receipts</h3>
+                </div>
+                <div class="dash-card-body">
+                  <p class="text-muted">
+                    All tuition fees and test series charges are fully cleared.
+                    Official tax invoice available for download.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="tab-pane-content" id="parent-mentor">
+              <div class="dash-card">
+                <div class="dash-card-header">
+                  <h3 class="dash-card-title">
+                    Book Slot with Academic Counselor
+                  </h3>
+                </div>
+                <div class="dash-card-body">
+                  <p class="text-muted">
+                    Schedule a 20-minute Zoom consultation or in-person visit
+                    with your ward's faculty mentor.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </main>
+      </div>
+    </div>
+
+    <!-- Modal: Submit New Doubt -->
+    <div
+      class="modal fade"
+      id="askDoubtModal"
+      tabindex="-1"
+      aria-labelledby="askDoubtModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content border-0 shadow-lg">
+          <div class="modal-header bg-pattern-dark text-white">
+            <h5 class="modal-title text-white" id="askDoubtModalLabel">
+              <i class="fa-solid fa-comments text-warning me-2"></i> Submit
+              Doubt to Subject Mentor
+            </h5>
+            <button
+              type="button"
+              class="btn-close btn-close-white"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body p-4">
+            <form id="submitDoubtForm">
+              <div class="mb-3">
+                <label
+                  for="doubtSubject"
+                  class="form-label fw-bold small text-dark"
+                  >Subject / Paper</label
+                >
+                <select id="doubtSubject" class="form-select" required>
+                  <option value="polity">
+                    GS 2: Indian Polity & Governance
+                  </option>
+                  <option value="history">
+                    GS 1: Modern Indian History & Culture
+                  </option>
+                  <option value="economy">
+                    GS 3: Indian Economy & Agriculture
+                  </option>
+                  <option value="ethics">GS 4: Ethics & Case Studies</option>
+                  <option value="csat">CSAT: Aptitude & Comprehension</option>
+                </select>
+              </div>
+              <div class="mb-3">
+                <label
+                  for="doubtQuestion"
+                  class="form-label fw-bold small text-dark"
+                  >Describe Your Query</label
+                >
+                <textarea
+                  id="doubtQuestion"
+                  class="form-control"
+                  rows="4"
+                  placeholder="Type your specific conceptual doubt or test question reference..."
+                  required
+                ></textarea>
+              </div>
+              <div class="mb-3">
+                <label class="form-label fw-bold small text-dark"
+                  >Attach Photo / Answer Copy (Optional)</label
+                >
+                <input type="file" class="form-control" />
+              </div>
+              <button
+                type="submit"
+                class="btn btn-primary w-100"
+                style="
+                  background-color: var(--dash-primary);
+                  border-color: var(--dash-primary);
+                "
+              >
+                Submit Query to Mentor Desk
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../assets/js/dashboard.js"></script>
+  </body>
+</html>
