@@ -2898,6 +2898,7 @@ body.preloader-active {
 .preloader-title .accent-text {
   color: #ffe4aa;
   background: linear-gradient(135deg, #ffffff 20%, #ffe4aa 80%);
+  background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
