@@ -138,6 +138,7 @@
                   <input
                     type="text"
                     id="regUsername"
+                    name="username"
                     class="auth-input-control"
                     placeholder="Enter your full name (letters only)"
                     required
@@ -157,7 +158,13 @@
                 </label>
                 <div class="auth-input-wrapper">
                   <i class="fa-solid fa-book-bookmark auth-input-icon"></i>
-                  <select id="regRole" class="auth-input-control" required>
+                  <select
+                    id="regRole"
+                    name="role"
+                    class="auth-input-control"
+                    autocomplete="off"
+                    required
+                  >
                     <option value="" disabled selected>
                       -- Select Your Target Stream / Role --
                     </option>
@@ -197,6 +204,7 @@
                   <input
                     type="email"
                     id="regEmail"
+                    name="email"
                     class="auth-input-control"
                     placeholder="e.g. yourname@example.com"
                     required
@@ -219,6 +227,7 @@
                   <input
                     type="password"
                     id="regPassword"
+                    name="password"
                     class="auth-input-control"
                     placeholder="Create a strong password"
                     required
@@ -275,6 +284,7 @@
                   <input
                     type="password"
                     id="regConfirmPassword"
+                    name="confirmPassword"
                     class="auth-input-control"
                     placeholder="Re-enter your password"
                     required
@@ -299,7 +309,9 @@
                 <input
                   type="checkbox"
                   id="regTerms"
+                  name="terms"
                   class="form-check-input"
+                  autocomplete="off"
                   required
                 />
                 <label for="regTerms" class="auth-checkbox-label">

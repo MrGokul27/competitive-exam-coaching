@@ -2853,7 +2853,13 @@
                   class="form-label fw-bold small text-dark"
                   >Subject / Paper</label
                 >
-                <select id="doubtSubject" class="form-select" required>
+                <select
+                  id="doubtSubject"
+                  name="doubtSubject"
+                  class="form-select"
+                  autocomplete="off"
+                  required
+                >
                   <option value="polity">
                     GS 2: Indian Polity & Governance
                   </option>
@@ -2875,17 +2881,27 @@
                 >
                 <textarea
                   id="doubtQuestion"
+                  name="doubtQuestion"
                   class="form-control"
                   rows="4"
                   placeholder="Type your specific conceptual doubt or test question reference..."
+                  autocomplete="off"
                   required
                 ></textarea>
               </div>
               <div class="mb-3">
-                <label class="form-label fw-bold small text-dark"
+                <label
+                  for="doubtAttachment"
+                  class="form-label fw-bold small text-dark"
                   >Attach Photo / Answer Copy (Optional)</label
                 >
-                <input type="file" class="form-control" />
+                <input
+                  type="file"
+                  id="doubtAttachment"
+                  name="doubtAttachment"
+                  class="form-control"
+                  autocomplete="off"
+                />
               </div>
               <button
                 type="submit"

@@ -657,7 +657,9 @@
                     </label>
                     <select
                       id="calcExam"
+                      name="calcExam"
                       class="form-select custom-calc-select"
+                      autocomplete="off"
                     >
                       <option value="upsc" selected>
                         UPSC Civil Services (IAS/IPS)
@@ -683,7 +685,9 @@
                     </label>
                     <select
                       id="calcMode"
+                      name="calcMode"
                       class="form-select custom-calc-select"
+                      autocomplete="off"
                     >
                       <option value="online" selected>
                         100% Online Live Interactive
@@ -703,7 +707,9 @@
                     </label>
                     <select
                       id="calcDuration"
+                      name="calcDuration"
                       class="form-select custom-calc-select"
+                      autocomplete="off"
                     >
                       <option value="1year" selected>
                         1-Year Comprehensive (2026)
@@ -1381,6 +1387,9 @@
               >
                 <div class="mb-3 form-floating-field">
                   <i class="fa-regular fa-user form-field-icon"></i>
+                  <label for="scholarshipName" class="visually-hidden"
+                    >Full Name</label
+                  >
                   <input
                     type="text"
                     id="scholarshipName"
@@ -1395,6 +1404,9 @@
                 </div>
                 <div class="mb-3 form-floating-field">
                   <i class="fa-solid fa-phone form-field-icon"></i>
+                  <label for="scholarshipPhone" class="visually-hidden"
+                    >Mobile Number</label
+                  >
                   <input
                     type="tel"
                     id="scholarshipPhone"
@@ -1406,10 +1418,14 @@
                     inputmode="numeric"
                     minlength="10"
                     maxlength="10"
+                    autocomplete="tel"
                   />
                 </div>
                 <div class="mb-3 form-floating-field">
                   <i class="fa-regular fa-envelope form-field-icon"></i>
+                  <label for="scholarshipEmail" class="visually-hidden"
+                    >Email Address</label
+                  >
                   <input
                     type="email"
                     id="scholarshipEmail"
@@ -1417,11 +1433,21 @@
                     class="form-control scholarship-input"
                     placeholder="Email Address *"
                     required
+                    autocomplete="email"
                   />
                 </div>
                 <div class="mb-3 form-floating-field">
                   <i class="fa-solid fa-book-bookmark form-field-icon"></i>
-                  <select class="form-select scholarship-input" required>
+                  <label for="scholarshipExam" class="visually-hidden"
+                    >Target Exam</label
+                  >
+                  <select
+                    id="scholarshipExam"
+                    name="scholarshipExam"
+                    class="form-select scholarship-input"
+                    autocomplete="off"
+                    required
+                  >
                     <option value="" selected disabled>Target Exam *</option>
                     <option value="upsc">UPSC Civil Services</option>
                     <option value="statepcs">State PSC</option>

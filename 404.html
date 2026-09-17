@@ -151,12 +151,17 @@
               <div class="error-search-section">
                 <div class="error-search-box">
                   <i class="fa-solid fa-magnifying-glass search-icon"></i>
+                  <label for="errorSearchInput" class="visually-hidden">
+                    Search academy courses and study material
+                  </label>
                   <input
                     type="text"
                     id="errorSearchInput"
+                    name="search"
                     class="error-search-input"
                     placeholder="Search UPSC, Banking, SSC batches, mock tests, or syllabus..."
                     aria-label="Search academy courses and study material"
+                    autocomplete="off"
                   />
                   <button
                     type="button"
